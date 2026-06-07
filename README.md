@@ -2,17 +2,13 @@
 
 ![AI Workbench .supra Examples](docs/assets/social-preview.png)
 
-A ready-to-publish GitHub repository for SupraTix AI Workbench `.supra` example packages. The repository is designed to be copied into:
+A portable, ready-to-publish GitHub repository for SupraTix AI Workbench `.supra` example packages. It can live in any checkout and can be copied into an AI Workbench examples directory when needed.
 
-```text
-/Users/tobiasgoecke/supraworxv30/mint/workbench/examples
-```
-
-It contains example `.supra` packages, generated bilingual package documentation, JSON schemas, validation scripts, governance notes, and reusable image assets for a polished public or private GitHub presentation.
+It contains importable `.supra` packages, generated bilingual package documentation, JSON schemas, validation scripts, governance notes, and reusable image assets for a polished public or private GitHub presentation. Each package is designed to show a concrete business workflow, a reviewable output contract, and starter context that can be adapted safely.
 
 ## What is included
 
-- **43 `.supra` packages** at the repository root.
+- **42 `.supra` packages** at the repository root.
 - **English and German generated documentation** under [`docs/`](docs/README.md).
 - **Schema contracts** under [`schemas/`](schemas/) for package-level validation and output-contract checks.
 - **Local validation scripts** under [`scripts/`](scripts/).
@@ -22,8 +18,8 @@ It contains example `.supra` packages, generated bilingual package documentation
 ## Fast start
 
 ```bash
-# 1) Copy or unzip this repository into your examples folder
-cd /Users/tobiasgoecke/supraworxv30/mint/workbench/examples
+# 1) Open this repository checkout
+cd AI-Workbench-.supra-Examples
 
 # 2) Validate every .supra package
 python3 scripts/validate_supra.py .
@@ -133,11 +129,16 @@ The examples intentionally default to human-reviewable execution. Prompts ask th
 - [ ] Decide whether this repository should use `LICENSE.template` or a project-specific license.
 - [ ] Create the GitHub repository and push.
 
-## Copy into your local Supraworx tree
+## Copy into an AI Workbench examples directory
 
 ```bash
-rsync -av --exclude .git ./ /Users/tobiasgoecke/supraworxv30/mint/workbench/examples/
-cd /Users/tobiasgoecke/supraworxv30/mint/workbench/examples
+./scripts/install_to_supraworx_examples.sh path/to/ai-workbench/examples
+
+# Or use an environment variable for repeated installs
+export SUPRAWORX_EXAMPLES_DIR="path/to/ai-workbench/examples"
+./scripts/install_to_supraworx_examples.sh
+
+cd path/to/ai-workbench/examples
 python3 scripts/validate_supra.py .
 ```
 
