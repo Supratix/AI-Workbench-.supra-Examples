@@ -1,0 +1,367 @@
+{
+  "key": "field_service_maintenance_report",
+  "title": "Field Service Maintenance Report",
+  "description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+  "workbench_title": "Field Service Maintenance Report Desk",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "field_service_maintenance_report",
+    "vendor": "SupraTix",
+    "global_product_pk": "",
+    "content_name": "Field Service Maintenance Report",
+    "content_description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "starter_rows": [
+      {
+        "title": "Field Service Maintenance Report starter",
+        "source_type": "field_service_context",
+        "external_urls": [],
+        "request": "Paste a technician transcript, audio URI, checklist, photo references, and job metadata.",
+        "text": "{\"schema\":\"FIELD_SERVICE_MAINTENANCE_INTAKE_V1\",\"job_id\":\"J-2026-045\",\"asset_id\":\"HVAC-22\",\"audio_uri\":\"\",\"transcript\":\"Arrived on site. Checked filter, replaced with part F123. Test run 10 minutes. No leaks detected. Safety: observed minor corrosion at valve 3. Photos: [\\\"https://files.example/snap1.jpg\\\"]\",\"checklist\":[\"Confirm asset\",\"Record steps\",\"Capture parts\",\"Note issues\",\"Create summary\"],\"photos\":[\"https://files.example/snap1.jpg\"],\"guardrails\":[\"Do not invent facts.\",\"Preserve part numbers.\",\"Capture uncertainty.\"],\"target_outputs\":[\"evidence\",\"report\",\"summary\"]}"
+      }
+    ],
+    "commerce": {
+      "business_model": "free_of_use",
+      "product_typ": "workflows",
+      "usage_unit": "cloud_credits",
+      "quota": {
+        "unit": "cloud_credits"
+      }
+    },
+    "github_example": {
+      "repository_layout": "packages at repo root; generated docs under docs/; schemas under schemas/",
+      "maintained_for": "AI Workbench .supra examples"
+    }
+  },
+  "columns": [
+    {
+      "key": "service_intake",
+      "title": "Service intake",
+      "column_kind": "step",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake",
+          "reason": "github_example_package"
+        }
+      }
+    },
+    {
+      "key": "transcribed_evidence",
+      "title": "Transcribed evidence",
+      "column_kind": "step",
+      "input_from": [
+        "service_intake"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "field_service_maintenance_report_evidence",
+      "prompt": "Extract job_id, asset_id, sources, transcript text, checklist items, photo URIs, uncertainty terms, and evidence gaps. Preserve part numbers. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Normalize evidence",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "FIELD_SERVICE_EVIDENCE_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "job_id",
+            "asset_id",
+            "source_list",
+            "transcript_text",
+            "checklist_items",
+            "photo_uris",
+            "uncertainty_terms",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "job_id",
+              "asset_id",
+              "source_list",
+              "transcript_text",
+              "checklist_items",
+              "photo_uris",
+              "uncertainty_terms",
+              "evidence_gaps"
+            ]
+          },
+          "quality_gate": "Return JSON only with traceable sources.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "maintenance_report",
+      "title": "Maintenance report",
+      "column_kind": "step",
+      "input_from": [
+        "service_intake",
+        "transcribed_evidence"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "field_service_maintenance_report_codex",
+      "prompt": "Return one JSON object with job_report and summary. job_report must include job_id, asset_id, ordered steps, parts_used, time_minutes, issues, safety_flags, completed, signature, provenance, and assumptions. Preserve explicit part numbers and integer durations.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Build report",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "FIELD_SERVICE_MAINTENANCE_REPORT_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "job_report",
+            "summary"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "job_report",
+              "summary"
+            ]
+          },
+          "quality_gate": "Return JSON only with explicit assumptions and provenance.",
+          "evidence_policy": "traceable_sources_required"
+        }
+      }
+    },
+    {
+      "key": "customer_summary",
+      "title": "Customer summary",
+      "column_kind": "step",
+      "input_from": [
+        "service_intake",
+        "transcribed_evidence",
+        "maintenance_report"
+      ],
+      "tool_category": "shortcut",
+      "tool": "field_service_maintenance_report",
+      "prompt": "Create a one-sentence customer summary plus JSON/PDF export checklist. Preserve part numbers and flag delivery-blocking evidence gaps. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Generate customer summary",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "FIELD_SERVICE_CUSTOMER_SUMMARY_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "attachments",
+            "validation_assertions",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "attachments",
+              "validation_assertions",
+              "evidence_gaps"
+            ]
+          },
+          "quality_gate": "Return JSON only with summary, attachments, validation assertions, and evidence gaps.",
+          "evidence_policy": "traceable_sources_required"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "field_service_maintenance_report_workflow",
+      "title": "Field Service Maintenance Report workflow",
+      "description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+      "workflow_pipe": true,
+      "steps": [
+        {
+          "id": "service_intake",
+          "title": "Service intake",
+          "step_position": 0,
+          "backlog": true,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "transcribed_evidence",
+          "title": "Transcribed evidence",
+          "step_position": 1,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "maintenance_report",
+          "title": "Maintenance report",
+          "step_position": 2,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "customer_summary",
+          "title": "Customer summary",
+          "step_position": 3,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        }
+      ]
+    }
+  ],
+  "main_workbench": {
+    "key": "field_service_maintenance_report",
+    "title": "Field Service Maintenance Report",
+    "description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+    "workbench_title": "Field Service Maintenance Report Desk",
+    "columns": [
+      {
+        "key": "service_intake",
+        "title": "Service intake",
+        "column_kind": "step",
+        "tool_category": "manual",
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake",
+            "reason": "github_example_package"
+          }
+        }
+      },
+      {
+        "key": "transcribed_evidence",
+        "title": "Transcribed evidence",
+        "column_kind": "step",
+        "tool_category": "ai_tool",
+        "tool": "field_service_maintenance_report_evidence",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Normalize evidence",
+            "reason": "github_example_package"
+          }
+        },
+        "input_from": [
+          "service_intake"
+        ]
+      },
+      {
+        "key": "maintenance_report",
+        "title": "Maintenance report",
+        "column_kind": "step",
+        "tool_category": "ai_tool",
+        "tool": "field_service_maintenance_report_codex",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Build report",
+            "reason": "github_example_package"
+          }
+        },
+        "input_from": [
+          "service_intake",
+          "transcribed_evidence"
+        ]
+      },
+      {
+        "key": "customer_summary",
+        "title": "Customer summary",
+        "column_kind": "step",
+        "tool_category": "shortcut",
+        "tool": "field_service_maintenance_report",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Generate customer summary",
+            "reason": "github_example_package"
+          }
+        },
+        "input_from": [
+          "service_intake",
+          "transcribed_evidence",
+          "maintenance_report"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "field_service_maintenance_report_workflow",
+        "title": "Field Service Maintenance Report workflow",
+        "description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "service_intake",
+            "title": "Service intake",
+            "step_position": 0,
+            "backlog": true,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "transcribed_evidence",
+            "title": "Transcribed evidence",
+            "step_position": 1,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "maintenance_report",
+            "title": "Maintenance report",
+            "step_position": 2,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "customer_summary",
+            "title": "Customer summary",
+            "step_position": 3,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          }
+        ]
+      }
+    ]
+  }
+}
