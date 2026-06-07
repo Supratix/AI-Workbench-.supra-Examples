@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Generate lightweight EN/DE docs from .supra package files."""
+"""Generate EN/DE docs and a manifest from .supra package files."""
 from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
+
+
+MANIFEST_SCHEMA = "SUPRA_EXAMPLES_MANIFEST_V1"
+MANIFEST_TARGET = "AI Workbench .supra examples repository"
 
 
 def table(rows: list[list[str]]) -> str:
@@ -82,6 +86,68 @@ def doc(pkg: dict, lang: str) -> str:
     return "\n".join(lines)
 
 
+def manifest(packages: list[dict]) -> dict:
+    return {
+        "schema": MANIFEST_SCHEMA,
+        "generated_for": MANIFEST_TARGET,
+        "package_count": len(packages),
+        "packages": [
+            {
+                "key": pkg["key"],
+                "title": pkg["title"],
+                "description": pkg.get("description", ""),
+                "columns": len(pkg.get("columns", [])),
+                "workflows": len(pkg.get("workflows", [])),
+                "source": f"{pkg['key']}.supra",
+                "docs": {
+                    "en": f"docs/{pkg['key']}.en.md",
+                    "de": f"docs/{pkg['key']}.de.md",
+                },
+            }
+            for pkg in packages
+        ],
+    }
+
+
+def docs_readme(packages: list[dict]) -> str:
+    rows = [["Package", "Description", "Columns", "Workflows", "Deutsch", "English"]]
+    for pkg in packages:
+        rows.append([
+            pkg["title"],
+            pkg.get("description", ""),
+            str(len(pkg.get("columns", []))),
+            str(len(pkg.get("workflows", []))),
+            f"[`{pkg['key']}.de.md`]({pkg['key']}.de.md)",
+            f"[`{pkg['key']}.en.md`]({pkg['key']}.en.md)",
+        ])
+    return "\n".join([
+        "# `.supra` Example Documentation",
+        "",
+        "Generated German and English Markdown documentation for every `.supra` package in this examples repository.",
+        "Descriptions are read from the source package metadata so this catalog stays aligned with the importable examples.",
+        "",
+        "![Workflow pipeline](assets/supra-workflow-pipeline.svg)",
+        "",
+        table(rows),
+        "",
+        "## Diagrams",
+        "",
+        "- [Architecture](assets/supra-workbench-architecture.svg)",
+        "- [Package anatomy](assets/supra-package-anatomy.svg)",
+        "- [Workflow pipeline](assets/supra-workflow-pipeline.svg)",
+        "- [Import/export flow](assets/supra-import-export-flow.svg)",
+        "- [Governance loop](assets/supra-governance-loop.svg)",
+        "",
+        "## Regeneration",
+        "",
+        "```bash",
+        "python3 scripts/generate_docs.py .",
+        "python3 scripts/render_assets.py .",
+        "```",
+        "",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
@@ -100,14 +166,13 @@ def main() -> int:
                 raise SystemExit(f"Missing generated doc: {target}")
             if not args.check:
                 target.write_text(doc(pkg, lang), encoding="utf-8")
-    rows = [["Package", "Columns", "Workflows", "Deutsch", "English"]]
-    for pkg in packages:
-        rows.append([pkg["title"], str(len(pkg.get("columns", []))), str(len(pkg.get("workflows", []))), f"[`{pkg['key']}.de.md`]({pkg['key']}.de.md)", f"[`{pkg['key']}.en.md`]({pkg['key']}.en.md)"])
-    readme = "# `.supra` Example Documentation\n\nGenerated German and English Markdown documentation for every `.supra` package in this examples repository.\n\n" + table(rows) + "\n"
     if args.check and not (docs / "README.md").exists():
         raise SystemExit("Missing docs/README.md")
+    if args.check and not (root / "examples_manifest.json").exists():
+        raise SystemExit("Missing examples_manifest.json")
     if not args.check:
-        (docs / "README.md").write_text(readme, encoding="utf-8")
+        (docs / "README.md").write_text(docs_readme(packages), encoding="utf-8")
+        (root / "examples_manifest.json").write_text(json.dumps(manifest(packages), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Documentation {'checked' if args.check else 'generated'} for {len(packages)} packages")
     return 0
 
