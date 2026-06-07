@@ -1,0 +1,523 @@
+{
+  "schema": "SUPRA_EXAMPLES_MANIFEST_V1",
+  "generated_for": "/Users/tobiasgoecke/supraworxv30/mint/workbench/examples",
+  "package_count": 43,
+  "packages": [
+    {
+      "key": "aevalley_grant_tender_url_condenser",
+      "title": "AE Valley Grant/Tender/Project URL Condenser",
+      "description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+      "columns": 17,
+      "workflows": 1,
+      "source": "aevalley_grant_tender_url_condenser.supra",
+      "docs": {
+        "en": "docs/aevalley_grant_tender_url_condenser.en.md",
+        "de": "docs/aevalley_grant_tender_url_condenser.de.md"
+      }
+    },
+    {
+      "key": "data_analytics_experiment_launch_analyzer",
+      "title": "Data Analytics Experiment And Launch Analyzer",
+      "description": "Turn experiment and launch notes into a decision-ready analytics review.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "data_analytics_experiment_launch_analyzer.supra",
+      "docs": {
+        "en": "docs/data_analytics_experiment_launch_analyzer.en.md",
+        "de": "docs/data_analytics_experiment_launch_analyzer.de.md"
+      }
+    },
+    {
+      "key": "data_analytics_kpi_framework_designer",
+      "title": "Data Analytics KPI Framework Designer",
+      "description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "data_analytics_kpi_framework_designer.supra",
+      "docs": {
+        "en": "docs/data_analytics_kpi_framework_designer.en.md",
+        "de": "docs/data_analytics_kpi_framework_designer.de.md"
+      }
+    },
+    {
+      "key": "data_analytics_kpi_operating_review",
+      "title": "Data Analytics KPI Operating Review",
+      "description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "data_analytics_kpi_operating_review.supra",
+      "docs": {
+        "en": "docs/data_analytics_kpi_operating_review.en.md",
+        "de": "docs/data_analytics_kpi_operating_review.de.md"
+      }
+    },
+    {
+      "key": "data_analytics_market_opportunity_sizer",
+      "title": "Data Analytics Market And Opportunity Sizer",
+      "description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "data_analytics_market_opportunity_sizer.supra",
+      "docs": {
+        "en": "docs/data_analytics_market_opportunity_sizer.en.md",
+        "de": "docs/data_analytics_market_opportunity_sizer.de.md"
+      }
+    },
+    {
+      "key": "lieferschein_inventory",
+      "title": "Lieferschein → Lagerbestand (Internal Products)",
+      "description": "Map delivery-note lines to internal products and create a reviewable stock update proposal.",
+      "columns": 3,
+      "workflows": 0,
+      "source": "lieferschein_inventory.supra",
+      "docs": {
+        "en": "docs/lieferschein_inventory.en.md",
+        "de": "docs/lieferschein_inventory.de.md"
+      }
+    },
+    {
+      "key": "linkedin_extreme_engagement_posting",
+      "title": "LinkedIn Extreme Engagement Posting",
+      "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+      "columns": 9,
+      "workflows": 1,
+      "source": "linkedin_extreme_engagement_posting.supra",
+      "docs": {
+        "en": "docs/linkedin_extreme_engagement_posting.en.md",
+        "de": "docs/linkedin_extreme_engagement_posting.de.md"
+      }
+    },
+    {
+      "key": "sme_ai_adoption_readiness_sprint",
+      "title": "SME AI Adoption Readiness Sprint",
+      "description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_ai_adoption_readiness_sprint.supra",
+      "docs": {
+        "en": "docs/sme_ai_adoption_readiness_sprint.en.md",
+        "de": "docs/sme_ai_adoption_readiness_sprint.de.md"
+      }
+    },
+    {
+      "key": "sme_cashflow_war_room",
+      "title": "SME Cashflow War Room",
+      "description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_cashflow_war_room.supra",
+      "docs": {
+        "en": "docs/sme_cashflow_war_room.en.md",
+        "de": "docs/sme_cashflow_war_room.de.md"
+      }
+    },
+    {
+      "key": "sme_churn_rescue_desk",
+      "title": "SME Churn Rescue Desk",
+      "description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_churn_rescue_desk.supra",
+      "docs": {
+        "en": "docs/sme_churn_rescue_desk.en.md",
+        "de": "docs/sme_churn_rescue_desk.de.md"
+      }
+    },
+    {
+      "key": "sme_compliance_evidence_pack",
+      "title": "SME Compliance Evidence Pack",
+      "description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_compliance_evidence_pack.supra",
+      "docs": {
+        "en": "docs/sme_compliance_evidence_pack.en.md",
+        "de": "docs/sme_compliance_evidence_pack.de.md"
+      }
+    },
+    {
+      "key": "sme_customer_reply",
+      "title": "SME Customer Reply",
+      "description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_customer_reply.supra",
+      "docs": {
+        "en": "docs/sme_customer_reply.en.md",
+        "de": "docs/sme_customer_reply.de.md"
+      }
+    },
+    {
+      "key": "sme_cyber_hygiene_action_board",
+      "title": "SME Cyber Hygiene Action Board",
+      "description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_cyber_hygiene_action_board.supra",
+      "docs": {
+        "en": "docs/sme_cyber_hygiene_action_board.en.md",
+        "de": "docs/sme_cyber_hygiene_action_board.de.md"
+      }
+    },
+    {
+      "key": "sme_data_cleanup_command_center",
+      "title": "SME Data Cleanup Command Center",
+      "description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_data_cleanup_command_center.supra",
+      "docs": {
+        "en": "docs/sme_data_cleanup_command_center.en.md",
+        "de": "docs/sme_data_cleanup_command_center.de.md"
+      }
+    },
+    {
+      "key": "sme_deadstock_liquidator",
+      "title": "SME Deadstock Liquidator",
+      "description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_deadstock_liquidator.supra",
+      "docs": {
+        "en": "docs/sme_deadstock_liquidator.en.md",
+        "de": "docs/sme_deadstock_liquidator.de.md"
+      }
+    },
+    {
+      "key": "sme_downtime_triage",
+      "title": "SME Downtime Triage",
+      "description": "Diagnose downtime context and create a focused triage and prevention plan.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_downtime_triage.supra",
+      "docs": {
+        "en": "docs/sme_downtime_triage.en.md",
+        "de": "docs/sme_downtime_triage.de.md"
+      }
+    },
+    {
+      "key": "sme_energy_cost_anomaly_finder",
+      "title": "SME Energy Cost Anomaly Finder",
+      "description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_energy_cost_anomaly_finder.supra",
+      "docs": {
+        "en": "docs/sme_energy_cost_anomaly_finder.en.md",
+        "de": "docs/sme_energy_cost_anomaly_finder.de.md"
+      }
+    },
+    {
+      "key": "sme_field_service_route_optimizer",
+      "title": "SME Field Service Route Optimizer",
+      "description": "Turn service jobs and constraints into a route-optimization action brief.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_field_service_route_optimizer.supra",
+      "docs": {
+        "en": "docs/sme_field_service_route_optimizer.en.md",
+        "de": "docs/sme_field_service_route_optimizer.de.md"
+      }
+    },
+    {
+      "key": "sme_grant_funding_fit_radar",
+      "title": "SME Grant Funding Fit Radar",
+      "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_grant_funding_fit_radar.supra",
+      "docs": {
+        "en": "docs/sme_grant_funding_fit_radar.en.md",
+        "de": "docs/sme_grant_funding_fit_radar.de.md"
+      }
+    },
+    {
+      "key": "sme_hiring_scorecard_kit",
+      "title": "SME Hiring Scorecard Kit",
+      "description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_hiring_scorecard_kit.supra",
+      "docs": {
+        "en": "docs/sme_hiring_scorecard_kit.en.md",
+        "de": "docs/sme_hiring_scorecard_kit.de.md"
+      }
+    },
+    {
+      "key": "sme_invoice_dispute_resolver",
+      "title": "SME Invoice Dispute Resolver",
+      "description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_invoice_dispute_resolver.supra",
+      "docs": {
+        "en": "docs/sme_invoice_dispute_resolver.en.md",
+        "de": "docs/sme_invoice_dispute_resolver.de.md"
+      }
+    },
+    {
+      "key": "sme_late_payment_collector",
+      "title": "SME Late Payment Collector",
+      "description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_late_payment_collector.supra",
+      "docs": {
+        "en": "docs/sme_late_payment_collector.en.md",
+        "de": "docs/sme_late_payment_collector.de.md"
+      }
+    },
+    {
+      "key": "sme_lead_qualifier",
+      "title": "SME Lead Qualifier",
+      "description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_lead_qualifier.supra",
+      "docs": {
+        "en": "docs/sme_lead_qualifier.en.md",
+        "de": "docs/sme_lead_qualifier.de.md"
+      }
+    },
+    {
+      "key": "sme_local_seo_content_engine",
+      "title": "SME Local SEO Content Engine",
+      "description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_local_seo_content_engine.supra",
+      "docs": {
+        "en": "docs/sme_local_seo_content_engine.en.md",
+        "de": "docs/sme_local_seo_content_engine.de.md"
+      }
+    },
+    {
+      "key": "sme_margin_leak_detector",
+      "title": "SME Margin Leak Detector",
+      "description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_margin_leak_detector.supra",
+      "docs": {
+        "en": "docs/sme_margin_leak_detector.en.md",
+        "de": "docs/sme_margin_leak_detector.de.md"
+      }
+    },
+    {
+      "key": "sme_meeting_summarizer",
+      "title": "SME Meeting Summarizer",
+      "description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_meeting_summarizer.supra",
+      "docs": {
+        "en": "docs/sme_meeting_summarizer.en.md",
+        "de": "docs/sme_meeting_summarizer.de.md"
+      }
+    },
+    {
+      "key": "sme_onboarding_micro_sop_factory",
+      "title": "SME Onboarding Micro-SOP Factory",
+      "description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_onboarding_micro_sop_factory.supra",
+      "docs": {
+        "en": "docs/sme_onboarding_micro_sop_factory.en.md",
+        "de": "docs/sme_onboarding_micro_sop_factory.de.md"
+      }
+    },
+    {
+      "key": "sme_pricing_power_simulator",
+      "title": "SME Pricing Power Simulator",
+      "description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_pricing_power_simulator.supra",
+      "docs": {
+        "en": "docs/sme_pricing_power_simulator.en.md",
+        "de": "docs/sme_pricing_power_simulator.de.md"
+      }
+    },
+    {
+      "key": "sme_product_launch_kill_scale_gate",
+      "title": "SME Product Launch Kill/Scale Gate",
+      "description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_product_launch_kill_scale_gate.supra",
+      "docs": {
+        "en": "docs/sme_product_launch_kill_scale_gate.en.md",
+        "de": "docs/sme_product_launch_kill_scale_gate.de.md"
+      }
+    },
+    {
+      "key": "sme_proposal_drafter",
+      "title": "SME Proposal Drafter",
+      "description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_proposal_drafter.supra",
+      "docs": {
+        "en": "docs/sme_proposal_drafter.en.md",
+        "de": "docs/sme_proposal_drafter.de.md"
+      }
+    },
+    {
+      "key": "sme_quote_to_cash_bottleneck",
+      "title": "SME Quote-to-Cash Bottleneck Scanner",
+      "description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_quote_to_cash_bottleneck.supra",
+      "docs": {
+        "en": "docs/sme_quote_to_cash_bottleneck.en.md",
+        "de": "docs/sme_quote_to_cash_bottleneck.de.md"
+      }
+    },
+    {
+      "key": "sme_review_reputation_responder",
+      "title": "SME Review Reputation Responder",
+      "description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_review_reputation_responder.supra",
+      "docs": {
+        "en": "docs/sme_review_reputation_responder.en.md",
+        "de": "docs/sme_review_reputation_responder.de.md"
+      }
+    },
+    {
+      "key": "sme_safety_incident_prevention",
+      "title": "SME Safety Incident Prevention Loop",
+      "description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_safety_incident_prevention.supra",
+      "docs": {
+        "en": "docs/sme_safety_incident_prevention.en.md",
+        "de": "docs/sme_safety_incident_prevention.de.md"
+      }
+    },
+    {
+      "key": "sme_shift_handover_risk_radar",
+      "title": "SME Shift Handover Risk Radar",
+      "description": "Identify handover risks and produce a shift-ready mitigation brief.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_shift_handover_risk_radar.supra",
+      "docs": {
+        "en": "docs/sme_shift_handover_risk_radar.en.md",
+        "de": "docs/sme_shift_handover_risk_radar.de.md"
+      }
+    },
+    {
+      "key": "sme_sop_builder",
+      "title": "SME SOP Builder",
+      "description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_sop_builder.supra",
+      "docs": {
+        "en": "docs/sme_sop_builder.en.md",
+        "de": "docs/sme_sop_builder.de.md"
+      }
+    },
+    {
+      "key": "sme_subscription_retention_playbook",
+      "title": "SME Subscription Retention Playbook",
+      "description": "Build a retention playbook for subscription customers using signals, actions, and review metrics.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_subscription_retention_playbook.supra",
+      "docs": {
+        "en": "docs/sme_subscription_retention_playbook.en.md",
+        "de": "docs/sme_subscription_retention_playbook.de.md"
+      }
+    },
+    {
+      "key": "sme_tender_no_bid_gate",
+      "title": "SME Tender No-Bid Gate",
+      "description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_tender_no_bid_gate.supra",
+      "docs": {
+        "en": "docs/sme_tender_no_bid_gate.en.md",
+        "de": "docs/sme_tender_no_bid_gate.de.md"
+      }
+    },
+    {
+      "key": "sme_training_skill_gap_matrix",
+      "title": "SME Training Skill Gap Matrix",
+      "description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_training_skill_gap_matrix.supra",
+      "docs": {
+        "en": "docs/sme_training_skill_gap_matrix.en.md",
+        "de": "docs/sme_training_skill_gap_matrix.de.md"
+      }
+    },
+    {
+      "key": "sme_upsell_signal_miner",
+      "title": "SME Upsell Signal Miner",
+      "description": "Find upsell signals and convert them into account-specific next actions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_upsell_signal_miner.supra",
+      "docs": {
+        "en": "docs/sme_upsell_signal_miner.en.md",
+        "de": "docs/sme_upsell_signal_miner.de.md"
+      }
+    },
+    {
+      "key": "sme_vendor_negotiation_brief",
+      "title": "SME Vendor Negotiation Brief",
+      "description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_vendor_negotiation_brief.supra",
+      "docs": {
+        "en": "docs/sme_vendor_negotiation_brief.en.md",
+        "de": "docs/sme_vendor_negotiation_brief.de.md"
+      }
+    },
+    {
+      "key": "sme_warranty_root_cause_radar",
+      "title": "SME Warranty Root Cause Radar",
+      "description": "Analyze warranty issues and propose root-cause and containment actions.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_warranty_root_cause_radar.supra",
+      "docs": {
+        "en": "docs/sme_warranty_root_cause_radar.en.md",
+        "de": "docs/sme_warranty_root_cause_radar.de.md"
+      }
+    },
+    {
+      "key": "sme_webshop_conversion_rescue",
+      "title": "SME Webshop Conversion Rescue",
+      "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "sme_webshop_conversion_rescue.supra",
+      "docs": {
+        "en": "docs/sme_webshop_conversion_rescue.en.md",
+        "de": "docs/sme_webshop_conversion_rescue.de.md"
+      }
+    },
+    {
+      "key": "vuca_support_report_builder",
+      "title": "VUCA Support Report Builder",
+      "description": "Build a structured support report for volatile, uncertain, complex, and ambiguous operating contexts.",
+      "columns": 15,
+      "workflows": 1,
+      "source": "vuca_support_report_builder.supra",
+      "docs": {
+        "en": "docs/vuca_support_report_builder.en.md",
+        "de": "docs/vuca_support_report_builder.de.md"
+      }
+    }
+  ]
+}

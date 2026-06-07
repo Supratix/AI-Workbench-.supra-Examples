@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/supra-output-contract.schema.json",
+  "title": "AI Workbench .supra Output Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "content_type",
+    "expects_json",
+    "required_fields",
+    "json_schema",
+    "quality_gate",
+    "evidence_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "content_type": {
+      "const": "application/json"
+    },
+    "expects_json": {
+      "type": "boolean"
+    },
+    "required_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "json_schema": {
+      "type": "object"
+    },
+    "quality_gate": {
+      "type": "string"
+    },
+    "evidence_policy": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,23 @@
+name: Package bug
+about: Report a problem with a .supra package
+labels: [bug, supra-package]
+body:
+  - type: input
+    id: package
+    attributes:
+      label: Package key
+      placeholder: sme_customer_reply
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What went wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation output
+      render: shell

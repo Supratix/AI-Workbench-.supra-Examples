@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">.supra Import / Export Flow</title>
+  <desc id="desc">How maintainers edit, validate, import, and improve examples</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#102c46"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1">
+      <stop offset="0%" stop-color="#163a5a"/>
+      <stop offset="100%" stop-color="#225e7b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7bdff2"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="560" rx="28" fill="url(#bg)"/>
+  <circle cx="1110" cy="80" r="110" fill="#7bdff2" opacity="0.12"/>
+  <circle cx="80" cy="490" r="120" fill="#c3f584" opacity="0.09"/>
+  <text x="40" y="58" fill="#ffffff" font-size="30" font-family="Inter, Arial, sans-serif" font-weight="700">.supra Import / Export Flow</text>
+  <text x="40" y="91" fill="#b8d8ea" font-size="16" font-family="Inter, Arial, sans-serif">How maintainers edit, validate, import, and improve examples</text>
+  <line x1="260" y1="235" x2="300" y2="235" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="500" y1="235" x2="540" y2="235" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="740" y1="235" x2="780" y2="235" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="980" y1="235" x2="1020" y2="235" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="1085" y1="290" x2="165" y2="360" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <g filter="url(#shadow)">
+    <rect x="60" y="180" width="200" height="110" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="80" y="214" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Author</text>
+    <text x="80" y="243" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Edit package JSON</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="300" y="180" width="200" height="110" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="320" y="214" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Validate</text>
+    <text x="320" y="243" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Run schema checks</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="540" y="180" width="200" height="110" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="560" y="214" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Document</text>
+    <text x="560" y="243" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Generate EN/DE docs</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="780" y="180" width="200" height="110" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="800" y="214" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Import</text>
+    <text x="800" y="243" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Load into Workbench</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1020" y="180" width="130" height="110" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="1040" y="214" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Review</text>
+    <text x="1040" y="243" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Run + refine</text>
+  </g>
+</svg>

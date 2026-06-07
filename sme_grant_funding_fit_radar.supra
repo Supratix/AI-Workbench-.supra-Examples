@@ -1,0 +1,585 @@
+{
+  "key": "sme_grant_funding_fit_radar",
+  "title": "SME Grant Funding Fit Radar",
+  "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+  "workbench_title": "SME Grant Funding Fit Radar Desk",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "sme_grant_funding_fit_radar",
+    "vendor": "SupraTix",
+    "global_product_pk": "",
+    "content_name": "SME Grant Funding Fit Radar",
+    "content_description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "starter_rows": [
+      {
+        "title": "SME Grant Funding Fit Radar starter",
+        "source_type": "business_context",
+        "external_urls": [],
+        "request": "Paste the source context for SME Grant Funding Fit Radar.",
+        "text": "{\"schema\":\"DISRUPTIVE_SME_INTAKE_V1\",\"use_case\":\"sme_grant_funding_fit_radar\",\"focus\":\"funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions\",\"intake\":\"Business context: We need a reliable decision support flow for SME Grant Funding Fit Radar.\\nCurrent situation: Inputs are incomplete, owners need an answer this week, and leadership wants visible assumptions.\\nKnown constraint: Do not invent facts; mark evidence gaps and human-review items.\",\"guardrails\":[\"Do not invent facts.\",\"Mark assumptions and evidence gaps.\",\"Prefer actions that can be started this week.\",\"Keep financial, legal, safety, and compliance advice reviewable by a responsible human.\"],\"target_outputs\":[\"signal_map\",\"decision_plan\",\"execution_brief\"]}"
+      }
+    ],
+    "commerce": {
+      "business_model": "free_of_use",
+      "product_typ": "workflows",
+      "usage_unit": "cloud_credits",
+      "quota": {
+        "unit": "cloud_credits"
+      }
+    },
+    "github_example": {
+      "repository_layout": "packages at repo root; generated docs under docs/; schemas under schemas/",
+      "maintained_for": "AI Workbench .supra examples"
+    }
+  },
+  "columns": [
+    {
+      "key": "business_context",
+      "title": "Business context",
+      "column_kind": "step",
+      "type": "fa-solid fa-file",
+      "type_tool_input_dropdown": "fa-solid fa-file",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake",
+          "reason": "github_example_package"
+        }
+      }
+    },
+    {
+      "key": "signal_map",
+      "title": "Signal map",
+      "column_kind": "step",
+      "type": "fa-solid fa-list-radio",
+      "type_tool_input_dropdown": "fa-solid fa-list-radio",
+      "input_from": [
+        "business_context"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "sme_grant_funding_fit_radar_signals",
+      "prompt": "Analyze the SME context for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Map signals",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "decision_plan",
+      "title": "Decision plan",
+      "column_kind": "step",
+      "type": "fa-solid fa-route",
+      "type_tool_input_dropdown": "fa-solid fa-route",
+      "input_from": [
+        "business_context",
+        "signal_map"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "sme_grant_funding_fit_radar_decision",
+      "prompt": "Create a pragmatic owner decision plan for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Build plan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "decision",
+            "actions",
+            "metrics",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              },
+              "metrics": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "execution_brief",
+      "title": "Execution brief",
+      "column_kind": "step",
+      "type": "fa-solid fa-square-check",
+      "type_tool_input_dropdown": "fa-solid fa-square-check",
+      "input_from": [
+        "business_context",
+        "signal_map",
+        "decision_plan"
+      ],
+      "tool_category": "shortcut",
+      "tool": "sme_grant_funding_fit_radar",
+      "prompt": "Use the intake, signal map, and decision plan to produce the managed SME execution brief for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Generate execution brief",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "decision",
+            "actions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "decision",
+              "actions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return the managed SME shortcut response with explicit evidence gaps and owner-ready actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "sme_grant_funding_fit_radar_workflow",
+      "title": "SME Grant Funding Fit Radar workflow",
+      "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+      "workflow_pipe": true,
+      "steps": [
+        {
+          "id": "business_context",
+          "title": "Business context",
+          "step_position": 0,
+          "backlog": true,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "signal_map",
+          "title": "Signal map",
+          "step_position": 1,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "decision_plan",
+          "title": "Decision plan",
+          "step_position": 2,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "execution_brief",
+          "title": "Execution brief",
+          "step_position": 3,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        }
+      ]
+    }
+  ],
+  "main_workbench": {
+    "key": "sme_grant_funding_fit_radar",
+    "title": "SME Grant Funding Fit Radar",
+    "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+    "workbench_title": "SME Grant Funding Fit Radar Desk",
+    "columns": [
+      {
+        "key": "business_context",
+        "title": "Business context",
+        "column_kind": "step",
+        "type": "fa-solid fa-file",
+        "type_tool_input_dropdown": "fa-solid fa-file",
+        "tool_category": "manual",
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake",
+            "reason": "github_example_package"
+          }
+        }
+      },
+      {
+        "key": "signal_map",
+        "title": "Signal map",
+        "column_kind": "step",
+        "type": "fa-solid fa-list-radio",
+        "type_tool_input_dropdown": "fa-solid fa-list-radio",
+        "input_from": [
+          "business_context"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "sme_grant_funding_fit_radar_signals",
+        "prompt": "Analyze the SME context for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Map signals",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "decision_plan",
+        "title": "Decision plan",
+        "column_kind": "step",
+        "type": "fa-solid fa-route",
+        "type_tool_input_dropdown": "fa-solid fa-route",
+        "input_from": [
+          "business_context",
+          "signal_map"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "sme_grant_funding_fit_radar_decision",
+        "prompt": "Create a pragmatic owner decision plan for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Build plan",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "decision",
+                "actions",
+                "metrics",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array"
+                },
+                "metrics": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "execution_brief",
+        "title": "Execution brief",
+        "column_kind": "step",
+        "type": "fa-solid fa-square-check",
+        "type_tool_input_dropdown": "fa-solid fa-square-check",
+        "input_from": [
+          "business_context",
+          "signal_map",
+          "decision_plan"
+        ],
+        "tool_category": "shortcut",
+        "tool": "sme_grant_funding_fit_radar",
+        "prompt": "Use the intake, signal map, and decision plan to produce the managed SME execution brief for funding goals, eligibility, deadlines, application burden, evidence gaps, and next actions. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Generate execution brief",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "decision",
+              "actions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "decision",
+                "actions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return the managed SME shortcut response with explicit evidence gaps and owner-ready actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      }
+    ],
+    "workflows": [
+      {
+        "id": "sme_grant_funding_fit_radar_workflow",
+        "title": "SME Grant Funding Fit Radar workflow",
+        "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "business_context",
+            "title": "Business context",
+            "step_position": 0,
+            "backlog": true,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "signal_map",
+            "title": "Signal map",
+            "step_position": 1,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "decision_plan",
+            "title": "Decision plan",
+            "step_position": 2,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "execution_brief",
+            "title": "Execution brief",
+            "step_position": 3,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1415 @@
+{
+  "key": "linkedin_extreme_engagement_posting",
+  "title": "LinkedIn Extreme Engagement Posting",
+  "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+  "workbench_title": "LinkedIn Extreme Engagement Posting Desk",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "linkedin_extreme_engagement_posting",
+    "vendor": "SupraTix",
+    "global_product_pk": "",
+    "content_name": "LinkedIn Extreme Engagement Posting",
+    "content_description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "starter_rows": [
+      {
+        "title": "LinkedIn Extreme Engagement Posting starter",
+        "source_type": "content_goal",
+        "external_urls": [],
+        "request": "Paste the source context for LinkedIn Extreme Engagement Posting.",
+        "text": "{\"schema\":\"DISRUPTIVE_SME_INTAKE_V1\",\"use_case\":\"linkedin_extreme_engagement_posting\",\"focus\":\"audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks\",\"intake\":\"Topic: Why most SME AI pilots fail after the demo. Audience: owners and operators. Position: start with measurable workflow pain, not tools. Constraint: provocative but respectful.\",\"guardrails\":[\"Do not invent facts.\",\"Mark assumptions and evidence gaps.\",\"Prefer actions that can be started this week.\",\"Keep financial, legal, safety, and compliance advice reviewable by a responsible human.\"],\"target_outputs\":[\"execution_brief\"]}"
+      }
+    ],
+    "commerce": {
+      "business_model": "free_of_use",
+      "product_typ": "workflows",
+      "usage_unit": "cloud_credits",
+      "quota": {
+        "unit": "cloud_credits"
+      }
+    },
+    "github_example": {
+      "repository_layout": "packages at repo root; generated docs under docs/; schemas under schemas/",
+      "maintained_for": "AI Workbench .supra examples"
+    }
+  },
+  "columns": [
+    {
+      "key": "content_goal",
+      "title": "Content goal",
+      "column_kind": "step",
+      "type": "fa-solid fa-file",
+      "type_tool_input_dropdown": "fa-solid fa-file",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake",
+          "reason": "github_example_package"
+        }
+      }
+    },
+    {
+      "key": "audience_signal",
+      "title": "Audience signal map",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_audience_signal",
+      "prompt": "Use the available inputs to produce audience signal map for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize audience pain and urgency. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Audience signal map",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "trend_scan",
+      "title": "Trend scan",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_trend_scan",
+      "prompt": "Use the available inputs to produce trend scan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize relevant zeitgeist without unsupported claims. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Trend scan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "hook_bank",
+      "title": "Hook bank",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_hook_bank",
+      "prompt": "Use the available inputs to produce hook bank for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize clear, punchy hooks. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Hook bank",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "post_draft",
+      "title": "Post draft",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan",
+        "hook_bank"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_post_draft",
+      "prompt": "Use the available inputs to produce post draft for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize post structure and point of view. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Post draft",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "engagement_plan",
+      "title": "Engagement plan",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan",
+        "hook_bank",
+        "post_draft"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_engagement_plan",
+      "prompt": "Use the available inputs to produce engagement plan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize comments, follow-up prompts, and reply angles. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Engagement plan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "decision",
+            "actions",
+            "metrics",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              },
+              "metrics": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "risk_check",
+      "title": "Tone and risk check",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan",
+        "hook_bank",
+        "post_draft",
+        "engagement_plan"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_risk_check",
+      "prompt": "Use the available inputs to produce tone and risk check for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize claims, tone, and reputational risk. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Tone and risk check",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "signals",
+            "constraints",
+            "assumptions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "signals": {
+                "type": "array"
+              },
+              "constraints": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "publishing_plan",
+      "title": "Publishing plan",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan",
+        "hook_bank",
+        "post_draft",
+        "engagement_plan",
+        "risk_check"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "linkedin_extreme_engagement_posting_publishing_plan",
+      "prompt": "Use the available inputs to produce publishing plan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize timing, owner actions, and variants. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Publishing plan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "decision",
+            "actions",
+            "metrics",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              },
+              "metrics": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "execution_brief",
+      "title": "Final LinkedIn package",
+      "column_kind": "step",
+      "type": "fa-solid fa-diagram-project",
+      "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+      "input_from": [
+        "content_goal",
+        "audience_signal",
+        "trend_scan",
+        "hook_bank",
+        "post_draft",
+        "engagement_plan",
+        "risk_check",
+        "publishing_plan"
+      ],
+      "tool_category": "shortcut",
+      "tool": "linkedin_extreme_engagement_posting",
+      "prompt": "Use the available inputs to produce final linkedin package for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize ready-to-use post package. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Final LinkedIn package",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "decision",
+            "actions",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "decision",
+              "actions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "linkedin_extreme_engagement_posting_workflow",
+      "title": "LinkedIn Extreme Engagement Posting workflow",
+      "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+      "workflow_pipe": true,
+      "steps": [
+        {
+          "id": "content_goal",
+          "title": "Content goal",
+          "step_position": 0,
+          "backlog": true,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "audience_signal",
+          "title": "Audience signal map",
+          "step_position": 1,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "trend_scan",
+          "title": "Trend scan",
+          "step_position": 2,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "hook_bank",
+          "title": "Hook bank",
+          "step_position": 3,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "post_draft",
+          "title": "Post draft",
+          "step_position": 4,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "engagement_plan",
+          "title": "Engagement plan",
+          "step_position": 5,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "risk_check",
+          "title": "Tone and risk check",
+          "step_position": 6,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "publishing_plan",
+          "title": "Publishing plan",
+          "step_position": 7,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "execution_brief",
+          "title": "Final LinkedIn package",
+          "step_position": 8,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        }
+      ]
+    }
+  ],
+  "main_workbench": {
+    "key": "linkedin_extreme_engagement_posting",
+    "title": "LinkedIn Extreme Engagement Posting",
+    "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+    "workbench_title": "LinkedIn Extreme Engagement Posting Desk",
+    "columns": [
+      {
+        "key": "content_goal",
+        "title": "Content goal",
+        "column_kind": "step",
+        "type": "fa-solid fa-file",
+        "type_tool_input_dropdown": "fa-solid fa-file",
+        "tool_category": "manual",
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake",
+            "reason": "github_example_package"
+          }
+        }
+      },
+      {
+        "key": "audience_signal",
+        "title": "Audience signal map",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_audience_signal",
+        "prompt": "Use the available inputs to produce audience signal map for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize audience pain and urgency. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Audience signal map",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "trend_scan",
+        "title": "Trend scan",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_trend_scan",
+        "prompt": "Use the available inputs to produce trend scan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize relevant zeitgeist without unsupported claims. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Trend scan",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "hook_bank",
+        "title": "Hook bank",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_hook_bank",
+        "prompt": "Use the available inputs to produce hook bank for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize clear, punchy hooks. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Hook bank",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "post_draft",
+        "title": "Post draft",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan",
+          "hook_bank"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_post_draft",
+        "prompt": "Use the available inputs to produce post draft for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize post structure and point of view. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Post draft",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "engagement_plan",
+        "title": "Engagement plan",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan",
+          "hook_bank",
+          "post_draft"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_engagement_plan",
+        "prompt": "Use the available inputs to produce engagement plan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize comments, follow-up prompts, and reply angles. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Engagement plan",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "decision",
+                "actions",
+                "metrics",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array"
+                },
+                "metrics": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "risk_check",
+        "title": "Tone and risk check",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan",
+          "hook_bank",
+          "post_draft",
+          "engagement_plan"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_risk_check",
+        "prompt": "Use the available inputs to produce tone and risk check for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize claims, tone, and reputational risk. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Tone and risk check",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "signals",
+              "constraints",
+              "assumptions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "signals",
+                "constraints",
+                "assumptions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "signals": {
+                  "type": "array"
+                },
+                "constraints": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "publishing_plan",
+        "title": "Publishing plan",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan",
+          "hook_bank",
+          "post_draft",
+          "engagement_plan",
+          "risk_check"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "linkedin_extreme_engagement_posting_publishing_plan",
+        "prompt": "Use the available inputs to produce publishing plan for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize timing, owner actions, and variants. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Publishing plan",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "decision",
+              "actions",
+              "metrics",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "decision",
+                "actions",
+                "metrics",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array"
+                },
+                "metrics": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "execution_brief",
+        "title": "Final LinkedIn package",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "content_goal",
+          "audience_signal",
+          "trend_scan",
+          "hook_bank",
+          "post_draft",
+          "engagement_plan",
+          "risk_check",
+          "publishing_plan"
+        ],
+        "tool_category": "shortcut",
+        "tool": "linkedin_extreme_engagement_posting",
+        "prompt": "Use the available inputs to produce final linkedin package for audience pain, point of view, hooks, post structure, comments, engagement prompts, and publishing risks. Emphasize ready-to-use post package. Separate facts from assumptions, identify evidence gaps, keep recommendations actionable, and return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Final LinkedIn package",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "decision",
+              "actions",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "decision",
+                "actions",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      }
+    ],
+    "workflows": [
+      {
+        "id": "linkedin_extreme_engagement_posting_workflow",
+        "title": "LinkedIn Extreme Engagement Posting workflow",
+        "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "content_goal",
+            "title": "Content goal",
+            "step_position": 0,
+            "backlog": true,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "audience_signal",
+            "title": "Audience signal map",
+            "step_position": 1,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "trend_scan",
+            "title": "Trend scan",
+            "step_position": 2,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "hook_bank",
+            "title": "Hook bank",
+            "step_position": 3,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "post_draft",
+            "title": "Post draft",
+            "step_position": 4,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "engagement_plan",
+            "title": "Engagement plan",
+            "step_position": 5,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "risk_check",
+            "title": "Tone and risk check",
+            "step_position": 6,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "publishing_plan",
+            "title": "Publishing plan",
+            "step_position": 7,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "execution_brief",
+            "title": "Final LinkedIn package",
+            "step_position": 8,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          }
+        ]
+      }
+    ]
+  }
+}

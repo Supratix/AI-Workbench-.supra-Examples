@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">.supra Governance Loop</title>
+  <desc id="desc">Review-first defaults for safe AI-assisted business workflows</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#102c46"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1">
+      <stop offset="0%" stop-color="#163a5a"/>
+      <stop offset="100%" stop-color="#225e7b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7bdff2"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg)"/>
+  <circle cx="1110" cy="80" r="110" fill="#7bdff2" opacity="0.12"/>
+  <circle cx="80" cy="580" r="120" fill="#c3f584" opacity="0.09"/>
+  <text x="40" y="58" fill="#ffffff" font-size="30" font-family="Inter, Arial, sans-serif" font-weight="700">.supra Governance Loop</text>
+  <text x="40" y="91" fill="#b8d8ea" font-size="16" font-family="Inter, Arial, sans-serif">Review-first defaults for safe AI-assisted business workflows</text>
+  <line x1="320" y1="195" x2="485" y2="152" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="715" y1="152" x2="880" y2="195" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="995" y1="250" x2="995" y2="395" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="880" y1="448" x2="715" y2="502" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="485" y1="502" x2="320" y2="448" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <line x1="205" y1="395" x2="205" y2="250" stroke="#7bdff2" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+  <g filter="url(#shadow)">
+    <rect x="90" y="145" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="110" y="179" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Guardrails</text>
+    <text x="110" y="208" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">No invented facts</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="485" y="100" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="505" y="134" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Contracts</text>
+    <text x="505" y="163" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">JSON fields and gates</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="880" y="145" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="900" y="179" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Manual review</text>
+    <text x="900" y="208" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Human decision gates</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="880" y="395" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="900" y="429" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Audit trail</text>
+    <text x="900" y="458" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Changes through PRs</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="485" y="450" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="505" y="484" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Evidence gaps</text>
+    <text x="505" y="513" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Missing facts stay visible</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="90" y="395" width="230" height="105" rx="18" fill="url(#card)" stroke="#7bdff2" stroke-opacity="0.35"/>
+    <text x="110" y="429" fill="#ffffff" font-size="17" font-family="Inter, Arial, sans-serif" font-weight="700">Owner actions</text>
+    <text x="110" y="458" fill="#d9eef7" font-size="13" font-family="Inter, Arial, sans-serif">Concrete next steps</text>
+  </g>
+</svg>

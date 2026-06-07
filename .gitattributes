@@ -1,0 +1,5 @@
+*.supra text eol=lf linguist-language=JSON
+*.md text eol=lf
+*.json text eol=lf
+*.svg text eol=lf
+*.png binary

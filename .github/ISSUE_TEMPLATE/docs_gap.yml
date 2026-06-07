@@ -1,0 +1,10 @@
+name: Documentation gap
+about: Suggest an improvement to package docs or diagrams
+labels: [documentation]
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is missing or unclear?
+    validations:
+      required: true

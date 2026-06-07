@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/supra-package.schema.json",
+  "title": "AI Workbench .supra Package",
+  "type": "object",
+  "required": [
+    "key",
+    "title",
+    "description",
+    "workbench_title",
+    "schemaVersion",
+    "metadata",
+    "columns",
+    "workflows",
+    "main_workbench"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "workbench_title": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "module_name",
+        "vendor",
+        "content_name",
+        "content_description",
+        "export_version",
+        "import_version",
+        "commerce"
+      ]
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1
+    },
+    "workflows": {
+      "type": "array"
+    },
+    "main_workbench": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
