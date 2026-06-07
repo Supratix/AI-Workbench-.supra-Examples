@@ -1,23 +1,20 @@
 # SME Tender No-Bid Gate
 
-This documentation is generated from the `.supra` package content. Internal column titles, tool identifiers, prompts, and required fields are kept as source data.
+This documentation is generated from the `.supra` package content.
 
 ## Package Overview
 
 - **Source package:** [`../sme_tender_no_bid_gate.supra`](../sme_tender_no_bid_gate.supra)
 - **Workbench title:** SME Tender No-Bid Gate Desk
 - **Package key:** `sme_tender_no_bid_gate`
-- **Module:** `sme_tender_no_bid_gate`
 - **Vendor:** SupraTix
 - **Schema version:** `1`
-- **Export / import version:** `1.0.0` / `1.0.0`
 - **Columns:** 4
 - **Workflows:** 1
-- **Commerce:** `free_of_use`, usage unit `cloud_credits`
 
 ## Purpose
 
-Create a tender bid/no-bid recommendation with evidence gaps and governance notes.
+Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.
 
 ## Starter Intake
 
@@ -25,8 +22,6 @@ Create a tender bid/no-bid recommendation with evidence gaps and governance note
 
 - **Request:** Paste the source context for SME Tender No-Bid Gate.
 - **Source type:** `business_context`
-
-**Starter payload:**
 
 ```json
 {
@@ -52,106 +47,76 @@ Create a tender bid/no-bid recommendation with evidence gaps and governance note
 
 ### SME Tender No-Bid Gate workflow
 
-Create a tender bid/no-bid recommendation with evidence gaps and governance notes.
+Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.
 
-| # | Step             | ID                 | Backlog | Auto finished | Auto close |
-| - | ---------------- | ------------------ | ------- | ------------- | ---------- |
-| 1 | Business context | `business_context` | yes     | no            | no         |
-| 2 | Signal map       | `signal_map`       | no      | no            | no         |
-| 3 | Decision plan    | `decision_plan`    | no      | no            | no         |
-| 4 | Execution brief  | `execution_brief`  | no      | no            | no         |
+| # | Step             | ID                 | Backlog |
+| - | ---------------- | ------------------ | ------- |
+| 1 | Business context | `business_context` | yes     |
+| 2 | Signal map       | `signal_map`       | no      |
+| 3 | Decision plan    | `decision_plan`    | no      |
+| 4 | Execution brief  | `execution_brief`  | no      |
 
 ## Columns and Tools
 
-| # | Key                | Title            | Category   | Tool                              | Inputs                                                | Execution       | Review | Required output                                                                        |
-| - | ------------------ | ---------------- | ---------- | --------------------------------- | ----------------------------------------------------- | --------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `business_context` | Business context | `manual`   | `user_input`                      | -                                                     | `disabled`      | no     | -                                                                                      |
-| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_tender_no_bid_gate_signals`  | `business_context`                                    | `manual_review` | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_tender_no_bid_gate_decision` | `business_context`<br>`signal_map`                    | `manual_review` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
-| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_tender_no_bid_gate`          | `business_context`<br>`signal_map`<br>`decision_plan` | `manual_review` | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key                | Title            | Category   | Tool                              | Review | Required output                                                                        |
+| - | ------------------ | ---------------- | ---------- | --------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| 1 | `business_context` | Business context | `manual`   | `user_input`                      | no     | -                                                                                      |
+| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_tender_no_bid_gate_signals`  | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_tender_no_bid_gate_decision` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
+| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_tender_no_bid_gate`          | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt and Contract Reference
 
 ### Business context
 
 - **Key:** `business_context`
-- **Tool category:** `manual`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no; label=Manual intake
-
-No prompt is stored for this column; it calls the configured shortcut/tool directly.
+- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
 
 ### Signal map
 
 - **Key:** `signal_map`
-- **Tool category:** `ai_tool`
 - **Tool:** `sme_tender_no_bid_gate_signals`
-- **Inputs:** `business_context`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Map signals
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Analyze the SME context for tender requirements, eligibility, effort, win probability, risks, and decision owners. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.
 - **Evidence policy:** `no_invented_facts`
 
 ### Decision plan
 
 - **Key:** `decision_plan`
-- **Tool category:** `ai_tool`
 - **Tool:** `sme_tender_no_bid_gate_decision`
-- **Inputs:** `business_context`, `signal_map`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Build plan
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Create a pragmatic owner decision plan for tender requirements, eligibility, effort, win probability, risks, and decision owners. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
-- **Quality gate:** Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.
 - **Evidence policy:** `no_invented_facts`
 
 ### Execution brief
 
 - **Key:** `execution_brief`
-- **Tool category:** `shortcut`
 - **Tool:** `sme_tender_no_bid_gate`
-- **Inputs:** `business_context`, `signal_map`, `decision_plan`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Generate execution brief
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Use the intake, signal map, and decision plan to produce the managed SME execution brief for tender requirements, eligibility, effort, win probability, risks, and decision owners. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return the managed SME shortcut response with explicit evidence gaps and owner-ready actions.
 - **Evidence policy:** `no_invented_facts`
 
 ## Governance Notes
 
 - Manual columns collect user or file input and do not execute prompts.
-- Executable AI and shortcut columns are configured for manual review when the package marks `requires_review`.
-- Output contracts define expected JSON shape, required fields, quality gates, and evidence policies for downstream checks.
+- Executable columns default to manual review where configured.
+- Output contracts keep downstream checks predictable.

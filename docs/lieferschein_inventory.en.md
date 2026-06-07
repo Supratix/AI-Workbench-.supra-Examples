@@ -1,23 +1,20 @@
 # Lieferschein → Lagerbestand (Internal Products)
 
-This documentation is generated from the `.supra` package content. Internal column titles, tool identifiers, prompts, and required fields are kept as source data.
+This documentation is generated from the `.supra` package content.
 
 ## Package Overview
 
 - **Source package:** [`../lieferschein_inventory.supra`](../lieferschein_inventory.supra)
 - **Workbench title:** Lieferschein → Lagerbestand (Internal Products) Desk
 - **Package key:** `lieferschein_inventory`
-- **Module:** `lieferschein_inventory`
 - **Vendor:** SupraTix
 - **Schema version:** `1`
-- **Export / import version:** `1.0.0` / `1.0.0`
 - **Columns:** 3
 - **Workflows:** 0
-- **Commerce:** `free_of_use`, usage unit `cloud_credits`
 
 ## Purpose
 
-Map delivery-note lines to internal products and create a reviewable stock update proposal.
+Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.
 
 ## Starter Intake
 
@@ -25,8 +22,6 @@ Map delivery-note lines to internal products and create a reviewable stock updat
 
 - **Request:** Paste the source context for Lieferschein → Lagerbestand (Internal Products).
 - **Source type:** `delivery_note`
-
-**Starter payload:**
 
 ```json
 {
@@ -48,75 +43,54 @@ Map delivery-note lines to internal products and create a reviewable stock updat
 
 ## Workflow
 
-_No workflow is configured; the package exposes reviewable columns only._
+_No workflow is configured._
 
 ## Columns and Tools
 
-| # | Key               | Title                 | Category   | Tool                                     | Inputs                               | Execution       | Review | Required output                                                                        |
-| - | ----------------- | --------------------- | ---------- | ---------------------------------------- | ------------------------------------ | --------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `delivery_note`   | Delivery note         | `manual`   | `user_input`                             | -                                    | `disabled`      | no     | -                                                                                      |
-| 2 | `product_mapping` | Product mapping       | `ai_tool`  | `lieferschein_inventory_product_mapping` | `delivery_note`                      | `manual_review` | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `stock_update`    | Stock update proposal | `shortcut` | `lieferschein_inventory`                 | `delivery_note`<br>`product_mapping` | `manual_review` | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key               | Title                 | Category   | Tool                                     | Review | Required output                                                                        |
+| - | ----------------- | --------------------- | ---------- | ---------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| 1 | `delivery_note`   | Delivery note         | `manual`   | `user_input`                             | no     | -                                                                                      |
+| 2 | `product_mapping` | Product mapping       | `ai_tool`  | `lieferschein_inventory_product_mapping` | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `stock_update`    | Stock update proposal | `shortcut` | `lieferschein_inventory`                 | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt and Contract Reference
 
 ### Delivery note
 
 - **Key:** `delivery_note`
-- **Tool category:** `manual`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no; label=Manual intake
-
-No prompt is stored for this column; it calls the configured shortcut/tool directly.
+- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
 
 ### Product mapping
 
 - **Key:** `product_mapping`
-- **Tool category:** `ai_tool`
 - **Tool:** `lieferschein_inventory_product_mapping`
-- **Inputs:** `delivery_note`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Map products
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Map delivery-note lines to internal products, quantities, and exceptions. Mark unknown or ambiguous product matches for human review. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.
 - **Evidence policy:** `no_invented_facts`
 
 ### Stock update proposal
 
 - **Key:** `stock_update`
-- **Tool category:** `shortcut`
 - **Tool:** `lieferschein_inventory`
-- **Inputs:** `delivery_note`, `product_mapping`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Draft stock update
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Create a reviewable inventory update proposal from the delivery note and product mapping. Do not post stock changes automatically; include exceptions and evidence gaps. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return a reviewable proposal with no automatic inventory mutation.
 - **Evidence policy:** `no_invented_facts`
 
 ## Governance Notes
 
 - Manual columns collect user or file input and do not execute prompts.
-- Executable AI and shortcut columns are configured for manual review when the package marks `requires_review`.
-- Output contracts define expected JSON shape, required fields, quality gates, and evidence policies for downstream checks.
+- Executable columns default to manual review where configured.
+- Output contracts keep downstream checks predictable.

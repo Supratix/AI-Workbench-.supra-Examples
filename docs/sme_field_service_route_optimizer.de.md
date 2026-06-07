@@ -1,23 +1,20 @@
 # SME Field Service Route Optimizer
 
-Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt. Interne Spaltentitel, Tool-IDs, Prompts und Pflichtfelder bleiben als Quelldaten erhalten.
+Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt.
 
 ## Paketüberblick
 
-- **Quellpaket:** [`../sme_field_service_route_optimizer.supra`](../sme_field_service_route_optimizer.supra)
-- **Workbench-Titel:** SME Field Service Route Optimizer Desk
-- **Paket-Key:** `sme_field_service_route_optimizer`
-- **Modul:** `sme_field_service_route_optimizer`
-- **Anbieter:** SupraTix
-- **Schema-Version:** `1`
-- **Export-/Import-Version:** `1.0.0` / `1.0.0`
+- **Source package:** [`../sme_field_service_route_optimizer.supra`](../sme_field_service_route_optimizer.supra)
+- **Workbench title:** SME Field Service Route Optimizer Desk
+- **Package key:** `sme_field_service_route_optimizer`
+- **Vendor:** SupraTix
+- **Schema version:** `1`
 - **Columns:** 4
 - **Workflows:** 1
-- **Commerce:** `free_of_use`, usage unit `cloud_credits`
 
 ## Zweck
 
-Turn service jobs and constraints into a route-optimization action brief.
+Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.
 
 ## Starter-Eingabe
 
@@ -25,8 +22,6 @@ Turn service jobs and constraints into a route-optimization action brief.
 
 - **Request:** Paste the source context for SME Field Service Route Optimizer.
 - **Source type:** `business_context`
-
-**Starter-Payload:**
 
 ```json
 {
@@ -52,106 +47,76 @@ Turn service jobs and constraints into a route-optimization action brief.
 
 ### SME Field Service Route Optimizer workflow
 
-Turn service jobs and constraints into a route-optimization action brief.
+Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.
 
-| # | Step             | ID                 | Backlog | Auto finished | Auto close |
-| - | ---------------- | ------------------ | ------- | ------------- | ---------- |
-| 1 | Business context | `business_context` | yes     | no            | no         |
-| 2 | Signal map       | `signal_map`       | no      | no            | no         |
-| 3 | Decision plan    | `decision_plan`    | no      | no            | no         |
-| 4 | Execution brief  | `execution_brief`  | no      | no            | no         |
+| # | Step             | ID                 | Backlog |
+| - | ---------------- | ------------------ | ------- |
+| 1 | Business context | `business_context` | yes     |
+| 2 | Signal map       | `signal_map`       | no      |
+| 3 | Decision plan    | `decision_plan`    | no      |
+| 4 | Execution brief  | `execution_brief`  | no      |
 
 ## Spalten und Tools
 
-| # | Key                | Title            | Category   | Tool                                         | Inputs                                                | Execution       | Review | Required output                                                                        |
-| - | ------------------ | ---------------- | ---------- | -------------------------------------------- | ----------------------------------------------------- | --------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `business_context` | Business context | `manual`   | `user_input`                                 | -                                                     | `disabled`      | no     | -                                                                                      |
-| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_field_service_route_optimizer_signals`  | `business_context`                                    | `manual_review` | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_field_service_route_optimizer_decision` | `business_context`<br>`signal_map`                    | `manual_review` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
-| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_field_service_route_optimizer`          | `business_context`<br>`signal_map`<br>`decision_plan` | `manual_review` | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key                | Title            | Category   | Tool                                         | Review | Required output                                                                        |
+| - | ------------------ | ---------------- | ---------- | -------------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| 1 | `business_context` | Business context | `manual`   | `user_input`                                 | no     | -                                                                                      |
+| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_field_service_route_optimizer_signals`  | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_field_service_route_optimizer_decision` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
+| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_field_service_route_optimizer`          | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt- und Vertragsreferenz
 
 ### Business context
 
 - **Key:** `business_context`
-- **Tool category:** `manual`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no; label=Manual intake
-
-No prompt is stored for this column; it calls the configured shortcut/tool directly.
+- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
 
 ### Signal map
 
 - **Key:** `signal_map`
-- **Tool category:** `ai_tool`
 - **Tool:** `sme_field_service_route_optimizer_signals`
-- **Inputs:** `business_context`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Map signals
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Analyze the SME context for job locations, technician capacity, priorities, travel constraints, customer commitments, and dispatch trade-offs. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.
 - **Evidence policy:** `no_invented_facts`
 
 ### Decision plan
 
 - **Key:** `decision_plan`
-- **Tool category:** `ai_tool`
 - **Tool:** `sme_field_service_route_optimizer_decision`
-- **Inputs:** `business_context`, `signal_map`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Build plan
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Create a pragmatic owner decision plan for job locations, technician capacity, priorities, travel constraints, customer commitments, and dispatch trade-offs. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
-- **Quality gate:** Return JSON only. Separate facts from assumptions, identify missing evidence, and recommend concrete next actions.
 - **Evidence policy:** `no_invented_facts`
 
 ### Execution brief
 
 - **Key:** `execution_brief`
-- **Tool category:** `shortcut`
 - **Tool:** `sme_field_service_route_optimizer`
-- **Inputs:** `business_context`, `signal_map`, `decision_plan`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes; label=Generate execution brief
-
-**Prompt:**
+- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
 
 ```text
 Use the intake, signal map, and decision plan to produce the managed SME execution brief for job locations, technician capacity, priorities, travel constraints, customer commitments, and dispatch trade-offs. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.
 ```
 
-**Output contract:**
-
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Content type:** `application/json`
-- **Expects JSON:** yes
 - **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Quality gate:** Return the managed SME shortcut response with explicit evidence gaps and owner-ready actions.
 - **Evidence policy:** `no_invented_facts`
 
 ## Governance-Hinweise
 
-- Manuelle Spalten sammeln Nutzer- oder Dateieingaben und führen keine Prompts aus.
-- Ausführbare KI- und Shortcut-Spalten sind auf manuelle Prüfung gesetzt, wenn das Paket `requires_review` markiert.
-- Output Contracts definieren erwartete JSON-Strukturen, Pflichtfelder, Quality Gates und Evidence Policies für nachgelagerte Prüfungen.
+- Manual columns collect user or file input and do not execute prompts.
+- Executable columns default to manual review where configured.
+- Output contracts keep downstream checks predictable.
