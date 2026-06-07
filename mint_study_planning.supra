@@ -1,0 +1,200 @@
+{
+  "key": "mint_study_planning",
+  "title": "MINT Study Planning",
+  "description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+  "workbench_title": "MINT Study Planning Desk",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "mint_study_planning",
+    "vendor": "SupraTix",
+    "global_product_pk": "",
+    "content_name": "MINT Study Planning",
+    "content_description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "starter_rows": [
+      {
+        "title": "MINT Study Planning starter",
+        "source_type": "learner_context",
+        "external_urls": [],
+        "request": "Paste the learner profile, learning goals, dates, weekly hours, and constraints for MINT Study Planning.",
+        "text": "{\"schema\":\"MINT_STUDYPLAN_INTAKE_V1\",\"use_case\":\"mint_study_planning\",\"plan_id\":\"MINT-EDU-2026-01\",\"learner_profile\":{\"role\":\"early-career lab technician\",\"baseline_skills\":[\"basic physics\",\"basic electronics\"],\"weekly_hours\":6,\"preferred_modalities\":[\"hands-on\",\"micro-lectures\"]},\"learning_goals\":[\"understand sensors and transducers\",\"perform basic data acquisition and analysis\"],\"start_date\":\"2026-09-01\",\"duration_weeks\":12,\"constraints\":{\"budget\":\"low\",\"equipment\":[\"multimeter\",\"Raspberry Pi\"]},\"guardrails\":[\"Do not invent learner facts.\",\"Mark assumptions and evidence gaps.\",\"Include measurable pass criteria for every milestone.\",\"Add low-cost alternatives when budget is constrained.\"],\"target_outputs\":[\"curriculum_blueprint\",\"weekly_study_plan\",\"validation_pack\"]}"
+      }
+    ],
+    "commerce": {
+      "business_model": "free_of_use",
+      "product_typ": "workflows",
+      "usage_unit": "cloud_credits",
+      "quota": {
+        "unit": "cloud_credits"
+      }
+    },
+    "github_example": {
+      "repository_layout": "packages at repo root; generated docs under docs/; schemas under schemas/",
+      "maintained_for": "AI Workbench .supra examples"
+    }
+  },
+  "columns": [
+    {
+      "key": "learner_context",
+      "title": "Learner context",
+      "column_kind": "step",
+      "type": "fa-solid fa-user-graduate",
+      "type_tool_input_dropdown": "fa-solid fa-user-graduate",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake",
+          "reason": "github_example_package"
+        }
+      }
+    },
+    {
+      "key": "curriculum_blueprint",
+      "title": "Curriculum blueprint",
+      "column_kind": "step",
+      "type": "fa-solid fa-compass-drafting",
+      "type_tool_input_dropdown": "fa-solid fa-compass-drafting",
+      "input_from": ["learner_context"],
+      "tool_category": "ai_tool",
+      "tool": "mint_study_planning_blueprint",
+      "prompt": "Analyze the MINT study-planning intake. Extract learner role, baseline skills, weekly availability, preferred modalities, learning goals, start date, duration, equipment, budget or accreditation constraints, safety considerations, assumptions, and evidence gaps. Normalize these into a curriculum blueprint that is practical for a semester-style plan. Do not invent facts. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Map curriculum signals",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "MINT_STUDYPLAN_BLUEPRINT_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": ["summary", "learner_profile", "learning_goals", "constraints", "assumptions", "evidence_gaps"],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["summary", "learner_profile", "learning_goals", "constraints", "assumptions", "evidence_gaps"]
+          },
+          "quality_gate": "Return JSON only. Separate learner-provided facts from assumptions and keep missing inputs visible.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "weekly_study_plan",
+      "title": "Weekly study plan",
+      "column_kind": "step",
+      "type": "fa-solid fa-calendar-week",
+      "type_tool_input_dropdown": "fa-solid fa-calendar-week",
+      "input_from": ["learner_context", "curriculum_blueprint"],
+      "tool_category": "ai_tool",
+      "tool": "mint_study_planning_weeks",
+      "prompt": "Using the learner context and curriculum blueprint, build a week-by-week MINT study plan. Include meta{plan_id,start_date,duration_weeks,target_role}, week_by_week entries with integer time_est_h, milestones with pass_criteria, assessments with criteria, and resources with resource_uri. Keep resource recommendations pragmatic, label low-cost alternatives when budget is constrained, and mark assumptions or evidence gaps. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Build weekly plan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "MINT_STUDYPLAN_WEEKLY_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": ["summary", "meta", "week_by_week", "milestones", "resources", "evidence_gaps"],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["summary", "meta", "week_by_week", "milestones", "resources", "evidence_gaps"]
+          },
+          "quality_gate": "Return JSON only. Every milestone must include pass_criteria, every week must use integer hours, and resource links should use resource_uri where possible.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "validation_pack",
+      "title": "Validation pack",
+      "column_kind": "step",
+      "type": "fa-solid fa-clipboard-check",
+      "type_tool_input_dropdown": "fa-solid fa-clipboard-check",
+      "input_from": ["learner_context", "curriculum_blueprint", "weekly_study_plan"],
+      "tool_category": "shortcut",
+      "tool": "mint_study_planning",
+      "prompt": "Produce the final MINT Study Planning output. Return exactly a JSON object with study_plan and one_pager. study_plan must include meta{plan_id,start_date,duration_weeks,target_role}, week_by_week[], milestones[] with pass_criteria, assessments[], and resources[] with resource_uri. The one_pager must be concise enough for a grant annex or pilot syllabus summary. Keep recommendations evidence-based, pragmatic, and reviewable.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Generate final plan",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "MINT_STUDYPLAN_FINAL_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": ["study_plan", "one_pager"],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["study_plan", "one_pager"]
+          },
+          "quality_gate": "Return JSON only with study_plan and one_pager. Milestones need pass_criteria and resources should include resource_uri where possible.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "mint_study_planning_workflow",
+      "title": "MINT Study Planning workflow",
+      "description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+      "workflow_pipe": true,
+      "steps": [
+        {"id": "learner_context", "title": "Learner context", "step_position": 0, "backlog": true, "auto_finished": false, "auto_close": false},
+        {"id": "curriculum_blueprint", "title": "Curriculum blueprint", "step_position": 1, "backlog": false, "auto_finished": false, "auto_close": false},
+        {"id": "weekly_study_plan", "title": "Weekly study plan", "step_position": 2, "backlog": false, "auto_finished": false, "auto_close": false},
+        {"id": "validation_pack", "title": "Validation pack", "step_position": 3, "backlog": false, "auto_finished": false, "auto_close": false}
+      ]
+    }
+  ],
+  "main_workbench": {
+    "key": "mint_study_planning",
+    "title": "MINT Study Planning",
+    "description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+    "workbench_title": "MINT Study Planning Desk",
+    "columns": [
+      {"key": "learner_context", "title": "Learner context", "column_kind": "step", "tool_category": "manual", "tool": "user_input", "tooling": {"prompt_execution": {"execute_prompt": false, "selected": false, "mode": "disabled", "requires_review": false, "label": "Manual intake", "reason": "github_example_package"}}},
+      {"key": "curriculum_blueprint", "title": "Curriculum blueprint", "column_kind": "step", "input_from": ["learner_context"], "tool_category": "ai_tool", "tool": "mint_study_planning_blueprint", "prompt": "Analyze the MINT study-planning intake. Extract learner role, baseline skills, weekly availability, preferred modalities, learning goals, start date, duration, equipment, budget or accreditation constraints, safety considerations, assumptions, and evidence gaps. Normalize these into a curriculum blueprint that is practical for a semester-style plan. Do not invent facts. Return JSON only.", "tooling": {"prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Map curriculum signals", "reason": "github_example_package"}, "output_contract": {"schema_version": "MINT_STUDYPLAN_BLUEPRINT_OUTPUT_V1", "content_type": "application/json", "expects_json": true, "required_fields": ["summary", "learner_profile", "learning_goals", "constraints", "assumptions", "evidence_gaps"], "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "learner_profile", "learning_goals", "constraints", "assumptions", "evidence_gaps"]}, "quality_gate": "Return JSON only. Separate learner-provided facts from assumptions and keep missing inputs visible.", "evidence_policy": "no_invented_facts"}}},
+      {"key": "weekly_study_plan", "title": "Weekly study plan", "column_kind": "step", "input_from": ["learner_context", "curriculum_blueprint"], "tool_category": "ai_tool", "tool": "mint_study_planning_weeks", "prompt": "Using the learner context and curriculum blueprint, build a week-by-week MINT study plan. Include meta{plan_id,start_date,duration_weeks,target_role}, week_by_week entries with integer time_est_h, milestones with pass_criteria, assessments with criteria, and resources with resource_uri. Keep resource recommendations pragmatic, label low-cost alternatives when budget is constrained, and mark assumptions or evidence gaps. Return JSON only.", "tooling": {"prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Build weekly plan", "reason": "github_example_package"}, "output_contract": {"schema_version": "MINT_STUDYPLAN_WEEKLY_OUTPUT_V1", "content_type": "application/json", "expects_json": true, "required_fields": ["summary", "meta", "week_by_week", "milestones", "resources", "evidence_gaps"], "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "meta", "week_by_week", "milestones", "resources", "evidence_gaps"]}, "quality_gate": "Return JSON only. Every milestone must include pass_criteria, every week must use integer hours, and resource links should use resource_uri where possible.", "evidence_policy": "no_invented_facts"}}},
+      {"key": "validation_pack", "title": "Validation pack", "column_kind": "step", "input_from": ["learner_context", "curriculum_blueprint", "weekly_study_plan"], "tool_category": "shortcut", "tool": "mint_study_planning", "prompt": "Produce the final MINT Study Planning output. Return exactly a JSON object with study_plan and one_pager. study_plan must include meta{plan_id,start_date,duration_weeks,target_role}, week_by_week[], milestones[] with pass_criteria, assessments[], and resources[] with resource_uri. The one_pager must be concise enough for a grant annex or pilot syllabus summary. Keep recommendations evidence-based, pragmatic, and reviewable.", "tooling": {"prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Generate final plan", "reason": "github_example_package"}, "output_contract": {"schema_version": "MINT_STUDYPLAN_FINAL_OUTPUT_V1", "content_type": "application/json", "expects_json": true, "required_fields": ["study_plan", "one_pager"], "json_schema": {"type": "object", "additionalProperties": true, "required": ["study_plan", "one_pager"]}, "quality_gate": "Return JSON only with study_plan and one_pager. Milestones need pass_criteria and resources should include resource_uri where possible.", "evidence_policy": "no_invented_facts"}}}
+    ],
+    "workflows": [
+      {
+        "id": "mint_study_planning_workflow",
+        "title": "MINT Study Planning workflow",
+        "description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+        "workflow_pipe": true,
+        "steps": [
+          {"id": "learner_context", "title": "Learner context", "step_position": 0, "backlog": true, "auto_finished": false, "auto_close": false},
+          {"id": "curriculum_blueprint", "title": "Curriculum blueprint", "step_position": 1, "backlog": false, "auto_finished": false, "auto_close": false},
+          {"id": "weekly_study_plan", "title": "Weekly study plan", "step_position": 2, "backlog": false, "auto_finished": false, "auto_close": false},
+          {"id": "validation_pack", "title": "Validation pack", "step_position": 3, "backlog": false, "auto_finished": false, "auto_close": false}
+        ]
+      }
+    ]
+  }
+}
