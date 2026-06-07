@@ -4,24 +4,26 @@ Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt.
 
 ## Paketüberblick
 
-- **Source package:** [`../sme_tender_no_bid_gate.supra`](../sme_tender_no_bid_gate.supra)
-- **Workbench title:** SME Tender No-Bid Gate Desk
-- **Package key:** `sme_tender_no_bid_gate`
-- **Vendor:** SupraTix
-- **Schema version:** `1`
-- **Columns:** 4
+- **Quellpaket:** [`../sme_tender_no_bid_gate.supra`](../sme_tender_no_bid_gate.supra)
+- **Workbench-Titel:** SME Tender No-Bid Gate Desk
+- **Paket-Key:** `sme_tender_no_bid_gate`
+- **Anbieter:** SupraTix
+- **Schemaversion:** `1`
+- **Spalten:** 4
 - **Workflows:** 1
 
 ## Zweck
 
-Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.
+Erstellt eine Bid/No-Bid-Empfehlung für Ausschreibungen mit Fit-Bewertung, Evidenzlücken, Lieferrisiken, Governance-Hinweisen und nächsten Maßnahmen.
 
 ## Starter-Eingabe
 
-### SME Tender No-Bid Gate starter
+### SME Tender No-Bid Gate Starter
 
-- **Request:** Paste the source context for SME Tender No-Bid Gate.
-- **Source type:** `business_context`
+- **Anfrage:** Fügen Sie den Quellkontext für SME Tender No-Bid Gate ein.
+- **Quelltyp:** `business_context`
+
+_Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._
 
 ```json
 {
@@ -45,78 +47,80 @@ Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, deliv
 
 ## Workflow
 
-### SME Tender No-Bid Gate workflow
+### SME Tender No-Bid Gate Workflow
 
-Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.
+Erstellt eine Bid/No-Bid-Empfehlung für Ausschreibungen mit Fit-Bewertung, Evidenzlücken, Lieferrisiken, Governance-Hinweisen und nächsten Maßnahmen.
 
-| # | Step             | ID                 | Backlog |
+| # | Schritt          | ID                 | Backlog |
 | - | ---------------- | ------------------ | ------- |
-| 1 | Business context | `business_context` | yes     |
-| 2 | Signal map       | `signal_map`       | no      |
-| 3 | Decision plan    | `decision_plan`    | no      |
-| 4 | Execution brief  | `execution_brief`  | no      |
+| 1 | Business context | `business_context` | ja      |
+| 2 | Signal map       | `signal_map`       | nein    |
+| 3 | Decision plan    | `decision_plan`    | nein    |
+| 4 | Execution brief  | `execution_brief`  | nein    |
 
 ## Spalten und Tools
 
-| # | Key                | Title            | Category   | Tool                              | Review | Required output                                                                        |
-| - | ------------------ | ---------------- | ---------- | --------------------------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `business_context` | Business context | `manual`   | `user_input`                      | no     | -                                                                                      |
-| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_tender_no_bid_gate_signals`  | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_tender_no_bid_gate_decision` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
-| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_tender_no_bid_gate`          | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key                | Titel            | Kategorie  | Tool                              | Prüfung | Pflichtausgabe                                                                         |
+| - | ------------------ | ---------------- | ---------- | --------------------------------- | ------- | -------------------------------------------------------------------------------------- |
+| 1 | `business_context` | Business context | `manual`   | `user_input`                      | nein    | -                                                                                      |
+| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_tender_no_bid_gate_signals`  | ja      | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_tender_no_bid_gate_decision` | ja      | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
+| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_tender_no_bid_gate`          | ja      | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt- und Vertragsreferenz
+
+_Prompts werden als Originalauszüge aus dem Paket angezeigt._
 
 ### Business context
 
 - **Key:** `business_context`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
+- **Ausführung:** execute_prompt=nein; mode=`disabled`; requires_review=nein
 
 ### Signal map
 
 - **Key:** `signal_map`
 - **Tool:** `sme_tender_no_bid_gate_signals`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Analyze the SME context for tender requirements, eligibility, effort, win probability, risks, and decision owners. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ### Decision plan
 
 - **Key:** `decision_plan`
 - **Tool:** `sme_tender_no_bid_gate_decision`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Create a pragmatic owner decision plan for tender requirements, eligibility, effort, win probability, risks, and decision owners. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Required fields:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ### Execution brief
 
 - **Key:** `execution_brief`
 - **Tool:** `sme_tender_no_bid_gate`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Use the intake, signal map, and decision plan to produce the managed SME execution brief for tender requirements, eligibility, effort, win probability, risks, and decision owners. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ## Governance-Hinweise
 
-- Manual columns collect user or file input and do not execute prompts.
-- Executable columns default to manual review where configured.
-- Output contracts keep downstream checks predictable.
+- Manuelle Spalten sammeln Nutzer- oder Dateieingaben und führen keine Prompts aus.
+- Ausführbare Spalten verwenden, sofern konfiguriert, standardmäßig eine manuelle Prüfung.
+- Output-Verträge halten nachgelagerte Prüfungen vorhersehbar.
