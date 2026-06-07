@@ -1,7 +1,7 @@
 {
   "key": "sme_product_launch_kill_scale_gate",
   "title": "SME Product Launch Kill/Scale Gate",
-  "description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+  "description": "Create a kill/scale gate for product launch decisions with evidence summary, confidence level, risks, and next actions.",
   "workbench_title": "SME Product Launch Kill/Scale Gate Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Product Launch Kill/Scale Gate",
-    "content_description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+    "content_description": "Create a kill/scale gate for product launch decisions with evidence summary, confidence level, risks, and next actions.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_product_launch_kill_scale_gate_workflow",
       "title": "SME Product Launch Kill/Scale Gate workflow",
-      "description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+      "description": "Create a kill/scale gate for product launch decisions with evidence summary, confidence level, risks, and next actions.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_product_launch_kill_scale_gate",
     "title": "SME Product Launch Kill/Scale Gate",
-    "description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+    "description": "Create a kill/scale gate for product launch decisions with evidence summary, confidence level, risks, and next actions.",
     "workbench_title": "SME Product Launch Kill/Scale Gate Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_product_launch_kill_scale_gate_workflow",
         "title": "SME Product Launch Kill/Scale Gate workflow",
-        "description": "Create a kill/scale gate for product launch decisions with evidence and next actions.",
+        "description": "Create a kill/scale gate for product launch decisions with evidence summary, confidence level, risks, and next actions.",
         "workflow_pipe": true,
         "steps": [
           {

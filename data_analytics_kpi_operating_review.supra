@@ -1,7 +1,7 @@
 {
   "key": "data_analytics_kpi_operating_review",
   "title": "Data Analytics KPI Operating Review",
-  "description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+  "description": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
   "workbench_title": "Data Analytics KPI Operating Review Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "Data Analytics KPI Operating Review",
-    "content_description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+    "content_description": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "data_analytics_kpi_operating_review_workflow",
       "title": "Data Analytics KPI Operating Review workflow",
-      "description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+      "description": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "data_analytics_kpi_operating_review",
     "title": "Data Analytics KPI Operating Review",
-    "description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+    "description": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
     "workbench_title": "Data Analytics KPI Operating Review Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "data_analytics_kpi_operating_review_workflow",
         "title": "Data Analytics KPI Operating Review workflow",
-        "description": "Create a structured operating review from KPI context, risks, actions, and follow-up triggers.",
+        "description": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
         "workflow_pipe": true,
         "steps": [
           {

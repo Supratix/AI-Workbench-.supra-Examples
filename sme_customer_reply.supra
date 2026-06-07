@@ -1,7 +1,7 @@
 {
   "key": "sme_customer_reply",
   "title": "SME Customer Reply",
-  "description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+  "description": "Draft a professional customer response that balances tone, facts, evidence gaps, commitments, and follow-up checks for sensitive service situations.",
   "workbench_title": "SME Customer Reply Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Customer Reply",
-    "content_description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+    "content_description": "Draft a professional customer response that balances tone, facts, evidence gaps, commitments, and follow-up checks for sensitive service situations.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_customer_reply_workflow",
       "title": "SME Customer Reply workflow",
-      "description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+      "description": "Draft a professional customer response that balances tone, facts, evidence gaps, commitments, and follow-up checks for sensitive service situations.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_customer_reply",
     "title": "SME Customer Reply",
-    "description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+    "description": "Draft a professional customer response that balances tone, facts, evidence gaps, commitments, and follow-up checks for sensitive service situations.",
     "workbench_title": "SME Customer Reply Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_customer_reply_workflow",
         "title": "SME Customer Reply workflow",
-        "description": "Draft a professional, evidence-aware customer reply with tone notes and follow-up checks.",
+        "description": "Draft a professional customer response that balances tone, facts, evidence gaps, commitments, and follow-up checks for sensitive service situations.",
         "workflow_pipe": true,
         "steps": [
           {

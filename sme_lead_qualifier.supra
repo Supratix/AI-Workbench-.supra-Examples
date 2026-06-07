@@ -1,7 +1,7 @@
 {
   "key": "sme_lead_qualifier",
   "title": "SME Lead Qualifier",
-  "description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+  "description": "Qualify leads using fit, urgency, budget signals, risk flags, and next-best-action recommendations for practical sales follow-up.",
   "workbench_title": "SME Lead Qualifier Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Lead Qualifier",
-    "content_description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+    "content_description": "Qualify leads using fit, urgency, budget signals, risk flags, and next-best-action recommendations for practical sales follow-up.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_lead_qualifier_workflow",
       "title": "SME Lead Qualifier workflow",
-      "description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+      "description": "Qualify leads using fit, urgency, budget signals, risk flags, and next-best-action recommendations for practical sales follow-up.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_lead_qualifier",
     "title": "SME Lead Qualifier",
-    "description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+    "description": "Qualify leads using fit, urgency, budget signals, risk flags, and next-best-action recommendations for practical sales follow-up.",
     "workbench_title": "SME Lead Qualifier Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_lead_qualifier_workflow",
         "title": "SME Lead Qualifier workflow",
-        "description": "Qualify leads with fit, urgency, risk, and next-best-action recommendations.",
+        "description": "Qualify leads using fit, urgency, budget signals, risk flags, and next-best-action recommendations for practical sales follow-up.",
         "workflow_pipe": true,
         "steps": [
           {

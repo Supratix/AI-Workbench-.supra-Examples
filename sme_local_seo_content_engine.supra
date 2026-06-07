@@ -1,7 +1,7 @@
 {
   "key": "sme_local_seo_content_engine",
   "title": "SME Local SEO Content Engine",
-  "description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+  "description": "Generate local SEO content briefs from business context, service areas, customer proof points, search intent, and page-level action notes.",
   "workbench_title": "SME Local SEO Content Engine Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Local SEO Content Engine",
-    "content_description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+    "content_description": "Generate local SEO content briefs from business context, service areas, customer proof points, search intent, and page-level action notes.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_local_seo_content_engine_workflow",
       "title": "SME Local SEO Content Engine workflow",
-      "description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+      "description": "Generate local SEO content briefs from business context, service areas, customer proof points, search intent, and page-level action notes.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_local_seo_content_engine",
     "title": "SME Local SEO Content Engine",
-    "description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+    "description": "Generate local SEO content briefs from business context, service areas, customer proof points, search intent, and page-level action notes.",
     "workbench_title": "SME Local SEO Content Engine Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_local_seo_content_engine_workflow",
         "title": "SME Local SEO Content Engine workflow",
-        "description": "Generate local SEO content briefs from business context, service areas, and proof points.",
+        "description": "Generate local SEO content briefs from business context, service areas, customer proof points, search intent, and page-level action notes.",
         "workflow_pipe": true,
         "steps": [
           {

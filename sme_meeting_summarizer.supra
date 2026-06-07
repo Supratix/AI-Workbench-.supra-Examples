@@ -1,7 +1,7 @@
 {
   "key": "sme_meeting_summarizer",
   "title": "SME Meeting Summarizer",
-  "description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+  "description": "Summarize meeting notes into decisions, actions, risks, owners, due dates, evidence gaps, and follow-up prompts.",
   "workbench_title": "SME Meeting Summarizer Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Meeting Summarizer",
-    "content_description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+    "content_description": "Summarize meeting notes into decisions, actions, risks, owners, due dates, evidence gaps, and follow-up prompts.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_meeting_summarizer_workflow",
       "title": "SME Meeting Summarizer workflow",
-      "description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+      "description": "Summarize meeting notes into decisions, actions, risks, owners, due dates, evidence gaps, and follow-up prompts.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_meeting_summarizer",
     "title": "SME Meeting Summarizer",
-    "description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+    "description": "Summarize meeting notes into decisions, actions, risks, owners, due dates, evidence gaps, and follow-up prompts.",
     "workbench_title": "SME Meeting Summarizer Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_meeting_summarizer_workflow",
         "title": "SME Meeting Summarizer workflow",
-        "description": "Summarize meeting notes into decisions, actions, risks, and evidence gaps.",
+        "description": "Summarize meeting notes into decisions, actions, risks, owners, due dates, evidence gaps, and follow-up prompts.",
         "workflow_pipe": true,
         "steps": [
           {

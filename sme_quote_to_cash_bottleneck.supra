@@ -1,7 +1,7 @@
 {
   "key": "sme_quote_to_cash_bottleneck",
   "title": "SME Quote-to-Cash Bottleneck Scanner",
-  "description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+  "description": "Scan quote-to-cash flow for handoff bottlenecks, missing data, aging risks, and owner-ready fixes that protect revenue timing.",
   "workbench_title": "SME Quote-to-Cash Bottleneck Scanner Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Quote-to-Cash Bottleneck Scanner",
-    "content_description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+    "content_description": "Scan quote-to-cash flow for handoff bottlenecks, missing data, aging risks, and owner-ready fixes that protect revenue timing.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_quote_to_cash_bottleneck_workflow",
       "title": "SME Quote-to-Cash Bottleneck Scanner workflow",
-      "description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+      "description": "Scan quote-to-cash flow for handoff bottlenecks, missing data, aging risks, and owner-ready fixes that protect revenue timing.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_quote_to_cash_bottleneck",
     "title": "SME Quote-to-Cash Bottleneck Scanner",
-    "description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+    "description": "Scan quote-to-cash flow for handoff bottlenecks, missing data, aging risks, and owner-ready fixes that protect revenue timing.",
     "workbench_title": "SME Quote-to-Cash Bottleneck Scanner Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_quote_to_cash_bottleneck_workflow",
         "title": "SME Quote-to-Cash Bottleneck Scanner workflow",
-        "description": "Scan quote-to-cash flow for bottlenecks and create owner-ready fixes.",
+        "description": "Scan quote-to-cash flow for handoff bottlenecks, missing data, aging risks, and owner-ready fixes that protect revenue timing.",
         "workflow_pipe": true,
         "steps": [
           {

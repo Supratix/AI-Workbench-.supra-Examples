@@ -1,7 +1,7 @@
 {
   "key": "sme_review_reputation_responder",
   "title": "SME Review Reputation Responder",
-  "description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+  "description": "Draft review responses and reputation recovery actions with evidence-aware tone, escalation guidance, service signals, and follow-up checks.",
   "workbench_title": "SME Review Reputation Responder Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Review Reputation Responder",
-    "content_description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+    "content_description": "Draft review responses and reputation recovery actions with evidence-aware tone, escalation guidance, service signals, and follow-up checks.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_review_reputation_responder_workflow",
       "title": "SME Review Reputation Responder workflow",
-      "description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+      "description": "Draft review responses and reputation recovery actions with evidence-aware tone, escalation guidance, service signals, and follow-up checks.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_review_reputation_responder",
     "title": "SME Review Reputation Responder",
-    "description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+    "description": "Draft review responses and reputation recovery actions with evidence-aware tone, escalation guidance, service signals, and follow-up checks.",
     "workbench_title": "SME Review Reputation Responder Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_review_reputation_responder_workflow",
         "title": "SME Review Reputation Responder workflow",
-        "description": "Draft review responses and reputation recovery actions with evidence-aware tone.",
+        "description": "Draft review responses and reputation recovery actions with evidence-aware tone, escalation guidance, service signals, and follow-up checks.",
         "workflow_pipe": true,
         "steps": [
           {

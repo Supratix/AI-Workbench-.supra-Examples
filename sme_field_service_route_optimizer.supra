@@ -1,7 +1,7 @@
 {
   "key": "sme_field_service_route_optimizer",
   "title": "SME Field Service Route Optimizer",
-  "description": "Turn service jobs and constraints into a route-optimization action brief.",
+  "description": "Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.",
   "workbench_title": "SME Field Service Route Optimizer Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Field Service Route Optimizer",
-    "content_description": "Turn service jobs and constraints into a route-optimization action brief.",
+    "content_description": "Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_field_service_route_optimizer_workflow",
       "title": "SME Field Service Route Optimizer workflow",
-      "description": "Turn service jobs and constraints into a route-optimization action brief.",
+      "description": "Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_field_service_route_optimizer",
     "title": "SME Field Service Route Optimizer",
-    "description": "Turn service jobs and constraints into a route-optimization action brief.",
+    "description": "Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.",
     "workbench_title": "SME Field Service Route Optimizer Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_field_service_route_optimizer_workflow",
         "title": "SME Field Service Route Optimizer workflow",
-        "description": "Turn service jobs and constraints into a route-optimization action brief.",
+        "description": "Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.",
         "workflow_pipe": true,
         "steps": [
           {

@@ -1,7 +1,7 @@
 {
   "key": "sme_tender_no_bid_gate",
   "title": "SME Tender No-Bid Gate",
-  "description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+  "description": "Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.",
   "workbench_title": "SME Tender No-Bid Gate Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Tender No-Bid Gate",
-    "content_description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+    "content_description": "Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_tender_no_bid_gate_workflow",
       "title": "SME Tender No-Bid Gate workflow",
-      "description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+      "description": "Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_tender_no_bid_gate",
     "title": "SME Tender No-Bid Gate",
-    "description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+    "description": "Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.",
     "workbench_title": "SME Tender No-Bid Gate Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_tender_no_bid_gate_workflow",
         "title": "SME Tender No-Bid Gate workflow",
-        "description": "Create a tender bid/no-bid recommendation with evidence gaps and governance notes.",
+        "description": "Create a tender bid/no-bid recommendation with fit scoring, evidence gaps, delivery risks, governance notes, and next actions.",
         "workflow_pipe": true,
         "steps": [
           {

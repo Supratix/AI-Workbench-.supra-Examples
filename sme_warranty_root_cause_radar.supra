@@ -1,7 +1,7 @@
 {
   "key": "sme_warranty_root_cause_radar",
   "title": "SME Warranty Root Cause Radar",
-  "description": "Analyze warranty issues and propose root-cause and containment actions.",
+  "description": "Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.",
   "workbench_title": "SME Warranty Root Cause Radar Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Warranty Root Cause Radar",
-    "content_description": "Analyze warranty issues and propose root-cause and containment actions.",
+    "content_description": "Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_warranty_root_cause_radar_workflow",
       "title": "SME Warranty Root Cause Radar workflow",
-      "description": "Analyze warranty issues and propose root-cause and containment actions.",
+      "description": "Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_warranty_root_cause_radar",
     "title": "SME Warranty Root Cause Radar",
-    "description": "Analyze warranty issues and propose root-cause and containment actions.",
+    "description": "Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.",
     "workbench_title": "SME Warranty Root Cause Radar Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_warranty_root_cause_radar_workflow",
         "title": "SME Warranty Root Cause Radar workflow",
-        "description": "Analyze warranty issues and propose root-cause and containment actions.",
+        "description": "Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.",
         "workflow_pipe": true,
         "steps": [
           {

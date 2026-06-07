@@ -1,7 +1,7 @@
 {
   "key": "sme_vendor_negotiation_brief",
   "title": "SME Vendor Negotiation Brief",
-  "description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+  "description": "Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.",
   "workbench_title": "SME Vendor Negotiation Brief Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Vendor Negotiation Brief",
-    "content_description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+    "content_description": "Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_vendor_negotiation_brief_workflow",
       "title": "SME Vendor Negotiation Brief workflow",
-      "description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+      "description": "Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_vendor_negotiation_brief",
     "title": "SME Vendor Negotiation Brief",
-    "description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+    "description": "Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.",
     "workbench_title": "SME Vendor Negotiation Brief Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_vendor_negotiation_brief_workflow",
         "title": "SME Vendor Negotiation Brief workflow",
-        "description": "Prepare a vendor negotiation brief with leverage, options, risks, and owner-ready asks.",
+        "description": "Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.",
         "workflow_pipe": true,
         "steps": [
           {

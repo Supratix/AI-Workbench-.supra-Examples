@@ -1,7 +1,7 @@
 {
   "key": "sme_sop_builder",
   "title": "SME SOP Builder",
-  "description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+  "description": "Transform process context into a clear SOP with roles, inputs, steps, quality checks, exceptions, and review cadence.",
   "workbench_title": "SME SOP Builder Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME SOP Builder",
-    "content_description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+    "content_description": "Transform process context into a clear SOP with roles, inputs, steps, quality checks, exceptions, and review cadence.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_sop_builder_workflow",
       "title": "SME SOP Builder workflow",
-      "description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+      "description": "Transform process context into a clear SOP with roles, inputs, steps, quality checks, exceptions, and review cadence.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_sop_builder",
     "title": "SME SOP Builder",
-    "description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+    "description": "Transform process context into a clear SOP with roles, inputs, steps, quality checks, exceptions, and review cadence.",
     "workbench_title": "SME SOP Builder Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_sop_builder_workflow",
         "title": "SME SOP Builder workflow",
-        "description": "Transform process context into a clear SOP with roles, checks, and exceptions.",
+        "description": "Transform process context into a clear SOP with roles, inputs, steps, quality checks, exceptions, and review cadence.",
         "workflow_pipe": true,
         "steps": [
           {

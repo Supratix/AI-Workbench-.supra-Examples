@@ -1,7 +1,7 @@
 {
   "key": "sme_onboarding_micro_sop_factory",
   "title": "SME Onboarding Micro-SOP Factory",
-  "description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+  "description": "Turn onboarding context into short SOPs, role-ready checklists, common mistake warnings, and review prompts for new team members.",
   "workbench_title": "SME Onboarding Micro-SOP Factory Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Onboarding Micro-SOP Factory",
-    "content_description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+    "content_description": "Turn onboarding context into short SOPs, role-ready checklists, common mistake warnings, and review prompts for new team members.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_onboarding_micro_sop_factory_workflow",
       "title": "SME Onboarding Micro-SOP Factory workflow",
-      "description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+      "description": "Turn onboarding context into short SOPs, role-ready checklists, common mistake warnings, and review prompts for new team members.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_onboarding_micro_sop_factory",
     "title": "SME Onboarding Micro-SOP Factory",
-    "description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+    "description": "Turn onboarding context into short SOPs, role-ready checklists, common mistake warnings, and review prompts for new team members.",
     "workbench_title": "SME Onboarding Micro-SOP Factory Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_onboarding_micro_sop_factory_workflow",
         "title": "SME Onboarding Micro-SOP Factory workflow",
-        "description": "Turn onboarding context into short, usable SOPs and role-ready checklists.",
+        "description": "Turn onboarding context into short SOPs, role-ready checklists, common mistake warnings, and review prompts for new team members.",
         "workflow_pipe": true,
         "steps": [
           {

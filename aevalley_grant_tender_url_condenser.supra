@@ -1,7 +1,7 @@
 {
   "key": "aevalley_grant_tender_url_condenser",
   "title": "AE Valley Grant/Tender/Project URL Condenser",
-  "description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+  "description": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
   "workbench_title": "AE Valley Grant/Tender/Project URL Condenser Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "AE Valley Grant/Tender/Project URL Condenser",
-    "content_description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+    "content_description": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -1294,7 +1294,7 @@
     {
       "id": "aevalley_grant_tender_url_condenser_workflow",
       "title": "AE Valley Grant/Tender/Project URL Condenser workflow",
-      "description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+      "description": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -1439,7 +1439,7 @@
   "main_workbench": {
     "key": "aevalley_grant_tender_url_condenser",
     "title": "AE Valley Grant/Tender/Project URL Condenser",
-    "description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+    "description": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
     "workbench_title": "AE Valley Grant/Tender/Project URL Condenser Desk",
     "columns": [
       {
@@ -2701,7 +2701,7 @@
       {
         "id": "aevalley_grant_tender_url_condenser_workflow",
         "title": "AE Valley Grant/Tender/Project URL Condenser workflow",
-        "description": "Condense grant, tender, and project URLs into an evidence-backed funding and bid-readiness brief.",
+        "description": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
         "workflow_pipe": true,
         "steps": [
           {

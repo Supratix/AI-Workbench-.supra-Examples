@@ -1,7 +1,7 @@
 {
   "key": "sme_late_payment_collector",
   "title": "SME Late Payment Collector",
-  "description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+  "description": "Prepare a humane but firm late-payment collection plan with customer context, message drafts, escalation path, and payment-risk signals.",
   "workbench_title": "SME Late Payment Collector Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Late Payment Collector",
-    "content_description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+    "content_description": "Prepare a humane but firm late-payment collection plan with customer context, message drafts, escalation path, and payment-risk signals.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_late_payment_collector_workflow",
       "title": "SME Late Payment Collector workflow",
-      "description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+      "description": "Prepare a humane but firm late-payment collection plan with customer context, message drafts, escalation path, and payment-risk signals.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_late_payment_collector",
     "title": "SME Late Payment Collector",
-    "description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+    "description": "Prepare a humane but firm late-payment collection plan with customer context, message drafts, escalation path, and payment-risk signals.",
     "workbench_title": "SME Late Payment Collector Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_late_payment_collector_workflow",
         "title": "SME Late Payment Collector workflow",
-        "description": "Prepare a humane but firm late-payment collection plan with message drafts and escalation triggers.",
+        "description": "Prepare a humane but firm late-payment collection plan with customer context, message drafts, escalation path, and payment-risk signals.",
         "workflow_pipe": true,
         "steps": [
           {

@@ -1,7 +1,7 @@
 {
   "key": "lieferschein_inventory",
   "title": "Lieferschein → Lagerbestand (Internal Products)",
-  "description": "Map delivery-note lines to internal products and create a reviewable stock update proposal.",
+  "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
   "workbench_title": "Lieferschein → Lagerbestand (Internal Products) Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "Lieferschein → Lagerbestand (Internal Products)",
-    "content_description": "Map delivery-note lines to internal products and create a reviewable stock update proposal.",
+    "content_description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -195,7 +195,7 @@
   "main_workbench": {
     "key": "lieferschein_inventory",
     "title": "Lieferschein → Lagerbestand (Internal Products)",
-    "description": "Map delivery-note lines to internal products and create a reviewable stock update proposal.",
+    "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
     "workbench_title": "Lieferschein → Lagerbestand (Internal Products) Desk",
     "columns": [
       {

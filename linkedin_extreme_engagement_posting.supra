@@ -1,7 +1,7 @@
 {
   "key": "linkedin_extreme_engagement_posting",
   "title": "LinkedIn Extreme Engagement Posting",
-  "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+  "description": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
   "workbench_title": "LinkedIn Extreme Engagement Posting Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "LinkedIn Extreme Engagement Posting",
-    "content_description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+    "content_description": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -642,7 +642,7 @@
     {
       "id": "linkedin_extreme_engagement_posting_workflow",
       "title": "LinkedIn Extreme Engagement Posting workflow",
-      "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+      "description": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -723,7 +723,7 @@
   "main_workbench": {
     "key": "linkedin_extreme_engagement_posting",
     "title": "LinkedIn Extreme Engagement Posting",
-    "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+    "description": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
     "workbench_title": "LinkedIn Extreme Engagement Posting Desk",
     "columns": [
       {
@@ -1333,7 +1333,7 @@
       {
         "id": "linkedin_extreme_engagement_posting_workflow",
         "title": "LinkedIn Extreme Engagement Posting workflow",
-        "description": "Create a high-engagement LinkedIn post package with hooks, post copy, risk checks, and engagement follow-up.",
+        "description": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
         "workflow_pipe": true,
         "steps": [
           {

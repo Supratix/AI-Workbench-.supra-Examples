@@ -1,7 +1,7 @@
 {
   "key": "sme_training_skill_gap_matrix",
   "title": "SME Training Skill Gap Matrix",
-  "description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+  "description": "Map training needs into a skill-gap matrix with role impact, priority learning actions, owners, and progress review prompts.",
   "workbench_title": "SME Training Skill Gap Matrix Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Training Skill Gap Matrix",
-    "content_description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+    "content_description": "Map training needs into a skill-gap matrix with role impact, priority learning actions, owners, and progress review prompts.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_training_skill_gap_matrix_workflow",
       "title": "SME Training Skill Gap Matrix workflow",
-      "description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+      "description": "Map training needs into a skill-gap matrix with role impact, priority learning actions, owners, and progress review prompts.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_training_skill_gap_matrix",
     "title": "SME Training Skill Gap Matrix",
-    "description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+    "description": "Map training needs into a skill-gap matrix with role impact, priority learning actions, owners, and progress review prompts.",
     "workbench_title": "SME Training Skill Gap Matrix Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_training_skill_gap_matrix_workflow",
         "title": "SME Training Skill Gap Matrix workflow",
-        "description": "Map training needs into a skill-gap matrix and prioritized learning actions.",
+        "description": "Map training needs into a skill-gap matrix with role impact, priority learning actions, owners, and progress review prompts.",
         "workflow_pipe": true,
         "steps": [
           {

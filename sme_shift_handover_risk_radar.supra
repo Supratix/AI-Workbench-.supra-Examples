@@ -1,7 +1,7 @@
 {
   "key": "sme_shift_handover_risk_radar",
   "title": "SME Shift Handover Risk Radar",
-  "description": "Identify handover risks and produce a shift-ready mitigation brief.",
+  "description": "Identify handover risks and produce a shift-ready mitigation brief with priority issues, owner checks, open questions, and escalation signals.",
   "workbench_title": "SME Shift Handover Risk Radar Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Shift Handover Risk Radar",
-    "content_description": "Identify handover risks and produce a shift-ready mitigation brief.",
+    "content_description": "Identify handover risks and produce a shift-ready mitigation brief with priority issues, owner checks, open questions, and escalation signals.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_shift_handover_risk_radar_workflow",
       "title": "SME Shift Handover Risk Radar workflow",
-      "description": "Identify handover risks and produce a shift-ready mitigation brief.",
+      "description": "Identify handover risks and produce a shift-ready mitigation brief with priority issues, owner checks, open questions, and escalation signals.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_shift_handover_risk_radar",
     "title": "SME Shift Handover Risk Radar",
-    "description": "Identify handover risks and produce a shift-ready mitigation brief.",
+    "description": "Identify handover risks and produce a shift-ready mitigation brief with priority issues, owner checks, open questions, and escalation signals.",
     "workbench_title": "SME Shift Handover Risk Radar Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_shift_handover_risk_radar_workflow",
         "title": "SME Shift Handover Risk Radar workflow",
-        "description": "Identify handover risks and produce a shift-ready mitigation brief.",
+        "description": "Identify handover risks and produce a shift-ready mitigation brief with priority issues, owner checks, open questions, and escalation signals.",
         "workflow_pipe": true,
         "steps": [
           {

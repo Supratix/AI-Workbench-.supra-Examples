@@ -1,7 +1,7 @@
 {
   "key": "sme_safety_incident_prevention",
   "title": "SME Safety Incident Prevention Loop",
-  "description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+  "description": "Convert safety incident notes into prevention actions with root-cause hypotheses, responsible owners, verification checks, and review triggers.",
   "workbench_title": "SME Safety Incident Prevention Loop Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Safety Incident Prevention Loop",
-    "content_description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+    "content_description": "Convert safety incident notes into prevention actions with root-cause hypotheses, responsible owners, verification checks, and review triggers.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_safety_incident_prevention_workflow",
       "title": "SME Safety Incident Prevention Loop workflow",
-      "description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+      "description": "Convert safety incident notes into prevention actions with root-cause hypotheses, responsible owners, verification checks, and review triggers.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_safety_incident_prevention",
     "title": "SME Safety Incident Prevention Loop",
-    "description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+    "description": "Convert safety incident notes into prevention actions with root-cause hypotheses, responsible owners, verification checks, and review triggers.",
     "workbench_title": "SME Safety Incident Prevention Loop Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_safety_incident_prevention_workflow",
         "title": "SME Safety Incident Prevention Loop workflow",
-        "description": "Convert safety incident notes into prevention actions, owner checks, and review triggers.",
+        "description": "Convert safety incident notes into prevention actions with root-cause hypotheses, responsible owners, verification checks, and review triggers.",
         "workflow_pipe": true,
         "steps": [
           {

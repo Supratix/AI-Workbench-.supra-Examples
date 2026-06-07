@@ -1,7 +1,7 @@
 {
   "key": "sme_cashflow_war_room",
   "title": "SME Cashflow War Room",
-  "description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+  "description": "Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.",
   "workbench_title": "SME Cashflow War Room Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Cashflow War Room",
-    "content_description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+    "content_description": "Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_cashflow_war_room_workflow",
       "title": "SME Cashflow War Room workflow",
-      "description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+      "description": "Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_cashflow_war_room",
     "title": "SME Cashflow War Room",
-    "description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+    "description": "Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.",
     "workbench_title": "SME Cashflow War Room Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_cashflow_war_room_workflow",
         "title": "SME Cashflow War Room workflow",
-        "description": "Prioritize cashflow risks and convert them into an owner-ready recovery action board.",
+        "description": "Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.",
         "workflow_pipe": true,
         "steps": [
           {

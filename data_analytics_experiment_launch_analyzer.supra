@@ -1,7 +1,7 @@
 {
   "key": "data_analytics_experiment_launch_analyzer",
   "title": "Data Analytics Experiment And Launch Analyzer",
-  "description": "Turn experiment and launch notes into a decision-ready analytics review.",
+  "description": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
   "workbench_title": "Data Analytics Experiment And Launch Analyzer Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "Data Analytics Experiment And Launch Analyzer",
-    "content_description": "Turn experiment and launch notes into a decision-ready analytics review.",
+    "content_description": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "data_analytics_experiment_launch_analyzer_workflow",
       "title": "Data Analytics Experiment And Launch Analyzer workflow",
-      "description": "Turn experiment and launch notes into a decision-ready analytics review.",
+      "description": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "data_analytics_experiment_launch_analyzer",
     "title": "Data Analytics Experiment And Launch Analyzer",
-    "description": "Turn experiment and launch notes into a decision-ready analytics review.",
+    "description": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
     "workbench_title": "Data Analytics Experiment And Launch Analyzer Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "data_analytics_experiment_launch_analyzer_workflow",
         "title": "Data Analytics Experiment And Launch Analyzer workflow",
-        "description": "Turn experiment and launch notes into a decision-ready analytics review.",
+        "description": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
         "workflow_pipe": true,
         "steps": [
           {

@@ -1,7 +1,7 @@
 {
   "key": "sme_invoice_dispute_resolver",
   "title": "SME Invoice Dispute Resolver",
-  "description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+  "description": "Structure invoice-dispute facts into a resolution plan with claim summary, evidence gaps, negotiation options, owners, and escalation triggers.",
   "workbench_title": "SME Invoice Dispute Resolver Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Invoice Dispute Resolver",
-    "content_description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+    "content_description": "Structure invoice-dispute facts into a resolution plan with claim summary, evidence gaps, negotiation options, owners, and escalation triggers.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_invoice_dispute_resolver_workflow",
       "title": "SME Invoice Dispute Resolver workflow",
-      "description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+      "description": "Structure invoice-dispute facts into a resolution plan with claim summary, evidence gaps, negotiation options, owners, and escalation triggers.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_invoice_dispute_resolver",
     "title": "SME Invoice Dispute Resolver",
-    "description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+    "description": "Structure invoice-dispute facts into a resolution plan with claim summary, evidence gaps, negotiation options, owners, and escalation triggers.",
     "workbench_title": "SME Invoice Dispute Resolver Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_invoice_dispute_resolver_workflow",
         "title": "SME Invoice Dispute Resolver workflow",
-        "description": "Structure invoice-dispute facts and draft a resolution plan with evidence gaps.",
+        "description": "Structure invoice-dispute facts into a resolution plan with claim summary, evidence gaps, negotiation options, owners, and escalation triggers.",
         "workflow_pipe": true,
         "steps": [
           {

@@ -1,7 +1,7 @@
 {
   "key": "sme_compliance_evidence_pack",
   "title": "SME Compliance Evidence Pack",
-  "description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+  "description": "Organize compliance facts into an evidence pack that highlights obligations, proof gaps, owners, deadlines, and reviewer-ready notes.",
   "workbench_title": "SME Compliance Evidence Pack Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Compliance Evidence Pack",
-    "content_description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+    "content_description": "Organize compliance facts into an evidence pack that highlights obligations, proof gaps, owners, deadlines, and reviewer-ready notes.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_compliance_evidence_pack_workflow",
       "title": "SME Compliance Evidence Pack workflow",
-      "description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+      "description": "Organize compliance facts into an evidence pack that highlights obligations, proof gaps, owners, deadlines, and reviewer-ready notes.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_compliance_evidence_pack",
     "title": "SME Compliance Evidence Pack",
-    "description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+    "description": "Organize compliance facts into an evidence pack that highlights obligations, proof gaps, owners, deadlines, and reviewer-ready notes.",
     "workbench_title": "SME Compliance Evidence Pack Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_compliance_evidence_pack_workflow",
         "title": "SME Compliance Evidence Pack workflow",
-        "description": "Organize compliance facts into an evidence pack with gaps, owners, and reviewer notes.",
+        "description": "Organize compliance facts into an evidence pack that highlights obligations, proof gaps, owners, deadlines, and reviewer-ready notes.",
         "workflow_pipe": true,
         "steps": [
           {

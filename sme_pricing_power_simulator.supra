@@ -1,7 +1,7 @@
 {
   "key": "sme_pricing_power_simulator",
   "title": "SME Pricing Power Simulator",
-  "description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+  "description": "Assess pricing power using demand, competition, cost, and customer signals, then propose scenarios, guardrails, and review triggers.",
   "workbench_title": "SME Pricing Power Simulator Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Pricing Power Simulator",
-    "content_description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+    "content_description": "Assess pricing power using demand, competition, cost, and customer signals, then propose scenarios, guardrails, and review triggers.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_pricing_power_simulator_workflow",
       "title": "SME Pricing Power Simulator workflow",
-      "description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+      "description": "Assess pricing power using demand, competition, cost, and customer signals, then propose scenarios, guardrails, and review triggers.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_pricing_power_simulator",
     "title": "SME Pricing Power Simulator",
-    "description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+    "description": "Assess pricing power using demand, competition, cost, and customer signals, then propose scenarios, guardrails, and review triggers.",
     "workbench_title": "SME Pricing Power Simulator Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_pricing_power_simulator_workflow",
         "title": "SME Pricing Power Simulator workflow",
-        "description": "Assess pricing power and propose scenarios, guardrails, and review triggers.",
+        "description": "Assess pricing power using demand, competition, cost, and customer signals, then propose scenarios, guardrails, and review triggers.",
         "workflow_pipe": true,
         "steps": [
           {

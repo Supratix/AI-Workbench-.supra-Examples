@@ -1,7 +1,7 @@
 {
   "key": "data_analytics_kpi_framework_designer",
   "title": "Data Analytics KPI Framework Designer",
-  "description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+  "description": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
   "workbench_title": "Data Analytics KPI Framework Designer Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "Data Analytics KPI Framework Designer",
-    "content_description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+    "content_description": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "data_analytics_kpi_framework_designer_workflow",
       "title": "Data Analytics KPI Framework Designer workflow",
-      "description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+      "description": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "data_analytics_kpi_framework_designer",
     "title": "Data Analytics KPI Framework Designer",
-    "description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+    "description": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
     "workbench_title": "Data Analytics KPI Framework Designer Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "data_analytics_kpi_framework_designer_workflow",
         "title": "Data Analytics KPI Framework Designer workflow",
-        "description": "Design a practical KPI framework with metric definitions, owners, and review cadence.",
+        "description": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
         "workflow_pipe": true,
         "steps": [
           {

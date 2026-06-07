@@ -1,7 +1,7 @@
 {
   "key": "sme_deadstock_liquidator",
   "title": "SME Deadstock Liquidator",
-  "description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+  "description": "Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.",
   "workbench_title": "SME Deadstock Liquidator Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Deadstock Liquidator",
-    "content_description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+    "content_description": "Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_deadstock_liquidator_workflow",
       "title": "SME Deadstock Liquidator workflow",
-      "description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+      "description": "Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_deadstock_liquidator",
     "title": "SME Deadstock Liquidator",
-    "description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+    "description": "Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.",
     "workbench_title": "SME Deadstock Liquidator Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_deadstock_liquidator_workflow",
         "title": "SME Deadstock Liquidator workflow",
-        "description": "Identify deadstock actions and turn inventory signals into a liquidation plan.",
+        "description": "Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.",
         "workflow_pipe": true,
         "steps": [
           {

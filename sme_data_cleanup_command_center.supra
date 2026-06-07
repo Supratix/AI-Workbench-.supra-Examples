@@ -1,7 +1,7 @@
 {
   "key": "sme_data_cleanup_command_center",
   "title": "SME Data Cleanup Command Center",
-  "description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+  "description": "Create a practical data cleanup plan with issue categories, quality rules, owners, validation checks, and a sequence for remediation.",
   "workbench_title": "SME Data Cleanup Command Center Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Data Cleanup Command Center",
-    "content_description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+    "content_description": "Create a practical data cleanup plan with issue categories, quality rules, owners, validation checks, and a sequence for remediation.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_data_cleanup_command_center_workflow",
       "title": "SME Data Cleanup Command Center workflow",
-      "description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+      "description": "Create a practical data cleanup plan with issue categories, quality rules, owners, validation checks, and a sequence for remediation.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_data_cleanup_command_center",
     "title": "SME Data Cleanup Command Center",
-    "description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+    "description": "Create a practical data cleanup plan with issue categories, quality rules, owners, validation checks, and a sequence for remediation.",
     "workbench_title": "SME Data Cleanup Command Center Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_data_cleanup_command_center_workflow",
         "title": "SME Data Cleanup Command Center workflow",
-        "description": "Create a practical data cleanup plan with quality rules, owners, and validation checks.",
+        "description": "Create a practical data cleanup plan with issue categories, quality rules, owners, validation checks, and a sequence for remediation.",
         "workflow_pipe": true,
         "steps": [
           {

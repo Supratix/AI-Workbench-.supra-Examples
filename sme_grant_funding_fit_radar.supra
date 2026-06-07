@@ -1,7 +1,7 @@
 {
   "key": "sme_grant_funding_fit_radar",
   "title": "SME Grant Funding Fit Radar",
-  "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+  "description": "Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.",
   "workbench_title": "SME Grant Funding Fit Radar Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Grant Funding Fit Radar",
-    "content_description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+    "content_description": "Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_grant_funding_fit_radar_workflow",
       "title": "SME Grant Funding Fit Radar workflow",
-      "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+      "description": "Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_grant_funding_fit_radar",
     "title": "SME Grant Funding Fit Radar",
-    "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+    "description": "Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.",
     "workbench_title": "SME Grant Funding Fit Radar Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_grant_funding_fit_radar_workflow",
         "title": "SME Grant Funding Fit Radar workflow",
-        "description": "Assess grant-fit signals and produce a shortlist with next evidence and application steps.",
+        "description": "Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.",
         "workflow_pipe": true,
         "steps": [
           {

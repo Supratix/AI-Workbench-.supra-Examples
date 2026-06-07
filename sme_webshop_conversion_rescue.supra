@@ -1,7 +1,7 @@
 {
   "key": "sme_webshop_conversion_rescue",
   "title": "SME Webshop Conversion Rescue",
-  "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+  "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.",
   "workbench_title": "SME Webshop Conversion Rescue Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Webshop Conversion Rescue",
-    "content_description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+    "content_description": "Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_webshop_conversion_rescue_workflow",
       "title": "SME Webshop Conversion Rescue workflow",
-      "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+      "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_webshop_conversion_rescue",
     "title": "SME Webshop Conversion Rescue",
-    "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+    "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.",
     "workbench_title": "SME Webshop Conversion Rescue Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_webshop_conversion_rescue_workflow",
         "title": "SME Webshop Conversion Rescue workflow",
-        "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan.",
+        "description": "Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.",
         "workflow_pipe": true,
         "steps": [
           {

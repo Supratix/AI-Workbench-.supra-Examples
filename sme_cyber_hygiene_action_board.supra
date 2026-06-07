@@ -1,7 +1,7 @@
 {
   "key": "sme_cyber_hygiene_action_board",
   "title": "SME Cyber Hygiene Action Board",
-  "description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+  "description": "Convert cyber hygiene observations into a prioritized remediation board with risk level, responsible owners, due dates, and verification checks.",
   "workbench_title": "SME Cyber Hygiene Action Board Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Cyber Hygiene Action Board",
-    "content_description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+    "content_description": "Convert cyber hygiene observations into a prioritized remediation board with risk level, responsible owners, due dates, and verification checks.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_cyber_hygiene_action_board_workflow",
       "title": "SME Cyber Hygiene Action Board workflow",
-      "description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+      "description": "Convert cyber hygiene observations into a prioritized remediation board with risk level, responsible owners, due dates, and verification checks.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_cyber_hygiene_action_board",
     "title": "SME Cyber Hygiene Action Board",
-    "description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+    "description": "Convert cyber hygiene observations into a prioritized remediation board with risk level, responsible owners, due dates, and verification checks.",
     "workbench_title": "SME Cyber Hygiene Action Board Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_cyber_hygiene_action_board_workflow",
         "title": "SME Cyber Hygiene Action Board workflow",
-        "description": "Convert cyber hygiene observations into a prioritized remediation board for SME teams.",
+        "description": "Convert cyber hygiene observations into a prioritized remediation board with risk level, responsible owners, due dates, and verification checks.",
         "workflow_pipe": true,
         "steps": [
           {

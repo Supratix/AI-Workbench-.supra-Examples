@@ -1,7 +1,7 @@
 {
   "key": "data_analytics_market_opportunity_sizer",
   "title": "Data Analytics Market And Opportunity Sizer",
-  "description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+  "description": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
   "workbench_title": "Data Analytics Market And Opportunity Sizer Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "Data Analytics Market And Opportunity Sizer",
-    "content_description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+    "content_description": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "data_analytics_market_opportunity_sizer_workflow",
       "title": "Data Analytics Market And Opportunity Sizer workflow",
-      "description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+      "description": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "data_analytics_market_opportunity_sizer",
     "title": "Data Analytics Market And Opportunity Sizer",
-    "description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+    "description": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
     "workbench_title": "Data Analytics Market And Opportunity Sizer Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "data_analytics_market_opportunity_sizer_workflow",
         "title": "Data Analytics Market And Opportunity Sizer workflow",
-        "description": "Estimate a market or opportunity size with transparent assumptions and validation steps.",
+        "description": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
         "workflow_pipe": true,
         "steps": [
           {

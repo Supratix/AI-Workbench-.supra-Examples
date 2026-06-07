@@ -1,7 +1,7 @@
 {
   "key": "sme_energy_cost_anomaly_finder",
   "title": "SME Energy Cost Anomaly Finder",
-  "description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+  "description": "Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.",
   "workbench_title": "SME Energy Cost Anomaly Finder Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Energy Cost Anomaly Finder",
-    "content_description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+    "content_description": "Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_energy_cost_anomaly_finder_workflow",
       "title": "SME Energy Cost Anomaly Finder workflow",
-      "description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+      "description": "Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_energy_cost_anomaly_finder",
     "title": "SME Energy Cost Anomaly Finder",
-    "description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+    "description": "Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.",
     "workbench_title": "SME Energy Cost Anomaly Finder Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_energy_cost_anomaly_finder_workflow",
         "title": "SME Energy Cost Anomaly Finder workflow",
-        "description": "Spot energy-cost anomalies and propose reviewable savings or investigation actions.",
+        "description": "Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.",
         "workflow_pipe": true,
         "steps": [
           {

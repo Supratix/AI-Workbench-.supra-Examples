@@ -1,7 +1,7 @@
 {
   "key": "sme_upsell_signal_miner",
   "title": "SME Upsell Signal Miner",
-  "description": "Find upsell signals and convert them into account-specific next actions.",
+  "description": "Find upsell signals in account context and convert them into account-specific offers, timing notes, risk flags, and next actions.",
   "workbench_title": "SME Upsell Signal Miner Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Upsell Signal Miner",
-    "content_description": "Find upsell signals and convert them into account-specific next actions.",
+    "content_description": "Find upsell signals in account context and convert them into account-specific offers, timing notes, risk flags, and next actions.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_upsell_signal_miner_workflow",
       "title": "SME Upsell Signal Miner workflow",
-      "description": "Find upsell signals and convert them into account-specific next actions.",
+      "description": "Find upsell signals in account context and convert them into account-specific offers, timing notes, risk flags, and next actions.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_upsell_signal_miner",
     "title": "SME Upsell Signal Miner",
-    "description": "Find upsell signals and convert them into account-specific next actions.",
+    "description": "Find upsell signals in account context and convert them into account-specific offers, timing notes, risk flags, and next actions.",
     "workbench_title": "SME Upsell Signal Miner Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_upsell_signal_miner_workflow",
         "title": "SME Upsell Signal Miner workflow",
-        "description": "Find upsell signals and convert them into account-specific next actions.",
+        "description": "Find upsell signals in account context and convert them into account-specific offers, timing notes, risk flags, and next actions.",
         "workflow_pipe": true,
         "steps": [
           {

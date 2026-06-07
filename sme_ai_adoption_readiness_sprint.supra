@@ -1,7 +1,7 @@
 {
   "key": "sme_ai_adoption_readiness_sprint",
   "title": "SME AI Adoption Readiness Sprint",
-  "description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+  "description": "Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.",
   "workbench_title": "SME AI Adoption Readiness Sprint Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME AI Adoption Readiness Sprint",
-    "content_description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+    "content_description": "Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_ai_adoption_readiness_sprint_workflow",
       "title": "SME AI Adoption Readiness Sprint workflow",
-      "description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+      "description": "Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_ai_adoption_readiness_sprint",
     "title": "SME AI Adoption Readiness Sprint",
-    "description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+    "description": "Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.",
     "workbench_title": "SME AI Adoption Readiness Sprint Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_ai_adoption_readiness_sprint_workflow",
         "title": "SME AI Adoption Readiness Sprint workflow",
-        "description": "Assess SME AI adoption readiness and create a concrete first-sprint action plan.",
+        "description": "Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.",
         "workflow_pipe": true,
         "steps": [
           {

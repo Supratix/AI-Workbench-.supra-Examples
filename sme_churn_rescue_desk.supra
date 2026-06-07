@@ -1,7 +1,7 @@
 {
   "key": "sme_churn_rescue_desk",
   "title": "SME Churn Rescue Desk",
-  "description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+  "description": "Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.",
   "workbench_title": "SME Churn Rescue Desk Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Churn Rescue Desk",
-    "content_description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+    "content_description": "Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_churn_rescue_desk_workflow",
       "title": "SME Churn Rescue Desk workflow",
-      "description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+      "description": "Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_churn_rescue_desk",
     "title": "SME Churn Rescue Desk",
-    "description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+    "description": "Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.",
     "workbench_title": "SME Churn Rescue Desk Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_churn_rescue_desk_workflow",
         "title": "SME Churn Rescue Desk workflow",
-        "description": "Identify churn signals and produce a customer rescue plan with owners and review triggers.",
+        "description": "Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.",
         "workflow_pipe": true,
         "steps": [
           {

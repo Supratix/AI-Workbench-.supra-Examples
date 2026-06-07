@@ -1,7 +1,7 @@
 {
   "key": "sme_downtime_triage",
   "title": "SME Downtime Triage",
-  "description": "Diagnose downtime context and create a focused triage and prevention plan.",
+  "description": "Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.",
   "workbench_title": "SME Downtime Triage Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Downtime Triage",
-    "content_description": "Diagnose downtime context and create a focused triage and prevention plan.",
+    "content_description": "Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_downtime_triage_workflow",
       "title": "SME Downtime Triage workflow",
-      "description": "Diagnose downtime context and create a focused triage and prevention plan.",
+      "description": "Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_downtime_triage",
     "title": "SME Downtime Triage",
-    "description": "Diagnose downtime context and create a focused triage and prevention plan.",
+    "description": "Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.",
     "workbench_title": "SME Downtime Triage Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_downtime_triage_workflow",
         "title": "SME Downtime Triage workflow",
-        "description": "Diagnose downtime context and create a focused triage and prevention plan.",
+        "description": "Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.",
         "workflow_pipe": true,
         "steps": [
           {

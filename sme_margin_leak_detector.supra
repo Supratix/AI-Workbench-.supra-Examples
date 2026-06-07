@@ -1,7 +1,7 @@
 {
   "key": "sme_margin_leak_detector",
   "title": "SME Margin Leak Detector",
-  "description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+  "description": "Identify margin leakage from pricing, discounting, cost, and delivery signals, then create a practical profit-protection action plan.",
   "workbench_title": "SME Margin Leak Detector Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Margin Leak Detector",
-    "content_description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+    "content_description": "Identify margin leakage from pricing, discounting, cost, and delivery signals, then create a practical profit-protection action plan.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_margin_leak_detector_workflow",
       "title": "SME Margin Leak Detector workflow",
-      "description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+      "description": "Identify margin leakage from pricing, discounting, cost, and delivery signals, then create a practical profit-protection action plan.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_margin_leak_detector",
     "title": "SME Margin Leak Detector",
-    "description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+    "description": "Identify margin leakage from pricing, discounting, cost, and delivery signals, then create a practical profit-protection action plan.",
     "workbench_title": "SME Margin Leak Detector Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_margin_leak_detector_workflow",
         "title": "SME Margin Leak Detector workflow",
-        "description": "Identify margin leakage signals and create a practical profit-protection action plan.",
+        "description": "Identify margin leakage from pricing, discounting, cost, and delivery signals, then create a practical profit-protection action plan.",
         "workflow_pipe": true,
         "steps": [
           {

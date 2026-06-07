@@ -1,7 +1,7 @@
 {
   "key": "sme_proposal_drafter",
   "title": "SME Proposal Drafter",
-  "description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+  "description": "Draft a proposal brief with client goals, scope, assumptions, deliverables, exclusions, risks, and next-step language.",
   "workbench_title": "SME Proposal Drafter Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Proposal Drafter",
-    "content_description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+    "content_description": "Draft a proposal brief with client goals, scope, assumptions, deliverables, exclusions, risks, and next-step language.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_proposal_drafter_workflow",
       "title": "SME Proposal Drafter workflow",
-      "description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+      "description": "Draft a proposal brief with client goals, scope, assumptions, deliverables, exclusions, risks, and next-step language.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_proposal_drafter",
     "title": "SME Proposal Drafter",
-    "description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+    "description": "Draft a proposal brief with client goals, scope, assumptions, deliverables, exclusions, risks, and next-step language.",
     "workbench_title": "SME Proposal Drafter Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_proposal_drafter_workflow",
         "title": "SME Proposal Drafter workflow",
-        "description": "Draft a proposal brief with scope, assumptions, risks, and next-step language.",
+        "description": "Draft a proposal brief with client goals, scope, assumptions, deliverables, exclusions, risks, and next-step language.",
         "workflow_pipe": true,
         "steps": [
           {

@@ -1,7 +1,7 @@
 {
   "key": "sme_hiring_scorecard_kit",
   "title": "SME Hiring Scorecard Kit",
-  "description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+  "description": "Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.",
   "workbench_title": "SME Hiring Scorecard Kit Desk",
   "schemaVersion": 1,
   "metadata": {
@@ -9,7 +9,7 @@
     "vendor": "SupraTix",
     "global_product_pk": "",
     "content_name": "SME Hiring Scorecard Kit",
-    "content_description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+    "content_description": "Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.",
     "export_version": "1.0.0",
     "import_version": "1.0.0",
     "starter_rows": [
@@ -267,7 +267,7 @@
     {
       "id": "sme_hiring_scorecard_kit_workflow",
       "title": "SME Hiring Scorecard Kit workflow",
-      "description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+      "description": "Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.",
       "workflow_pipe": true,
       "steps": [
         {
@@ -308,7 +308,7 @@
   "main_workbench": {
     "key": "sme_hiring_scorecard_kit",
     "title": "SME Hiring Scorecard Kit",
-    "description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+    "description": "Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.",
     "workbench_title": "SME Hiring Scorecard Kit Desk",
     "columns": [
       {
@@ -543,7 +543,7 @@
       {
         "id": "sme_hiring_scorecard_kit_workflow",
         "title": "SME Hiring Scorecard Kit workflow",
-        "description": "Create a role scorecard, interview signals, and decision rubric for SME hiring.",
+        "description": "Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.",
         "workflow_pipe": true,
         "steps": [
           {
