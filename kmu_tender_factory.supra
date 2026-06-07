@@ -1,0 +1,403 @@
+{
+  "key": "kmu_tender_factory",
+  "title": "KMU Tender Factory",
+  "description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+  "workbench_title": "Tender Factory Workbench",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "kmu_tender_factory",
+    "vendor": "SupraTix",
+    "global_product_pk": "",
+    "content_name": "KMU Tender Factory",
+    "content_description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "starter_rows": [
+      {
+        "title": "KMU Tender Factory starter",
+        "source_type": "tender_context",
+        "external_urls": [],
+        "request": "Paste tender PDF text/OCR, evaluation criteria, company profile, and reference fragments.",
+        "text": "{\"schema\": \"KMU_TENDER_FACTORY_INTAKE_V1\", \"use_case\": \"kmu_tender_factory\", \"focus\": \"tender PDF text, criteria, company profile, reference fragments, and evidence anchors\", \"intake\": \"Paste tender text/OCR plus company profile and references. Use only provided evidence. Flag mandatory gaps and human-review items.\", \"target_outputs\": [\"requirements_matrix\", \"capability_scoring\", \"proposal_draft\", \"compliance_pack\"], \"acceptance_criteria\": {\"draft_turnaround_hours\": 2, \"mandatory_fields_present\": true, \"scoring_consistency\": 0.9}, \"guardrails\": [\"Do not invent facts.\", \"Attach evidence anchors like file://ref#frag_id.\", \"Set mandatory_missing=true when any required item is absent.\", \"Keep procurement, legal, pricing, and compliance decisions human-reviewable.\"]}"
+      }
+    ],
+    "commerce": {
+      "business_model": "free_of_use",
+      "product_typ": "workflows",
+      "usage_unit": "cloud_credits",
+      "quota": {
+        "unit": "cloud_credits"
+      }
+    },
+    "github_example": {
+      "repository_layout": "packages at repo root; generated docs under docs/; schemas under schemas/",
+      "maintained_for": "AI Workbench .supra examples"
+    }
+  },
+  "columns": [
+    {
+      "key": "tender_context",
+      "title": "Tender context",
+      "column_kind": "step",
+      "type": "fa-solid fa-file-pdf",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake",
+          "reason": "github_example_package"
+        }
+      }
+    },
+    {
+      "key": "requirements_matrix",
+      "title": "Requirements matrix",
+      "column_kind": "step",
+      "type": "fa-solid fa-list-check",
+      "input_from": [
+        "tender_context"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "kmu_tender_factory_requirements",
+      "prompt": "Extract tender_id, agency, submission_deadline, mandatory_requirements, budget_limit, attachments, and evaluation_criteria [{id,text,weight}] from the tender context. Flag missing mandatory fields and evidence gaps. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Extract requirements",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "KMU_TENDER_REQUIREMENTS_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "tender_document",
+            "evaluation_criteria",
+            "mandatory_requirements",
+            "compliance_issues",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "tender_document",
+              "evaluation_criteria",
+              "mandatory_requirements",
+              "compliance_issues",
+              "evidence_gaps"
+            ]
+          },
+          "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "capability_scoring",
+      "title": "Capability scoring",
+      "column_kind": "step",
+      "type": "fa-solid fa-scale-balanced",
+      "input_from": [
+        "tender_context",
+        "requirements_matrix"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "kmu_tender_factory_matcher",
+      "prompt": "Match evaluation criteria to company_profile and reference_fragments. For each criterion emit criterion_id, match_sentence, evidence_refs, confidence, and remediation task. Use only provided evidence anchors. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Match capabilities",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "KMU_TENDER_SCORING_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary",
+            "scoring_matrix",
+            "evidence_refs",
+            "confidence",
+            "mandatory_pass",
+            "remediation_tasks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "scoring_matrix",
+              "evidence_refs",
+              "confidence",
+              "mandatory_pass",
+              "remediation_tasks",
+              "evidence_gaps"
+            ]
+          },
+          "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "proposal_draft",
+      "title": "Proposal draft",
+      "column_kind": "step",
+      "type": "fa-solid fa-file-pen",
+      "input_from": [
+        "tender_context",
+        "requirements_matrix",
+        "capability_scoring"
+      ],
+      "tool_category": "ai_tool",
+      "tool": "kmu_tender_factory_proposal",
+      "prompt": "Act as a Procurement Response Generator. Produce proposal_text in Markdown, a max-200-word executive summary mapped to the top five weighted criteria, per-criterion evidence-backed responses, a one-page cost table, three risks, and owner mitigation tasks. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Draft response",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "KMU_TENDER_PROPOSAL_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "proposal_text",
+            "executive_summary",
+            "criteria_responses",
+            "cost_table",
+            "risk_note",
+            "mitigation_tasks",
+            "compliance_issues"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "proposal_text",
+              "executive_summary",
+              "criteria_responses",
+              "cost_table",
+              "risk_note",
+              "mitigation_tasks",
+              "compliance_issues"
+            ]
+          },
+          "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "compliance_pack",
+      "title": "Compliance pack",
+      "column_kind": "step",
+      "type": "fa-solid fa-box-archive",
+      "input_from": [
+        "tender_context",
+        "requirements_matrix",
+        "capability_scoring",
+        "proposal_draft"
+      ],
+      "tool_category": "shortcut",
+      "tool": "kmu_tender_factory",
+      "prompt": "Assemble the final bundle: proposal_draft target DOCX, scoring_matrix target JSON, compliance_checklist target PDF, evidence_bundle target ZIP, evidence_manifest, reviewer_actions, and bid/no-bid synopsis. Apply acceptance criteria: mandatory fields present and scoring consistency >= 0.9. Return JSON only.",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Assemble pack",
+          "reason": "github_example_package"
+        },
+        "output_contract": {
+          "schema_version": "KMU_TENDER_COMPLIANCE_PACK_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "proposal_draft",
+            "scoring_matrix",
+            "compliance_checklist",
+            "evidence_bundle",
+            "acceptance_status",
+            "reviewer_actions",
+            "compliance_issues"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "proposal_draft",
+              "scoring_matrix",
+              "compliance_checklist",
+              "evidence_bundle",
+              "acceptance_status",
+              "reviewer_actions",
+              "compliance_issues"
+            ]
+          },
+          "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "kmu_tender_factory_workflow",
+      "title": "KMU Tender Factory workflow",
+      "description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+      "workflow_pipe": true,
+      "steps": [
+        {
+          "id": "tender_context",
+          "title": "Tender context",
+          "step_position": 0,
+          "backlog": true,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "requirements_matrix",
+          "title": "Requirements matrix",
+          "step_position": 1,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "capability_scoring",
+          "title": "Capability scoring",
+          "step_position": 2,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "proposal_draft",
+          "title": "Proposal draft",
+          "step_position": 3,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "compliance_pack",
+          "title": "Compliance pack",
+          "step_position": 4,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        }
+      ]
+    }
+  ],
+  "main_workbench": {
+    "key": "kmu_tender_factory",
+    "title": "KMU Tender Factory",
+    "description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+    "workbench_title": "Tender Factory Workbench",
+    "columns": [
+      {
+        "key": "tender_context",
+        "title": "Tender context",
+        "tool_category": "manual",
+        "tool": "user_input"
+      },
+      {
+        "key": "requirements_matrix",
+        "title": "Requirements matrix",
+        "tool_category": "ai_tool",
+        "tool": "kmu_tender_factory_requirements"
+      },
+      {
+        "key": "capability_scoring",
+        "title": "Capability scoring",
+        "tool_category": "ai_tool",
+        "tool": "kmu_tender_factory_matcher"
+      },
+      {
+        "key": "proposal_draft",
+        "title": "Proposal draft",
+        "tool_category": "ai_tool",
+        "tool": "kmu_tender_factory_proposal"
+      },
+      {
+        "key": "compliance_pack",
+        "title": "Compliance pack",
+        "tool_category": "shortcut",
+        "tool": "kmu_tender_factory"
+      }
+    ],
+    "workflows": [
+      {
+        "id": "kmu_tender_factory_workflow",
+        "title": "KMU Tender Factory workflow",
+        "description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "tender_context",
+            "title": "Tender context",
+            "step_position": 0,
+            "backlog": true,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "requirements_matrix",
+            "title": "Requirements matrix",
+            "step_position": 1,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "capability_scoring",
+            "title": "Capability scoring",
+            "step_position": 2,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "proposal_draft",
+            "title": "Proposal draft",
+            "step_position": 3,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "compliance_pack",
+            "title": "Compliance pack",
+            "step_position": 4,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          }
+        ]
+      }
+    ]
+  }
+}
