@@ -4,24 +4,26 @@ Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt.
 
 ## Paketüberblick
 
-- **Source package:** [`../lieferschein_inventory.supra`](../lieferschein_inventory.supra)
-- **Workbench title:** Lieferschein → Lagerbestand (Internal Products) Desk
-- **Package key:** `lieferschein_inventory`
-- **Vendor:** SupraTix
-- **Schema version:** `1`
-- **Columns:** 3
+- **Quellpaket:** [`../lieferschein_inventory.supra`](../lieferschein_inventory.supra)
+- **Workbench-Titel:** Lieferschein → Lagerbestand (Internal Products) Desk
+- **Paket-Key:** `lieferschein_inventory`
+- **Anbieter:** SupraTix
+- **Schemaversion:** `1`
+- **Spalten:** 3
 - **Workflows:** 0
 
 ## Zweck
 
-Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.
+Ordnet Lieferscheinpositionen internen Produkten zu, markiert unsichere Treffer und erstellt einen prüfbaren Bestandsaktualisierungsvorschlag für Lagerteams.
 
 ## Starter-Eingabe
 
-### Lieferschein → Lagerbestand (Internal Products) starter
+### Lieferschein → Lagerbestand (Internal Products) Starter
 
-- **Request:** Paste the source context for Lieferschein → Lagerbestand (Internal Products).
-- **Source type:** `delivery_note`
+- **Anfrage:** Fügen Sie den Quellkontext für Lieferschein → Lagerbestand (Internal Products) ein.
+- **Quelltyp:** `delivery_note`
+
+_Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._
 
 ```json
 {
@@ -43,54 +45,56 @@ Map delivery-note lines to internal products, flag ambiguous matches, and produc
 
 ## Workflow
 
-_No workflow is configured._
+_Es ist kein Workflow konfiguriert._
 
 ## Spalten und Tools
 
-| # | Key               | Title                 | Category   | Tool                                     | Review | Required output                                                                        |
-| - | ----------------- | --------------------- | ---------- | ---------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `delivery_note`   | Delivery note         | `manual`   | `user_input`                             | no     | -                                                                                      |
-| 2 | `product_mapping` | Product mapping       | `ai_tool`  | `lieferschein_inventory_product_mapping` | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `stock_update`    | Stock update proposal | `shortcut` | `lieferschein_inventory`                 | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key               | Titel                 | Kategorie  | Tool                                     | Prüfung | Pflichtausgabe                                                                         |
+| - | ----------------- | --------------------- | ---------- | ---------------------------------------- | ------- | -------------------------------------------------------------------------------------- |
+| 1 | `delivery_note`   | Delivery note         | `manual`   | `user_input`                             | nein    | -                                                                                      |
+| 2 | `product_mapping` | Product mapping       | `ai_tool`  | `lieferschein_inventory_product_mapping` | ja      | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `stock_update`    | Stock update proposal | `shortcut` | `lieferschein_inventory`                 | ja      | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt- und Vertragsreferenz
+
+_Prompts werden als Originalauszüge aus dem Paket angezeigt._
 
 ### Delivery note
 
 - **Key:** `delivery_note`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
+- **Ausführung:** execute_prompt=nein; mode=`disabled`; requires_review=nein
 
 ### Product mapping
 
 - **Key:** `product_mapping`
 - **Tool:** `lieferschein_inventory_product_mapping`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Map delivery-note lines to internal products, quantities, and exceptions. Mark unknown or ambiguous product matches for human review. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ### Stock update proposal
 
 - **Key:** `stock_update`
 - **Tool:** `lieferschein_inventory`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Create a reviewable inventory update proposal from the delivery note and product mapping. Do not post stock changes automatically; include exceptions and evidence gaps. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ## Governance-Hinweise
 
-- Manual columns collect user or file input and do not execute prompts.
-- Executable columns default to manual review where configured.
-- Output contracts keep downstream checks predictable.
+- Manuelle Spalten sammeln Nutzer- oder Dateieingaben und führen keine Prompts aus.
+- Ausführbare Spalten verwenden, sofern konfiguriert, standardmäßig eine manuelle Prüfung.
+- Output-Verträge halten nachgelagerte Prüfungen vorhersehbar.

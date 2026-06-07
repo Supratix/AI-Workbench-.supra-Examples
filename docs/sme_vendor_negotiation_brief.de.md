@@ -4,24 +4,26 @@ Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt.
 
 ## Paketüberblick
 
-- **Source package:** [`../sme_vendor_negotiation_brief.supra`](../sme_vendor_negotiation_brief.supra)
-- **Workbench title:** SME Vendor Negotiation Brief Desk
-- **Package key:** `sme_vendor_negotiation_brief`
-- **Vendor:** SupraTix
-- **Schema version:** `1`
-- **Columns:** 4
+- **Quellpaket:** [`../sme_vendor_negotiation_brief.supra`](../sme_vendor_negotiation_brief.supra)
+- **Workbench-Titel:** SME Vendor Negotiation Brief Desk
+- **Paket-Key:** `sme_vendor_negotiation_brief`
+- **Anbieter:** SupraTix
+- **Schemaversion:** `1`
+- **Spalten:** 4
 - **Workflows:** 1
 
 ## Zweck
 
-Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.
+Bereitet ein Lieferantenverhandlungsbriefing mit Hebelsignalen, Zielanfragen, Rückfalloptionen, Risikohinweisen und owner-fertigen Talking Points vor.
 
 ## Starter-Eingabe
 
-### SME Vendor Negotiation Brief starter
+### SME Vendor Negotiation Brief Starter
 
-- **Request:** Paste the source context for SME Vendor Negotiation Brief.
-- **Source type:** `business_context`
+- **Anfrage:** Fügen Sie den Quellkontext für SME Vendor Negotiation Brief ein.
+- **Quelltyp:** `business_context`
+
+_Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._
 
 ```json
 {
@@ -45,78 +47,80 @@ Prepare a vendor negotiation brief with leverage signals, target asks, fallback 
 
 ## Workflow
 
-### SME Vendor Negotiation Brief workflow
+### SME Vendor Negotiation Brief Workflow
 
-Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.
+Bereitet ein Lieferantenverhandlungsbriefing mit Hebelsignalen, Zielanfragen, Rückfalloptionen, Risikohinweisen und owner-fertigen Talking Points vor.
 
-| # | Step             | ID                 | Backlog |
+| # | Schritt          | ID                 | Backlog |
 | - | ---------------- | ------------------ | ------- |
-| 1 | Business context | `business_context` | yes     |
-| 2 | Signal map       | `signal_map`       | no      |
-| 3 | Decision plan    | `decision_plan`    | no      |
-| 4 | Execution brief  | `execution_brief`  | no      |
+| 1 | Business context | `business_context` | ja      |
+| 2 | Signal map       | `signal_map`       | nein    |
+| 3 | Decision plan    | `decision_plan`    | nein    |
+| 4 | Execution brief  | `execution_brief`  | nein    |
 
 ## Spalten und Tools
 
-| # | Key                | Title            | Category   | Tool                                    | Review | Required output                                                                        |
-| - | ------------------ | ---------------- | ---------- | --------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
-| 1 | `business_context` | Business context | `manual`   | `user_input`                            | no     | -                                                                                      |
-| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_vendor_negotiation_brief_signals`  | yes    | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
-| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_vendor_negotiation_brief_decision` | yes    | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
-| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_vendor_negotiation_brief`          | yes    | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
+| # | Key                | Titel            | Kategorie  | Tool                                    | Prüfung | Pflichtausgabe                                                                         |
+| - | ------------------ | ---------------- | ---------- | --------------------------------------- | ------- | -------------------------------------------------------------------------------------- |
+| 1 | `business_context` | Business context | `manual`   | `user_input`                            | nein    | -                                                                                      |
+| 2 | `signal_map`       | Signal map       | `ai_tool`  | `sme_vendor_negotiation_brief_signals`  | ja      | `summary`<br>`signals`<br>`constraints`<br>`assumptions`<br>`risks`<br>`evidence_gaps` |
+| 3 | `decision_plan`    | Decision plan    | `ai_tool`  | `sme_vendor_negotiation_brief_decision` | ja      | `summary`<br>`decision`<br>`actions`<br>`metrics`<br>`risks`<br>`evidence_gaps`        |
+| 4 | `execution_brief`  | Execution brief  | `shortcut` | `sme_vendor_negotiation_brief`          | ja      | `summary`<br>`decision`<br>`actions`<br>`risks`<br>`evidence_gaps`                     |
 
 ## Prompt- und Vertragsreferenz
+
+_Prompts werden als Originalauszüge aus dem Paket angezeigt._
 
 ### Business context
 
 - **Key:** `business_context`
 - **Tool:** `user_input`
-- **Execution:** execute_prompt=no; mode=`disabled`; requires_review=no
+- **Ausführung:** execute_prompt=nein; mode=`disabled`; requires_review=nein
 
 ### Signal map
 
 - **Key:** `signal_map`
 - **Tool:** `sme_vendor_negotiation_brief_signals`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Analyze the SME context for spend, vendor performance, contract leverage, alternatives, negotiation asks, and review constraints. Extract the most important facts, weak signals, constraints, assumptions, risks, and evidence gaps. Estimate likely impact qualitatively when numbers are missing. Do not invent facts. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Required fields:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `signals`, `constraints`, `assumptions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ### Decision plan
 
 - **Key:** `decision_plan`
 - **Tool:** `sme_vendor_negotiation_brief_decision`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Create a pragmatic owner decision plan for spend, vendor performance, contract leverage, alternatives, negotiation asks, and review constraints. Include the recommended decision, rejected alternatives, first 72-hour actions, owners, metrics, and review triggers. Keep advice bounded by the provided facts and mark anything that needs finance, legal, safety, or compliance review. Return JSON only.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1`
-- **Required fields:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `decision`, `actions`, `metrics`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ### Execution brief
 
 - **Key:** `execution_brief`
 - **Tool:** `sme_vendor_negotiation_brief`
-- **Execution:** execute_prompt=yes; mode=`manual_review`; requires_review=yes
+- **Ausführung:** execute_prompt=ja; mode=`manual_review`; requires_review=ja
 
 ```text
 Use the intake, signal map, and decision plan to produce the managed SME execution brief for spend, vendor performance, contract leverage, alternatives, negotiation asks, and review constraints. Respond in the same language as the user, keep assumptions visible, and make the next actions concrete.
 ```
 
 - **Schema:** `DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1`
-- **Required fields:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
-- **Evidence policy:** `no_invented_facts`
+- **Pflichtfelder:** `summary`, `decision`, `actions`, `risks`, `evidence_gaps`
+- **Evidenzregel:** `no_invented_facts`
 
 ## Governance-Hinweise
 
-- Manual columns collect user or file input and do not execute prompts.
-- Executable columns default to manual review where configured.
-- Output contracts keep downstream checks predictable.
+- Manuelle Spalten sammeln Nutzer- oder Dateieingaben und führen keine Prompts aus.
+- Ausführbare Spalten verwenden, sofern konfiguriert, standardmäßig eine manuelle Prüfung.
+- Output-Verträge halten nachgelagerte Prüfungen vorhersehbar.
