@@ -44,22 +44,22 @@
   <text x="48" y="72" fill="rgb(245 250 255)" font-size="36" font-family="Arial, Helvetica, sans-serif" font-weight="700">.supra Package Anatomy</text>
 <text x="50" y="108" fill="rgb(184 211 225)" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="400">The v1 sections that make a package portable and reviewable</text>
 <g filter="url(#shadow)">
-<rect x="438" y="150" width="324" height="360" rx="22" fill="rgb(12 29 45)" stroke="rgb(111 218 238 / 0.62)" stroke-width="2"/>
-<text x="476" y="202" fill="rgb(111 218 238)" font-size="44" font-family="Arial, Helvetica, sans-serif" font-weight="700">{</text>
-<text x="508" y="198" fill="rgb(245 250 255)" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;key&quot;: &quot;example&quot;</text>
-<text x="508" y="248" fill="rgb(186 238 111)" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;metadata&quot;: {...}</text>
-<text x="508" y="298" fill="rgb(246 189 96)" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;columns&quot;: [...]</text>
-<text x="508" y="348" fill="rgb(238 111 164)" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;workflows&quot;: [...]</text>
-<text x="508" y="398" fill="rgb(111 218 238)" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;main_workbench&quot;: {...}</text>
-<text x="476" y="468" fill="rgb(111 218 238)" font-size="44" font-family="Arial, Helvetica, sans-serif" font-weight="700">}</text>
+<rect x="418" y="150" width="364" height="360" rx="22" fill="rgb(12 29 45)" stroke="rgb(111 218 238 / 0.62)" stroke-width="2"/>
+<text x="454" y="202" fill="rgb(111 218 238)" font-size="44" font-family="Arial, Helvetica, sans-serif" font-weight="700">{</text>
+<text x="494" y="198" fill="rgb(245 250 255)" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;key&quot;: &quot;example&quot;</text>
+<text x="494" y="248" fill="rgb(186 238 111)" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;metadata&quot;: {...}</text>
+<text x="494" y="298" fill="rgb(246 189 96)" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;columns&quot;: [...]</text>
+<text x="494" y="348" fill="rgb(238 111 164)" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;workflows&quot;: [...]</text>
+<text x="494" y="398" fill="rgb(111 218 238)" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="400">&quot;main_workbench&quot;: {...}</text>
+<text x="454" y="468" fill="rgb(111 218 238)" font-size="44" font-family="Arial, Helvetica, sans-serif" font-weight="700">}</text>
 </g>
 <g filter="url(#shadow)">
-<rect x="80" y="160" width="260" height="116" rx="16" fill="rgb(18 48 72)" stroke="rgb(186 238 111 / 0.72)" stroke-width="2"/>
-<rect x="80" y="160" width="260" height="7" rx="3.5" fill="rgb(186 238 111)"/>
-<text x="102" y="203" fill="rgb(245 250 255)" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">metadata</text>
-<text x="102" y="238" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">identity</text>
-<text x="102" y="260" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">versions</text>
-<text x="102" y="282" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">starter rows</text>
+<rect x="80" y="154" width="260" height="132" rx="16" fill="rgb(18 48 72)" stroke="rgb(186 238 111 / 0.72)" stroke-width="2"/>
+<rect x="80" y="154" width="260" height="7" rx="3.5" fill="rgb(186 238 111)"/>
+<text x="102" y="197" fill="rgb(245 250 255)" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">metadata</text>
+<text x="102" y="232" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">identity</text>
+<text x="102" y="254" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">versions</text>
+<text x="102" y="276" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">starter rows</text>
 </g>
 <g filter="url(#shadow)">
 <rect x="80" y="374" width="260" height="116" rx="16" fill="rgb(18 48 72)" stroke="rgb(238 111 164 / 0.72)" stroke-width="2"/>
@@ -69,12 +69,12 @@
 <text x="102" y="474" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">quality gates</text>
 </g>
 <g filter="url(#shadow)">
-<rect x="860" y="160" width="260" height="116" rx="16" fill="rgb(18 48 72)" stroke="rgb(246 189 96 / 0.72)" stroke-width="2"/>
-<rect x="860" y="160" width="260" height="7" rx="3.5" fill="rgb(246 189 96)"/>
-<text x="882" y="203" fill="rgb(245 250 255)" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">columns</text>
-<text x="882" y="238" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">manual</text>
-<text x="882" y="260" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">ai_tool</text>
-<text x="882" y="282" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">shortcut</text>
+<rect x="860" y="154" width="260" height="132" rx="16" fill="rgb(18 48 72)" stroke="rgb(246 189 96 / 0.72)" stroke-width="2"/>
+<rect x="860" y="154" width="260" height="7" rx="3.5" fill="rgb(246 189 96)"/>
+<text x="882" y="197" fill="rgb(245 250 255)" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">columns</text>
+<text x="882" y="232" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">manual</text>
+<text x="882" y="254" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">ai_tool</text>
+<text x="882" y="276" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">shortcut</text>
 </g>
 <g filter="url(#shadow)">
 <rect x="860" y="374" width="260" height="116" rx="16" fill="rgb(18 48 72)" stroke="rgb(111 218 238 / 0.72)" stroke-width="2"/>
@@ -83,8 +83,8 @@
 <text x="882" y="452" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">exact mirror</text>
 <text x="882" y="474" fill="rgb(184 211 225)" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400">import-ready</text>
 </g>
-<line x1="346" y1="216" x2="438" y2="236" stroke="rgb(186 238 111)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
-<line x1="346" y1="430" x2="438" y2="390" stroke="rgb(238 111 164)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
-<line x1="860" y1="216" x2="762" y2="296" stroke="rgb(246 189 96)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
-<line x1="860" y1="430" x2="762" y2="400" stroke="rgb(111 218 238)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="346" y1="220" x2="418" y2="236" stroke="rgb(186 238 111)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="346" y1="430" x2="418" y2="390" stroke="rgb(238 111 164)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="860" y1="220" x2="782" y2="296" stroke="rgb(246 189 96)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="860" y1="430" x2="782" y2="400" stroke="rgb(111 218 238)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
 </svg>

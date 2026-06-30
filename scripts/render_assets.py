@@ -142,22 +142,26 @@ def svg_shell(width: int, height: int, title: str, desc: str, body: str) -> str:
 def svg_social() -> str:
     body = "\n".join(
         [
+            '<rect x="36" y="48" width="560" height="466" rx="28" fill="rgb(8 17 31 / 0.72)" stroke="rgb(111 218 238 / 0.18)" stroke-width="1"/>',
             svg_text(56, 78, "AI Workbench", 28, weight=700),
-            svg_text(56, 154, ".supra Examples", 76, weight=700),
-            svg_multiline(60, 205, ["47 portable packages aligned to the v1 standard", "Bilingual docs, strict validation, review-first outputs"], 22),
-            '<rect x="56" y="270" width="230" height="58" rx="29" fill="rgb(111 218 238 / 0.14)" stroke="rgb(111 218 238 / 0.65)" stroke-width="2"/>',
-            svg_text(85, 306, "v1 standard", 22, weight=700, fill=CYAN),
-            '<rect x="312" y="270" width="180" height="58" rx="29" fill="rgb(186 238 111 / 0.12)" stroke="rgb(186 238 111 / 0.58)" stroke-width="2"/>',
-            svg_text(345, 306, "EN / DE", 22, weight=700, fill=LIME),
-            svg_card(610, 92, 230, 120, "Contracts", ["JSON output fields", "quality gates"], accent=CYAN),
-            svg_card(884, 92, 230, 120, "Validation", ["schema checks", "mirror checks"], accent=LIME),
-            svg_card(610, 252, 230, 120, "Workflows", ["ordered steps", "review-first run"], accent=AMBER),
-            svg_card(884, 252, 230, 120, "Docs", ["generated package", "references"], accent=ROSE),
+            svg_text(56, 158, ".supra", 66, weight=700),
+            svg_text(56, 226, "Examples", 66, weight=700),
+            svg_multiline(60, 290, ["47 portable packages aligned to the v1 standard", "Bilingual docs, strict validation, review-first outputs"], 20),
+            '<rect x="56" y="372" width="218" height="54" rx="27" fill="rgb(111 218 238 / 0.14)" stroke="rgb(111 218 238 / 0.65)" stroke-width="2"/>',
+            svg_text(85, 406, "v1 standard", 20, weight=700, fill=INK),
+            '<rect x="300" y="372" width="218" height="54" rx="27" fill="rgb(186 238 111 / 0.12)" stroke="rgb(186 238 111 / 0.58)" stroke-width="2"/>',
+            svg_text(329, 406, "EN / DE docs", 20, weight=700, fill=INK),
+            '<rect x="56" y="444" width="218" height="54" rx="27" fill="rgb(246 189 96 / 0.14)" stroke="rgb(246 189 96 / 0.58)" stroke-width="2"/>',
+            svg_text(85, 478, "CI ready", 20, weight=700, fill=INK),
+            svg_card(640, 92, 220, 120, "Contracts", ["JSON output fields", "quality gates"], accent=CYAN),
+            svg_card(894, 92, 220, 120, "Validation", ["schema checks", "mirror checks"], accent=LIME),
+            svg_card(640, 252, 220, 120, "Workflows", ["ordered steps", "review-first run"], accent=AMBER),
+            svg_card(894, 252, 220, 120, "Docs", ["generated package", "references"], accent=ROSE),
             svg_arrow(724, 430, 834, 430, color=CYAN),
             svg_arrow(834, 430, 944, 430, color=LIME),
-            svg_card(614, 470, 160, 86, "Author", ["package JSON"], accent=CYAN),
-            svg_card(794, 470, 160, 86, "Import", ["workbench mirror"], accent=LIME),
-            svg_card(974, 470, 160, 86, "Review", ["human approval"], accent=AMBER),
+            svg_card(640, 470, 150, 86, "Author", ["package JSON"], accent=CYAN),
+            svg_card(810, 470, 150, 86, "Import", ["workbench"], accent=LIME),
+            svg_card(980, 470, 150, 86, "Review", ["approval"], accent=AMBER),
         ]
     )
     return svg_shell(1200, 630, "AI Workbench .supra Examples", "47 packages aligned to the .supra v1 standard", body)
@@ -215,23 +219,23 @@ def svg_anatomy() -> str:
             svg_text(48, 72, ".supra Package Anatomy", 36, weight=700),
             svg_text(50, 108, "The v1 sections that make a package portable and reviewable", 18, fill=MUTED),
             '<g filter="url(#shadow)">',
-            f'<rect x="438" y="150" width="324" height="360" rx="22" fill="{rgb((12, 29, 45))}" stroke="{rgba(CYAN, 0.62)}" stroke-width="2"/>',
-            svg_text(476, 202, "{", 44, weight=700, fill=CYAN),
-            svg_text(508, 198, '"key": "example"', 22, fill=INK),
-            svg_text(508, 248, '"metadata": {...}', 22, fill=LIME),
-            svg_text(508, 298, '"columns": [...]', 22, fill=AMBER),
-            svg_text(508, 348, '"workflows": [...]', 22, fill=ROSE),
-            svg_text(508, 398, '"main_workbench": {...}', 22, fill=CYAN),
-            svg_text(476, 468, "}", 44, weight=700, fill=CYAN),
+            f'<rect x="418" y="150" width="364" height="360" rx="22" fill="{rgb((12, 29, 45))}" stroke="{rgba(CYAN, 0.62)}" stroke-width="2"/>',
+            svg_text(454, 202, "{", 44, weight=700, fill=CYAN),
+            svg_text(494, 198, '"key": "example"', 21, fill=INK),
+            svg_text(494, 248, '"metadata": {...}', 21, fill=LIME),
+            svg_text(494, 298, '"columns": [...]', 21, fill=AMBER),
+            svg_text(494, 348, '"workflows": [...]', 21, fill=ROSE),
+            svg_text(494, 398, '"main_workbench": {...}', 21, fill=CYAN),
+            svg_text(454, 468, "}", 44, weight=700, fill=CYAN),
             "</g>",
-            svg_card(80, 160, 260, 116, "metadata", ["identity", "versions", "starter rows"], accent=LIME),
+            svg_card(80, 154, 260, 132, "metadata", ["identity", "versions", "starter rows"], accent=LIME),
             svg_card(80, 374, 260, 116, "output contracts", ["required fields", "quality gates"], accent=ROSE),
-            svg_card(860, 160, 260, 116, "columns", ["manual", "ai_tool", "shortcut"], accent=AMBER),
+            svg_card(860, 154, 260, 132, "columns", ["manual", "ai_tool", "shortcut"], accent=AMBER),
             svg_card(860, 374, 260, 116, "main_workbench", ["exact mirror", "import-ready"], accent=CYAN),
-            svg_arrow(346, 216, 438, 236, color=LIME),
-            svg_arrow(346, 430, 438, 390, color=ROSE),
-            svg_arrow(860, 216, 762, 296, color=AMBER),
-            svg_arrow(860, 430, 762, 400, color=CYAN),
+            svg_arrow(346, 220, 418, 236, color=LIME),
+            svg_arrow(346, 430, 418, 390, color=ROSE),
+            svg_arrow(860, 220, 782, 296, color=AMBER),
+            svg_arrow(860, 430, 782, 400, color=CYAN),
         ]
     )
     return svg_shell(1200, 650, ".supra Package Anatomy", "The .supra v1 sections used by AI Workbench examples", body)
@@ -266,21 +270,21 @@ def svg_import_export() -> str:
 
 def svg_governance() -> str:
     body = [
-        svg_text(48, 72, ".supra Governance Loop", 36, weight=700),
-        svg_text(50, 108, "Facts, assumptions, evidence gaps, and human review for v1 packages", 18, fill=MUTED),
-        '<circle cx="600" cy="330" r="118" fill="rgb(111 218 238 / 0.10)" stroke="rgb(111 218 238 / 0.55)" stroke-width="3"/>',
-        svg_text(518, 315, "Review-first", 28, weight=700, fill=INK),
-        svg_text(544, 350, "execution", 24, weight=700, fill=CYAN),
+        svg_text(48, 66, ".supra Governance Loop", 34, weight=700),
+        svg_text(50, 104, "Facts, assumptions, evidence gaps, and human review for v1 packages", 18, fill=MUTED),
+        '<circle cx="600" cy="356" r="108" fill="rgb(111 218 238 / 0.18)" stroke="rgb(111 218 238 / 0.62)" stroke-width="3"/>',
+        svg_text(518, 346, "Review-first", 28, weight=700, fill=INK),
+        svg_text(544, 381, "execution", 24, weight=700, fill=INK),
     ]
     cards = [
-        (102, 150, "Facts", ["separate known", "from inferred"], CYAN),
-        (486, 96, "Contracts", ["required JSON", "quality gates"], LIME),
-        (870, 150, "Human review", ["approval", "before use"], AMBER),
-        (870, 418, "Audit trail", ["docs", "CI and PRs"], CYAN),
-        (486, 472, "Evidence gaps", ["missing facts", "stay visible"], ROSE),
-        (102, 418, "Actions", ["owners", "next steps"], LIME),
+        (102, 172, "Facts", ["separate known", "from inferred"], CYAN),
+        (486, 150, "Contracts", ["required JSON", "quality gates"], LIME),
+        (870, 172, "Human review", ["approval", "before use"], AMBER),
+        (870, 430, "Audit trail", ["docs", "CI and PRs"], CYAN),
+        (486, 492, "Evidence gaps", ["missing facts", "stay visible"], ROSE),
+        (102, 430, "Actions", ["owners", "next steps"], LIME),
     ]
-    anchors = [(330, 205, 486, 156), (714, 156, 870, 205), (985, 268, 985, 418), (870, 470, 714, 526), (486, 526, 330, 470), (215, 418, 215, 268)]
+    anchors = [(330, 226, 486, 204), (714, 204, 870, 226), (985, 290, 985, 430), (870, 482, 714, 546), (486, 546, 330, 482), (215, 430, 215, 290)]
     for x1, y1, x2, y2 in anchors:
         body.append(svg_arrow(x1, y1, x2, y2))
     for x, y, title, lines, color in cards:
@@ -437,27 +441,29 @@ def make_canvas(Image, ImageDraw, size):
 
 def render_social(Image, ImageDraw, fonts):
     img, draw = make_canvas(Image, ImageDraw, (1200, 630))
+    draw.rounded_rectangle((36, 48, 596, 514), radius=28, fill=(*BG_TOP, 184), outline=(*CYAN, 46), width=1)
     draw_text(draw, (58, 78), "AI Workbench", fonts(34, "bold"))
-    draw_text(draw, (56, 165), ".supra Examples", fonts(82, "bold"))
+    draw_text(draw, (56, 140), ".supra", fonts(70, "bold"))
+    draw_text(draw, (56, 208), "Examples", fonts(70, "bold"))
     draw_multiline(
         draw,
-        (62, 214),
+        (62, 296),
         "47 portable packages aligned to the v1 standard\nBilingual docs, strict validation, review-first outputs",
-        fonts(24),
+        fonts(22),
         fill=MUTED,
-        line_gap=34,
+        line_gap=31,
     )
-    for x, label, color in [(58, "v1 standard", CYAN), (312, "EN / DE docs", LIME), (590, "CI ready", AMBER)]:
-        draw.rounded_rectangle((x, 318, x + 210, 372), radius=27, fill=(*color, 34), outline=(*color, 170), width=2)
-        draw_text(draw, (x + 28, 334), label, fonts(22, "bold"), fill=color)
-    draw_card(draw, fonts, 622, 96, 220, 112, "Contracts", ["JSON fields", "quality gates"], CYAN)
+    for x, y, label, color in [(58, 374, "v1 standard", CYAN), (306, 374, "EN / DE docs", LIME), (58, 444, "CI ready", AMBER)]:
+        draw.rounded_rectangle((x, y, x + 218, y + 54), radius=27, fill=(*color, 40), outline=(*color, 170), width=2)
+        draw_text(draw, (x + 28, y + 14), label, fonts(22, "bold"), fill=INK)
+    draw_card(draw, fonts, 642, 96, 220, 112, "Contracts", ["JSON fields", "quality gates"], CYAN)
     draw_card(draw, fonts, 888, 96, 220, 112, "Validation", ["schema checks", "mirror checks"], LIME)
-    draw_card(draw, fonts, 622, 250, 220, 112, "Workflows", ["ordered steps", "manual review"], AMBER)
+    draw_card(draw, fonts, 642, 250, 220, 112, "Workflows", ["ordered steps", "manual review"], AMBER)
     draw_card(draw, fonts, 888, 250, 220, 112, "Docs", ["generated EN/DE", "source aligned"], ROSE)
-    for x, label, color in [(622, "Author", CYAN), (802, "Import", LIME), (982, "Review", AMBER)]:
+    for x, label, color in [(642, "Author", CYAN), (812, "Import", LIME), (982, "Review", AMBER)]:
         draw_card(draw, fonts, x, 458, 150, 86, label, ["package JSON" if label == "Author" else "workbench" if label == "Import" else "approval"], color)
-    draw_arrow(draw, (774, 501), (802, 501), CYAN)
-    draw_arrow(draw, (954, 501), (982, 501), LIME)
+    draw_arrow(draw, (794, 501), (812, 501), CYAN)
+    draw_arrow(draw, (964, 501), (982, 501), LIME)
     return img
 
 
@@ -511,7 +517,7 @@ def render_anatomy(Image, ImageDraw, fonts):
     img, draw = make_canvas(Image, ImageDraw, (1200, 650))
     draw_text(draw, (50, 78), ".supra Package Anatomy", fonts(42, "bold"))
     draw_text(draw, (52, 116), "The v1 sections that make a package portable and reviewable", fonts(20), fill=MUTED)
-    rounded_card(draw, (438, 150, 762, 510), radius=24, fill=(12, 29, 45, 248), outline=(*CYAN, 170))
+    rounded_card(draw, (418, 150, 782, 510), radius=24, fill=(12, 29, 45, 248), outline=(*CYAN, 170))
     for i, (label, color) in enumerate(
         [
             ('"key": "example"', CYAN),
@@ -521,17 +527,17 @@ def render_anatomy(Image, ImageDraw, fonts):
             ('"main_workbench": {...}', CYAN),
         ]
     ):
-        draw_text(draw, (500, 205 + i * 50), label, fonts(25, "bold"), fill=color)
-    draw_text(draw, (470, 205), "{", fonts(50, "bold"), fill=CYAN)
-    draw_text(draw, (470, 472), "}", fonts(50, "bold"), fill=CYAN)
-    draw_card(draw, fonts, 80, 162, 260, 116, "metadata", ["identity", "versions", "starter rows"], LIME)
+        draw_text(draw, (490, 205 + i * 50), label, fonts(23, "bold"), fill=color)
+    draw_text(draw, (452, 205), "{", fonts(50, "bold"), fill=CYAN)
+    draw_text(draw, (452, 472), "}", fonts(50, "bold"), fill=CYAN)
+    draw_card(draw, fonts, 80, 154, 260, 132, "metadata", ["identity", "versions", "starter rows"], LIME)
     draw_card(draw, fonts, 80, 374, 260, 116, "output contracts", ["required fields", "quality gates"], ROSE)
-    draw_card(draw, fonts, 860, 162, 260, 116, "columns", ["manual", "ai_tool", "shortcut"], AMBER)
+    draw_card(draw, fonts, 860, 154, 260, 132, "columns", ["manual", "ai_tool", "shortcut"], AMBER)
     draw_card(draw, fonts, 860, 374, 260, 116, "main_workbench", ["exact mirror", "import-ready"], CYAN)
-    draw_arrow(draw, (346, 220), (432, 238), LIME)
-    draw_arrow(draw, (346, 430), (432, 390), ROSE)
-    draw_arrow(draw, (860, 220), (768, 295), AMBER)
-    draw_arrow(draw, (860, 430), (768, 400), CYAN)
+    draw_arrow(draw, (346, 220), (412, 238), LIME)
+    draw_arrow(draw, (346, 430), (412, 390), ROSE)
+    draw_arrow(draw, (860, 220), (788, 295), AMBER)
+    draw_arrow(draw, (860, 430), (788, 400), CYAN)
     return img
 
 
@@ -558,20 +564,20 @@ def render_import_export(Image, ImageDraw, fonts):
 
 def render_governance(Image, ImageDraw, fonts):
     img, draw = make_canvas(Image, ImageDraw, (1200, 650))
-    draw_text(draw, (50, 78), ".supra Governance Loop", fonts(42, "bold"))
-    draw_text(draw, (52, 116), "Facts, assumptions, evidence gaps, and human review for v1 packages", fonts(20), fill=MUTED)
-    draw.ellipse((482, 212, 718, 448), fill=(*CYAN, 25), outline=(*CYAN, 140), width=3)
-    draw_text(draw, (600, 310), "Review-first", fonts(31, "bold"), anchor="mm")
-    draw_text(draw, (600, 350), "execution", fonts(27, "bold"), fill=CYAN, anchor="mm")
+    draw_text(draw, (50, 64), ".supra Governance Loop", fonts(39, "bold"))
+    draw_text(draw, (52, 112), "Facts, assumptions, evidence gaps, and human review for v1 packages", fonts(20), fill=MUTED)
+    draw.ellipse((492, 248, 708, 464), fill=(*CYAN, 42), outline=(*CYAN, 150), width=3)
+    draw_text(draw, (600, 340), "Review-first", fonts(31, "bold"), anchor="mm")
+    draw_text(draw, (600, 378), "execution", fonts(27, "bold"), fill=INK, anchor="mm")
     cards = [
-        (102, 150, "Facts", ["separate known", "from inferred"], CYAN),
-        (486, 96, "Contracts", ["required JSON", "quality gates"], LIME),
-        (870, 150, "Human review", ["approval", "before use"], AMBER),
-        (870, 418, "Audit trail", ["docs", "CI and PRs"], CYAN),
-        (486, 472, "Evidence gaps", ["missing facts", "stay visible"], ROSE),
-        (102, 418, "Actions", ["owners", "next steps"], LIME),
+        (102, 172, "Facts", ["separate known", "from inferred"], CYAN),
+        (486, 150, "Contracts", ["required JSON", "quality gates"], LIME),
+        (870, 172, "Human review", ["approval", "before use"], AMBER),
+        (870, 430, "Audit trail", ["docs", "CI and PRs"], CYAN),
+        (486, 492, "Evidence gaps", ["missing facts", "stay visible"], ROSE),
+        (102, 430, "Actions", ["owners", "next steps"], LIME),
     ]
-    for start, end in [((330, 205), (480, 156)), ((720, 156), (870, 205)), ((985, 268), (985, 414)), ((870, 470), (720, 526)), ((486, 526), (330, 470)), ((215, 414), (215, 268))]:
+    for start, end in [((330, 226), (480, 204)), ((720, 204), (870, 226)), ((985, 290), (985, 426)), ((870, 482), (720, 546)), ((486, 546), (330, 482)), ((215, 426), (215, 290))]:
         draw_arrow(draw, start, end, CYAN)
     for x, y, title, lines, color in cards:
         draw_card(draw, fonts, x, y, 228, 110, title, lines, color)
