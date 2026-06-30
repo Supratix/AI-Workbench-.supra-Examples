@@ -118,12 +118,24 @@
               "evidence_gaps"
             ],
             "properties": {
-              "summary": {"type": "string"},
-              "normalized_sources": {"type": "array"},
-              "consent_status": {"type": "array"},
-              "retention_flags": {"type": "array"},
-              "action_receipts": {"type": "array"},
-              "evidence_gaps": {"type": "array"}
+              "summary": {
+                "type": "string"
+              },
+              "normalized_sources": {
+                "type": "array"
+              },
+              "consent_status": {
+                "type": "array"
+              },
+              "retention_flags": {
+                "type": "array"
+              },
+              "action_receipts": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
             }
           },
           "quality_gate": "Every source must include tenant_id, source_type, consent status, retention label, privacy class, and evidence confidence before graph use.",
@@ -157,18 +169,44 @@
           "schema_version": "WORKFORCE_GRAPH_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "nodes", "edges", "critical_skills", "confidence", "evidence_gaps"],
+          "required_fields": [
+            "summary",
+            "nodes",
+            "edges",
+            "critical_skills",
+            "confidence",
+            "evidence_gaps"
+          ],
           "json_schema": {
             "type": "object",
             "additionalProperties": true,
-            "required": ["summary", "nodes", "edges", "critical_skills", "confidence", "evidence_gaps"],
+            "required": [
+              "summary",
+              "nodes",
+              "edges",
+              "critical_skills",
+              "confidence",
+              "evidence_gaps"
+            ],
             "properties": {
-              "summary": {"type": "string"},
-              "nodes": {"type": "array"},
-              "edges": {"type": "array"},
-              "critical_skills": {"type": "array"},
-              "confidence": {"type": "string"},
-              "evidence_gaps": {"type": "array"}
+              "summary": {
+                "type": "string"
+              },
+              "nodes": {
+                "type": "array"
+              },
+              "edges": {
+                "type": "array"
+              },
+              "critical_skills": {
+                "type": "array"
+              },
+              "confidence": {
+                "type": "string"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
             }
           },
           "quality_gate": "Graph nodes and edges must carry source evidence, confidence, tenant_id, and privacy class.",
@@ -182,18 +220,67 @@
       "column_kind": "step",
       "type": "fa-solid fa-magnifying-glass-chart",
       "type_tool_input_dropdown": "fa-solid fa-magnifying-glass-chart",
-      "input_from": ["workforce_intake", "speaksphere_capture", "competence_graph"],
+      "input_from": [
+        "workforce_intake",
+        "speaksphere_capture",
+        "competence_graph"
+      ],
       "tool_category": "ai_tool",
       "tool": "workforce_graphrag_retriever",
       "prompt": "Answer workforce, skill, SOP, and expert-knowledge questions using graph-aware retrieval. Traverse competence graph paths, retrieve source chunks, cite evidence IDs, expose confidence, and return a response that distinguishes verified knowledge from missing evidence. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Retrieve grounded answer", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Retrieve grounded answer",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_GRAPHRAG_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["query_answer", "citations", "graph_paths", "source_chunks", "confidence", "evidence_gaps"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["query_answer", "citations", "graph_paths", "source_chunks", "confidence", "evidence_gaps"], "properties": {"query_answer": {"type": "string"}, "citations": {"type": "array"}, "graph_paths": {"type": "array"}, "source_chunks": {"type": "array"}, "confidence": {"type": "string"}, "evidence_gaps": {"type": "array"}}},
+          "required_fields": [
+            "query_answer",
+            "citations",
+            "graph_paths",
+            "source_chunks",
+            "confidence",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "query_answer",
+              "citations",
+              "graph_paths",
+              "source_chunks",
+              "confidence",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "query_answer": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array"
+              },
+              "graph_paths": {
+                "type": "array"
+              },
+              "source_chunks": {
+                "type": "array"
+              },
+              "confidence": {
+                "type": "string"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "Answers must be grounded in source chunks or graph paths and must not expose cross-tenant data.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -205,18 +292,67 @@
       "column_kind": "step",
       "type": "fa-solid fa-user-gear",
       "type_tool_input_dropdown": "fa-solid fa-user-gear",
-      "input_from": ["workforce_intake", "speaksphere_capture", "competence_graph"],
+      "input_from": [
+        "workforce_intake",
+        "speaksphere_capture",
+        "competence_graph"
+      ],
       "tool_category": "ai_tool",
       "tool": "expert_digital_twin_builder",
       "prompt": "Create or update digital competence twins for experts using captured knowledge, skill evidence, mentoring signals, project history, and documented tacit knowledge. Produce knowledge domains, coverage, knowledge-transfer priorities, confidence explanations, and human-review flags. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Build expert twins", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Build expert twins",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_EXPERT_TWIN_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "expert_twins", "knowledge_domains", "risk_scores", "transfer_tasks", "explainability"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "expert_twins", "knowledge_domains", "risk_scores", "transfer_tasks", "explainability"], "properties": {"summary": {"type": "string"}, "expert_twins": {"type": "array"}, "knowledge_domains": {"type": "array"}, "risk_scores": {"type": "array"}, "transfer_tasks": {"type": "array"}, "explainability": {"type": "array"}}},
+          "required_fields": [
+            "summary",
+            "expert_twins",
+            "knowledge_domains",
+            "risk_scores",
+            "transfer_tasks",
+            "explainability"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "expert_twins",
+              "knowledge_domains",
+              "risk_scores",
+              "transfer_tasks",
+              "explainability"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "expert_twins": {
+                "type": "array"
+              },
+              "knowledge_domains": {
+                "type": "array"
+              },
+              "risk_scores": {
+                "type": "array"
+              },
+              "transfer_tasks": {
+                "type": "array"
+              },
+              "explainability": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "Expert twins must be explainable, evidence-linked, and reviewable by HR and the expert owner before operational use.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -228,18 +364,72 @@
       "column_kind": "step",
       "type": "fa-solid fa-triangle-exclamation",
       "type_tool_input_dropdown": "fa-solid fa-triangle-exclamation",
-      "input_from": ["workforce_intake", "competence_graph", "expert_digital_twins"],
+      "input_from": [
+        "workforce_intake",
+        "competence_graph",
+        "expert_digital_twins"
+      ],
       "tool_category": "ai_tool",
       "tool": "skill_gap_risk_analyzer",
       "prompt": "Compare required capabilities against available competence evidence for teams, projects, machines, compliance obligations, retirements, and growth plans. Produce role-level gaps, heatmap data, impact estimates, succession risk, assumptions, and evidence gaps. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Analyze skill gaps", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Analyze skill gaps",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_SKILL_GAP_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "gaps", "heatmap", "impact", "risk_ranking", "assumptions", "evidence_gaps"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "gaps", "heatmap", "impact", "risk_ranking", "assumptions", "evidence_gaps"], "properties": {"summary": {"type": "string"}, "gaps": {"type": "array"}, "heatmap": {"type": "array"}, "impact": {"type": "array"}, "risk_ranking": {"type": "array"}, "assumptions": {"type": "array"}, "evidence_gaps": {"type": "array"}}},
+          "required_fields": [
+            "summary",
+            "gaps",
+            "heatmap",
+            "impact",
+            "risk_ranking",
+            "assumptions",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "gaps",
+              "heatmap",
+              "impact",
+              "risk_ranking",
+              "assumptions",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "gaps": {
+                "type": "array"
+              },
+              "heatmap": {
+                "type": "array"
+              },
+              "impact": {
+                "type": "array"
+              },
+              "risk_ranking": {
+                "type": "array"
+              },
+              "assumptions": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "Skill gaps must be evidence-based, avoid protected-class inference, and mark all people decisions for HR review.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -251,18 +441,72 @@
       "column_kind": "step",
       "type": "fa-solid fa-graduation-cap",
       "type_tool_input_dropdown": "fa-solid fa-graduation-cap",
-      "input_from": ["workforce_intake", "competence_graph", "skill_gap_analysis"],
+      "input_from": [
+        "workforce_intake",
+        "competence_graph",
+        "skill_gap_analysis"
+      ],
       "tool_category": "ai_tool",
       "tool": "learning_path_recommender",
       "prompt": "Generate targeted learning paths, mentoring interventions, capture sessions, micro-SOP assignments, certificate refreshes, and manager checkpoints. Prioritize actions that close critical skill gaps while respecting availability, budget, and compliance constraints. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Recommend learning paths", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Recommend learning paths",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_LEARNING_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "learning_paths", "interventions", "owners", "metrics", "checkpoints", "evidence_gaps"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "learning_paths", "interventions", "owners", "metrics", "checkpoints", "evidence_gaps"], "properties": {"summary": {"type": "string"}, "learning_paths": {"type": "array"}, "interventions": {"type": "array"}, "owners": {"type": "array"}, "metrics": {"type": "array"}, "checkpoints": {"type": "array"}, "evidence_gaps": {"type": "array"}}},
+          "required_fields": [
+            "summary",
+            "learning_paths",
+            "interventions",
+            "owners",
+            "metrics",
+            "checkpoints",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "learning_paths",
+              "interventions",
+              "owners",
+              "metrics",
+              "checkpoints",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "learning_paths": {
+                "type": "array"
+              },
+              "interventions": {
+                "type": "array"
+              },
+              "owners": {
+                "type": "array"
+              },
+              "metrics": {
+                "type": "array"
+              },
+              "checkpoints": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "Recommendations must map every action to a gap, owner, expected evidence artifact, metric, and checkpoint cadence.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -274,18 +518,72 @@
       "column_kind": "step",
       "type": "fa-solid fa-user-plus",
       "type_tool_input_dropdown": "fa-solid fa-user-plus",
-      "input_from": ["workforce_intake", "skill_gap_analysis", "learning_recommendations"],
+      "input_from": [
+        "workforce_intake",
+        "skill_gap_analysis",
+        "learning_recommendations"
+      ],
       "tool_category": "ai_tool",
       "tool": "workforce_recruiting_assistant",
       "prompt": "Convert unresolved skill gaps into recruiting briefs, role scorecards, interview rubrics, onboarding knowledge-capture tasks, and approval items. Include bias checks, evidence limits, and handoff notes for HR. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Draft recruiting support", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Draft recruiting support",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_RECRUITING_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "role_scorecards", "sourcing_brief", "interview_rubric", "bias_checks", "approval_items", "evidence_gaps"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "role_scorecards", "sourcing_brief", "interview_rubric", "bias_checks", "approval_items", "evidence_gaps"], "properties": {"summary": {"type": "string"}, "role_scorecards": {"type": "array"}, "sourcing_brief": {"type": "array"}, "interview_rubric": {"type": "array"}, "bias_checks": {"type": "array"}, "approval_items": {"type": "array"}, "evidence_gaps": {"type": "array"}}},
+          "required_fields": [
+            "summary",
+            "role_scorecards",
+            "sourcing_brief",
+            "interview_rubric",
+            "bias_checks",
+            "approval_items",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "role_scorecards",
+              "sourcing_brief",
+              "interview_rubric",
+              "bias_checks",
+              "approval_items",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "role_scorecards": {
+                "type": "array"
+              },
+              "sourcing_brief": {
+                "type": "array"
+              },
+              "interview_rubric": {
+                "type": "array"
+              },
+              "bias_checks": {
+                "type": "array"
+              },
+              "approval_items": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "Recruiting outputs must be job-related, evidence-aware, reviewable by HR, and separated from automated employment decisions.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -297,18 +595,82 @@
       "column_kind": "step",
       "type": "fa-solid fa-shield-halved",
       "type_tool_input_dropdown": "fa-solid fa-shield-halved",
-      "input_from": ["workforce_intake", "speaksphere_capture", "competence_graph", "graphrag_retrieval", "expert_digital_twins", "skill_gap_analysis", "learning_recommendations", "recruiting_assistant"],
+      "input_from": [
+        "workforce_intake",
+        "speaksphere_capture",
+        "competence_graph",
+        "graphrag_retrieval",
+        "expert_digital_twins",
+        "skill_gap_analysis",
+        "learning_recommendations",
+        "recruiting_assistant"
+      ],
       "tool_category": "shortcut",
       "tool": "workforce_intelligence_action_receipts",
       "prompt": "Create the managed Workforce Intelligence action plan. Include action receipts, explainable AI logs, RBAC-sensitive approvals, tenant controls, audit notes, unresolved risks, and evidence gaps. Respond in the same language as the user and keep all HR-sensitive decisions in human-review mode. Return JSON only.",
       "tooling": {
-        "prompt_execution": {"execute_prompt": true, "selected": true, "mode": "manual_review", "requires_review": true, "label": "Generate governance pack", "reason": "github_example_package"},
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Generate governance pack",
+          "reason": "github_example_package"
+        },
         "output_contract": {
           "schema_version": "WORKFORCE_ACTION_RECEIPT_OUTPUT_V1",
           "content_type": "application/json",
           "expects_json": true,
-          "required_fields": ["summary", "action_plan", "action_receipts", "explainable_ai_logs", "approvals", "tenant_controls", "risks", "evidence_gaps"],
-          "json_schema": {"type": "object", "additionalProperties": true, "required": ["summary", "action_plan", "action_receipts", "explainable_ai_logs", "approvals", "tenant_controls", "risks", "evidence_gaps"], "properties": {"summary": {"type": "string"}, "action_plan": {"type": "array"}, "action_receipts": {"type": "array"}, "explainable_ai_logs": {"type": "array"}, "approvals": {"type": "array"}, "tenant_controls": {"type": "array"}, "risks": {"type": "array"}, "evidence_gaps": {"type": "array"}}},
+          "required_fields": [
+            "summary",
+            "action_plan",
+            "action_receipts",
+            "explainable_ai_logs",
+            "approvals",
+            "tenant_controls",
+            "risks",
+            "evidence_gaps"
+          ],
+          "json_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "summary",
+              "action_plan",
+              "action_receipts",
+              "explainable_ai_logs",
+              "approvals",
+              "tenant_controls",
+              "risks",
+              "evidence_gaps"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "action_plan": {
+                "type": "array"
+              },
+              "action_receipts": {
+                "type": "array"
+              },
+              "explainable_ai_logs": {
+                "type": "array"
+              },
+              "approvals": {
+                "type": "array"
+              },
+              "tenant_controls": {
+                "type": "array"
+              },
+              "risks": {
+                "type": "array"
+              },
+              "evidence_gaps": {
+                "type": "array"
+              }
+            }
+          },
           "quality_gate": "The final pack must show who, what, why, when, evidence, and human approval dependencies for every suggested action.",
           "evidence_policy": "tenant_scoped_grounded_evidence"
         }
@@ -322,15 +684,78 @@
       "description": "Preserve expert knowledge, map competency risk, and orchestrate learning, succession, and recruiting workflows with explainable AI receipts.",
       "workflow_pipe": true,
       "steps": [
-        {"id": "workforce_intake", "title": "Workforce intake", "step_position": 0, "backlog": true, "auto_finished": false, "auto_close": false},
-        {"id": "speaksphere_capture", "title": "SpeakSphere capture", "step_position": 1, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "competence_graph", "title": "Competence graph", "step_position": 2, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "graphrag_retrieval", "title": "GraphRAG retrieval", "step_position": 3, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "expert_digital_twins", "title": "Expert digital twins", "step_position": 4, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "skill_gap_analysis", "title": "Skill gap analysis", "step_position": 5, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "learning_recommendations", "title": "Learning recommendations", "step_position": 6, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "recruiting_assistant", "title": "Recruiting assistant", "step_position": 7, "backlog": false, "auto_finished": false, "auto_close": false},
-        {"id": "governance_receipts", "title": "Governance receipts", "step_position": 8, "backlog": false, "auto_finished": false, "auto_close": false}
+        {
+          "id": "workforce_intake",
+          "title": "Workforce intake",
+          "step_position": 0,
+          "backlog": true,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "speaksphere_capture",
+          "title": "SpeakSphere capture",
+          "step_position": 1,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "competence_graph",
+          "title": "Competence graph",
+          "step_position": 2,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "graphrag_retrieval",
+          "title": "GraphRAG retrieval",
+          "step_position": 3,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "expert_digital_twins",
+          "title": "Expert digital twins",
+          "step_position": 4,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "skill_gap_analysis",
+          "title": "Skill gap analysis",
+          "step_position": 5,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "learning_recommendations",
+          "title": "Learning recommendations",
+          "step_position": 6,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "recruiting_assistant",
+          "title": "Recruiting assistant",
+          "step_position": 7,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        },
+        {
+          "id": "governance_receipts",
+          "title": "Governance receipts",
+          "step_position": 8,
+          "backlog": false,
+          "auto_finished": false,
+          "auto_close": false
+        }
       ]
     }
   ],
@@ -340,20 +765,709 @@
     "description": "Preserve expert knowledge, map competency risk, and orchestrate learning, succession, and recruiting workflows with explainable AI receipts.",
     "workbench_title": "Workforce Intelligence Platform",
     "columns": [
-      {"key": "workforce_intake"},
-      {"key": "speaksphere_capture"},
-      {"key": "competence_graph"},
-      {"key": "graphrag_retrieval"},
-      {"key": "expert_digital_twins"},
-      {"key": "skill_gap_analysis"},
-      {"key": "learning_recommendations"},
-      {"key": "recruiting_assistant"},
-      {"key": "governance_receipts"}
+      {
+        "key": "workforce_intake",
+        "title": "Workforce intake",
+        "column_kind": "step",
+        "type": "fa-solid fa-file-lines",
+        "type_tool_input_dropdown": "fa-solid fa-file-lines",
+        "tool_category": "manual",
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake",
+            "reason": "github_example_package"
+          }
+        }
+      },
+      {
+        "key": "speaksphere_capture",
+        "title": "SpeakSphere capture",
+        "column_kind": "step",
+        "type": "fa-solid fa-microphone-lines",
+        "type_tool_input_dropdown": "fa-solid fa-microphone-lines",
+        "input_from": [
+          "workforce_intake"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "speaksphere_capture_ingest",
+        "prompt": "Normalize SpeakSphere transcripts, video notes, meeting summaries, uploaded SOPs, HRIS/LMS/ATS exports, and ERP context into tenant-scoped knowledge-capture records. Preserve consent and retention flags, separate facts from inferred statements, redact sensitive personal data where policy requires it, and emit action receipts for every transformation. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Ingest knowledge capture",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_CAPTURE_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "normalized_sources",
+              "consent_status",
+              "retention_flags",
+              "action_receipts",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "normalized_sources",
+                "consent_status",
+                "retention_flags",
+                "action_receipts",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "normalized_sources": {
+                  "type": "array"
+                },
+                "consent_status": {
+                  "type": "array"
+                },
+                "retention_flags": {
+                  "type": "array"
+                },
+                "action_receipts": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Every source must include tenant_id, source_type, consent status, retention label, privacy class, and evidence confidence before graph use.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "competence_graph",
+        "title": "Competence graph",
+        "column_kind": "step",
+        "type": "fa-solid fa-diagram-project",
+        "type_tool_input_dropdown": "fa-solid fa-diagram-project",
+        "input_from": [
+          "workforce_intake",
+          "speaksphere_capture"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "competence_graph_engine",
+        "prompt": "Build a competence graph from captured knowledge, roles, tasks, machines, projects, certificates, teams, and experts. Create nodes and edges with evidence references, confidence scores, criticality, succession risk, and tenant isolation metadata. Do not infer employment decisions; flag HR review items. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Build competence graph",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_GRAPH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "nodes",
+              "edges",
+              "critical_skills",
+              "confidence",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "nodes",
+                "edges",
+                "critical_skills",
+                "confidence",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "nodes": {
+                  "type": "array"
+                },
+                "edges": {
+                  "type": "array"
+                },
+                "critical_skills": {
+                  "type": "array"
+                },
+                "confidence": {
+                  "type": "string"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Graph nodes and edges must carry source evidence, confidence, tenant_id, and privacy class.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "graphrag_retrieval",
+        "title": "GraphRAG retrieval",
+        "column_kind": "step",
+        "type": "fa-solid fa-magnifying-glass-chart",
+        "type_tool_input_dropdown": "fa-solid fa-magnifying-glass-chart",
+        "input_from": [
+          "workforce_intake",
+          "speaksphere_capture",
+          "competence_graph"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "workforce_graphrag_retriever",
+        "prompt": "Answer workforce, skill, SOP, and expert-knowledge questions using graph-aware retrieval. Traverse competence graph paths, retrieve source chunks, cite evidence IDs, expose confidence, and return a response that distinguishes verified knowledge from missing evidence. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Retrieve grounded answer",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_GRAPHRAG_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "query_answer",
+              "citations",
+              "graph_paths",
+              "source_chunks",
+              "confidence",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "query_answer",
+                "citations",
+                "graph_paths",
+                "source_chunks",
+                "confidence",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "query_answer": {
+                  "type": "string"
+                },
+                "citations": {
+                  "type": "array"
+                },
+                "graph_paths": {
+                  "type": "array"
+                },
+                "source_chunks": {
+                  "type": "array"
+                },
+                "confidence": {
+                  "type": "string"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Answers must be grounded in source chunks or graph paths and must not expose cross-tenant data.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "expert_digital_twins",
+        "title": "Expert digital twins",
+        "column_kind": "step",
+        "type": "fa-solid fa-user-gear",
+        "type_tool_input_dropdown": "fa-solid fa-user-gear",
+        "input_from": [
+          "workforce_intake",
+          "speaksphere_capture",
+          "competence_graph"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "expert_digital_twin_builder",
+        "prompt": "Create or update digital competence twins for experts using captured knowledge, skill evidence, mentoring signals, project history, and documented tacit knowledge. Produce knowledge domains, coverage, knowledge-transfer priorities, confidence explanations, and human-review flags. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Build expert twins",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_EXPERT_TWIN_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "expert_twins",
+              "knowledge_domains",
+              "risk_scores",
+              "transfer_tasks",
+              "explainability"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "expert_twins",
+                "knowledge_domains",
+                "risk_scores",
+                "transfer_tasks",
+                "explainability"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "expert_twins": {
+                  "type": "array"
+                },
+                "knowledge_domains": {
+                  "type": "array"
+                },
+                "risk_scores": {
+                  "type": "array"
+                },
+                "transfer_tasks": {
+                  "type": "array"
+                },
+                "explainability": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Expert twins must be explainable, evidence-linked, and reviewable by HR and the expert owner before operational use.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "skill_gap_analysis",
+        "title": "Skill gap analysis",
+        "column_kind": "step",
+        "type": "fa-solid fa-triangle-exclamation",
+        "type_tool_input_dropdown": "fa-solid fa-triangle-exclamation",
+        "input_from": [
+          "workforce_intake",
+          "competence_graph",
+          "expert_digital_twins"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "skill_gap_risk_analyzer",
+        "prompt": "Compare required capabilities against available competence evidence for teams, projects, machines, compliance obligations, retirements, and growth plans. Produce role-level gaps, heatmap data, impact estimates, succession risk, assumptions, and evidence gaps. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Analyze skill gaps",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_SKILL_GAP_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "gaps",
+              "heatmap",
+              "impact",
+              "risk_ranking",
+              "assumptions",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "gaps",
+                "heatmap",
+                "impact",
+                "risk_ranking",
+                "assumptions",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "gaps": {
+                  "type": "array"
+                },
+                "heatmap": {
+                  "type": "array"
+                },
+                "impact": {
+                  "type": "array"
+                },
+                "risk_ranking": {
+                  "type": "array"
+                },
+                "assumptions": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Skill gaps must be evidence-based, avoid protected-class inference, and mark all people decisions for HR review.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "learning_recommendations",
+        "title": "Learning recommendations",
+        "column_kind": "step",
+        "type": "fa-solid fa-graduation-cap",
+        "type_tool_input_dropdown": "fa-solid fa-graduation-cap",
+        "input_from": [
+          "workforce_intake",
+          "competence_graph",
+          "skill_gap_analysis"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "learning_path_recommender",
+        "prompt": "Generate targeted learning paths, mentoring interventions, capture sessions, micro-SOP assignments, certificate refreshes, and manager checkpoints. Prioritize actions that close critical skill gaps while respecting availability, budget, and compliance constraints. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Recommend learning paths",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_LEARNING_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "learning_paths",
+              "interventions",
+              "owners",
+              "metrics",
+              "checkpoints",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "learning_paths",
+                "interventions",
+                "owners",
+                "metrics",
+                "checkpoints",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "learning_paths": {
+                  "type": "array"
+                },
+                "interventions": {
+                  "type": "array"
+                },
+                "owners": {
+                  "type": "array"
+                },
+                "metrics": {
+                  "type": "array"
+                },
+                "checkpoints": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Recommendations must map every action to a gap, owner, expected evidence artifact, metric, and checkpoint cadence.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "recruiting_assistant",
+        "title": "Recruiting assistant",
+        "column_kind": "step",
+        "type": "fa-solid fa-user-plus",
+        "type_tool_input_dropdown": "fa-solid fa-user-plus",
+        "input_from": [
+          "workforce_intake",
+          "skill_gap_analysis",
+          "learning_recommendations"
+        ],
+        "tool_category": "ai_tool",
+        "tool": "workforce_recruiting_assistant",
+        "prompt": "Convert unresolved skill gaps into recruiting briefs, role scorecards, interview rubrics, onboarding knowledge-capture tasks, and approval items. Include bias checks, evidence limits, and handoff notes for HR. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Draft recruiting support",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_RECRUITING_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "role_scorecards",
+              "sourcing_brief",
+              "interview_rubric",
+              "bias_checks",
+              "approval_items",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "role_scorecards",
+                "sourcing_brief",
+                "interview_rubric",
+                "bias_checks",
+                "approval_items",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "role_scorecards": {
+                  "type": "array"
+                },
+                "sourcing_brief": {
+                  "type": "array"
+                },
+                "interview_rubric": {
+                  "type": "array"
+                },
+                "bias_checks": {
+                  "type": "array"
+                },
+                "approval_items": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "Recruiting outputs must be job-related, evidence-aware, reviewable by HR, and separated from automated employment decisions.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      },
+      {
+        "key": "governance_receipts",
+        "title": "Governance receipts",
+        "column_kind": "step",
+        "type": "fa-solid fa-shield-halved",
+        "type_tool_input_dropdown": "fa-solid fa-shield-halved",
+        "input_from": [
+          "workforce_intake",
+          "speaksphere_capture",
+          "competence_graph",
+          "graphrag_retrieval",
+          "expert_digital_twins",
+          "skill_gap_analysis",
+          "learning_recommendations",
+          "recruiting_assistant"
+        ],
+        "tool_category": "shortcut",
+        "tool": "workforce_intelligence_action_receipts",
+        "prompt": "Create the managed Workforce Intelligence action plan. Include action receipts, explainable AI logs, RBAC-sensitive approvals, tenant controls, audit notes, unresolved risks, and evidence gaps. Respond in the same language as the user and keep all HR-sensitive decisions in human-review mode. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Generate governance pack",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "WORKFORCE_ACTION_RECEIPT_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "action_plan",
+              "action_receipts",
+              "explainable_ai_logs",
+              "approvals",
+              "tenant_controls",
+              "risks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "action_plan",
+                "action_receipts",
+                "explainable_ai_logs",
+                "approvals",
+                "tenant_controls",
+                "risks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "action_plan": {
+                  "type": "array"
+                },
+                "action_receipts": {
+                  "type": "array"
+                },
+                "explainable_ai_logs": {
+                  "type": "array"
+                },
+                "approvals": {
+                  "type": "array"
+                },
+                "tenant_controls": {
+                  "type": "array"
+                },
+                "risks": {
+                  "type": "array"
+                },
+                "evidence_gaps": {
+                  "type": "array"
+                }
+              }
+            },
+            "quality_gate": "The final pack must show who, what, why, when, evidence, and human approval dependencies for every suggested action.",
+            "evidence_policy": "tenant_scoped_grounded_evidence"
+          }
+        }
+      }
     ],
     "workflows": [
       {
         "id": "workforce_intelligence_platform_workflow",
-        "title": "SupraWorx Workforce Intelligence workflow"
+        "title": "SupraWorx Workforce Intelligence workflow",
+        "description": "Preserve expert knowledge, map competency risk, and orchestrate learning, succession, and recruiting workflows with explainable AI receipts.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "workforce_intake",
+            "title": "Workforce intake",
+            "step_position": 0,
+            "backlog": true,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "speaksphere_capture",
+            "title": "SpeakSphere capture",
+            "step_position": 1,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "competence_graph",
+            "title": "Competence graph",
+            "step_position": 2,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "graphrag_retrieval",
+            "title": "GraphRAG retrieval",
+            "step_position": 3,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "expert_digital_twins",
+            "title": "Expert digital twins",
+            "step_position": 4,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "skill_gap_analysis",
+            "title": "Skill gap analysis",
+            "step_position": 5,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "learning_recommendations",
+            "title": "Learning recommendations",
+            "step_position": 6,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "recruiting_assistant",
+            "title": "Recruiting assistant",
+            "step_position": 7,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          },
+          {
+            "id": "governance_receipts",
+            "title": "Governance receipts",
+            "step_position": 8,
+            "backlog": false,
+            "auto_finished": false,
+            "auto_close": false
+          }
+        ]
       }
     ]
   }

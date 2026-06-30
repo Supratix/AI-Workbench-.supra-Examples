@@ -33,15 +33,15 @@ _Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._
 
 ## Workflow
 
-### 
+### SME ESG Sustainability Copilot Workflow
 
+Konsolidiert Nachhaltigkeitsnachweise zu einer ESG-Readiness-Scorecard mit Gap-Analyse und Maßnahmenplan.
 
-
-| # | Schritt | ID                 | Backlog |
-| - | ------- | ------------------ | ------- |
-| 1 |         | `business_context` | nein    |
-| 2 |         | `esg_evidence_map` | nein    |
-| 3 |         | `reporting_brief`  | nein    |
+| # | Schritt          | ID                 | Backlog |
+| - | ---------------- | ------------------ | ------- |
+| 1 | Business context | `business_context` | nein    |
+| 2 | ESG evidence map | `esg_evidence_map` | nein    |
+| 3 | Reporting brief  | `reporting_brief`  | nein    |
 
 ## Spalten und Tools
 

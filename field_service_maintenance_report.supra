@@ -97,7 +97,48 @@
               "photo_uris",
               "uncertainty_terms",
               "evidence_gaps"
-            ]
+            ],
+            "properties": {
+              "job_id": {
+                "type": "string"
+              },
+              "asset_id": {
+                "type": "string"
+              },
+              "source_list": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "transcript_text": {
+                "type": "string"
+              },
+              "checklist_items": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "photo_uris": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "uncertainty_terms": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "evidence_gaps": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only with traceable sources.",
           "evidence_policy": "no_invented_facts"
@@ -138,7 +179,16 @@
             "required": [
               "job_report",
               "summary"
-            ]
+            ],
+            "properties": {
+              "job_report": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "summary": {
+                "type": "string"
+              }
+            }
           },
           "quality_gate": "Return JSON only with explicit assumptions and provenance.",
           "evidence_policy": "traceable_sources_required"
@@ -184,7 +234,30 @@
               "attachments",
               "validation_assertions",
               "evidence_gaps"
-            ]
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "attachments": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "validation_assertions": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "evidence_gaps": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only with summary, attachments, validation assertions, and evidence gaps.",
           "evidence_policy": "traceable_sources_required"
@@ -261,8 +334,12 @@
         "key": "transcribed_evidence",
         "title": "Transcribed evidence",
         "column_kind": "step",
+        "input_from": [
+          "service_intake"
+        ],
         "tool_category": "ai_tool",
         "tool": "field_service_maintenance_report_evidence",
+        "prompt": "Extract job_id, asset_id, sources, transcript text, checklist items, photo URIs, uncertainty terms, and evidence gaps. Preserve part numbers. Return JSON only.",
         "tooling": {
           "prompt_execution": {
             "execute_prompt": true,
@@ -271,18 +348,92 @@
             "requires_review": true,
             "label": "Normalize evidence",
             "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "FIELD_SERVICE_EVIDENCE_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "job_id",
+              "asset_id",
+              "source_list",
+              "transcript_text",
+              "checklist_items",
+              "photo_uris",
+              "uncertainty_terms",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "job_id",
+                "asset_id",
+                "source_list",
+                "transcript_text",
+                "checklist_items",
+                "photo_uris",
+                "uncertainty_terms",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "job_id": {
+                  "type": "string"
+                },
+                "asset_id": {
+                  "type": "string"
+                },
+                "source_list": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "transcript_text": {
+                  "type": "string"
+                },
+                "checklist_items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "photo_uris": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "uncertainty_terms": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "evidence_gaps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only with traceable sources.",
+            "evidence_policy": "no_invented_facts"
           }
-        },
-        "input_from": [
-          "service_intake"
-        ]
+        }
       },
       {
         "key": "maintenance_report",
         "title": "Maintenance report",
         "column_kind": "step",
+        "input_from": [
+          "service_intake",
+          "transcribed_evidence"
+        ],
         "tool_category": "ai_tool",
         "tool": "field_service_maintenance_report_codex",
+        "prompt": "Return one JSON object with job_report and summary. job_report must include job_id, asset_id, ordered steps, parts_used, time_minutes, issues, safety_flags, completed, signature, provenance, and assumptions. Preserve explicit part numbers and integer durations.",
         "tooling": {
           "prompt_execution": {
             "execute_prompt": true,
@@ -291,19 +442,49 @@
             "requires_review": true,
             "label": "Build report",
             "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "FIELD_SERVICE_MAINTENANCE_REPORT_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "job_report",
+              "summary"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "job_report",
+                "summary"
+              ],
+              "properties": {
+                "job_report": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "summary": {
+                  "type": "string"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only with explicit assumptions and provenance.",
+            "evidence_policy": "traceable_sources_required"
           }
-        },
-        "input_from": [
-          "service_intake",
-          "transcribed_evidence"
-        ]
+        }
       },
       {
         "key": "customer_summary",
         "title": "Customer summary",
         "column_kind": "step",
+        "input_from": [
+          "service_intake",
+          "transcribed_evidence",
+          "maintenance_report"
+        ],
         "tool_category": "shortcut",
         "tool": "field_service_maintenance_report",
+        "prompt": "Create a one-sentence customer summary plus JSON/PDF export checklist. Preserve part numbers and flag delivery-blocking evidence gaps. Return JSON only.",
         "tooling": {
           "prompt_execution": {
             "execute_prompt": true,
@@ -312,13 +493,54 @@
             "requires_review": true,
             "label": "Generate customer summary",
             "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "FIELD_SERVICE_CUSTOMER_SUMMARY_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "attachments",
+              "validation_assertions",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "attachments",
+                "validation_assertions",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "validation_assertions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "evidence_gaps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only with summary, attachments, validation assertions, and evidence gaps.",
+            "evidence_policy": "traceable_sources_required"
           }
-        },
-        "input_from": [
-          "service_intake",
-          "transcribed_evidence",
-          "maintenance_report"
-        ]
+        }
       }
     ],
     "workflows": [

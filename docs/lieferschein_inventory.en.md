@@ -10,7 +10,7 @@ This documentation is generated from the `.supra` package content.
 - **Vendor:** SupraTix
 - **Schema version:** `1`
 - **Columns:** 3
-- **Workflows:** 0
+- **Workflows:** 1
 
 ## Purpose
 
@@ -43,7 +43,15 @@ Map delivery-note lines to internal products, flag ambiguous matches, and produc
 
 ## Workflow
 
-_No workflow is configured._
+### Lieferschein inventory workflow
+
+Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.
+
+| # | Step                  | ID                | Backlog |
+| - | --------------------- | ----------------- | ------- |
+| 1 | Delivery note         | `delivery_note`   | no      |
+| 2 | Product mapping       | `product_mapping` | no      |
+| 3 | Stock update proposal | `stock_update`    | no      |
 
 ## Columns and Tools
 

@@ -191,7 +191,31 @@
       }
     }
   ],
-  "workflows": [],
+  "workflows": [
+    {
+      "id": "lieferschein_inventory_workflow",
+      "title": "Lieferschein inventory workflow",
+      "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
+      "workflow_pipe": true,
+      "steps": [
+        {
+          "id": "delivery_note",
+          "title": "Delivery note",
+          "step_position": 0
+        },
+        {
+          "id": "product_mapping",
+          "title": "Product mapping",
+          "step_position": 1
+        },
+        {
+          "id": "stock_update",
+          "title": "Stock update proposal",
+          "step_position": 2
+        }
+      ]
+    }
+  ],
   "main_workbench": {
     "key": "lieferschein_inventory",
     "title": "Lieferschein → Lagerbestand (Internal Products)",
@@ -354,6 +378,30 @@
         }
       }
     ],
-    "workflows": []
+    "workflows": [
+      {
+        "id": "lieferschein_inventory_workflow",
+        "title": "Lieferschein inventory workflow",
+        "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
+        "workflow_pipe": true,
+        "steps": [
+          {
+            "id": "delivery_note",
+            "title": "Delivery note",
+            "step_position": 0
+          },
+          {
+            "id": "product_mapping",
+            "title": "Product mapping",
+            "step_position": 1
+          },
+          {
+            "id": "stock_update",
+            "title": "Stock update proposal",
+            "step_position": 2
+          }
+        ]
+      }
+    ]
   }
 }

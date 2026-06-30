@@ -95,7 +95,40 @@
               "mandatory_requirements",
               "compliance_issues",
               "evidence_gaps"
-            ]
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "tender_document": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "evaluation_criteria": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "mandatory_requirements": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "compliance_issues": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "evidence_gaps": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
           "evidence_policy": "no_invented_facts"
@@ -147,7 +180,40 @@
               "mandatory_pass",
               "remediation_tasks",
               "evidence_gaps"
-            ]
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "scoring_matrix": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "confidence": {
+                "type": "number"
+              },
+              "mandatory_pass": {
+                "type": "boolean"
+              },
+              "remediation_tasks": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "evidence_gaps": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
           "evidence_policy": "no_invented_facts"
@@ -200,7 +266,42 @@
               "risk_note",
               "mitigation_tasks",
               "compliance_issues"
-            ]
+            ],
+            "properties": {
+              "proposal_text": {
+                "type": "string"
+              },
+              "executive_summary": {
+                "type": "string"
+              },
+              "criteria_responses": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cost_table": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "risk_note": {
+                "type": "string"
+              },
+              "mitigation_tasks": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "compliance_issues": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
           "evidence_policy": "no_invented_facts"
@@ -254,7 +355,42 @@
               "acceptance_status",
               "reviewer_actions",
               "compliance_issues"
-            ]
+            ],
+            "properties": {
+              "proposal_draft": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "scoring_matrix": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "compliance_checklist": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "evidence_bundle": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "acceptance_status": {
+                "type": "string"
+              },
+              "reviewer_actions": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "compliance_issues": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           },
           "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
           "evidence_policy": "no_invented_facts"
@@ -321,32 +457,364 @@
       {
         "key": "tender_context",
         "title": "Tender context",
+        "column_kind": "step",
+        "type": "fa-solid fa-file-pdf",
         "tool_category": "manual",
-        "tool": "user_input"
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake",
+            "reason": "github_example_package"
+          }
+        }
       },
       {
         "key": "requirements_matrix",
         "title": "Requirements matrix",
+        "column_kind": "step",
+        "type": "fa-solid fa-list-check",
+        "input_from": [
+          "tender_context"
+        ],
         "tool_category": "ai_tool",
-        "tool": "kmu_tender_factory_requirements"
+        "tool": "kmu_tender_factory_requirements",
+        "prompt": "Extract tender_id, agency, submission_deadline, mandatory_requirements, budget_limit, attachments, and evaluation_criteria [{id,text,weight}] from the tender context. Flag missing mandatory fields and evidence gaps. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Extract requirements",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "KMU_TENDER_REQUIREMENTS_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "tender_document",
+              "evaluation_criteria",
+              "mandatory_requirements",
+              "compliance_issues",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "tender_document",
+                "evaluation_criteria",
+                "mandatory_requirements",
+                "compliance_issues",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "tender_document": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "evaluation_criteria": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "mandatory_requirements": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "compliance_issues": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "evidence_gaps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
       },
       {
         "key": "capability_scoring",
         "title": "Capability scoring",
+        "column_kind": "step",
+        "type": "fa-solid fa-scale-balanced",
+        "input_from": [
+          "tender_context",
+          "requirements_matrix"
+        ],
         "tool_category": "ai_tool",
-        "tool": "kmu_tender_factory_matcher"
+        "tool": "kmu_tender_factory_matcher",
+        "prompt": "Match evaluation criteria to company_profile and reference_fragments. For each criterion emit criterion_id, match_sentence, evidence_refs, confidence, and remediation task. Use only provided evidence anchors. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Match capabilities",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "KMU_TENDER_SCORING_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary",
+              "scoring_matrix",
+              "evidence_refs",
+              "confidence",
+              "mandatory_pass",
+              "remediation_tasks",
+              "evidence_gaps"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "summary",
+                "scoring_matrix",
+                "evidence_refs",
+                "confidence",
+                "mandatory_pass",
+                "remediation_tasks",
+                "evidence_gaps"
+              ],
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "scoring_matrix": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "confidence": {
+                  "type": "number"
+                },
+                "mandatory_pass": {
+                  "type": "boolean"
+                },
+                "remediation_tasks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "evidence_gaps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
       },
       {
         "key": "proposal_draft",
         "title": "Proposal draft",
+        "column_kind": "step",
+        "type": "fa-solid fa-file-pen",
+        "input_from": [
+          "tender_context",
+          "requirements_matrix",
+          "capability_scoring"
+        ],
         "tool_category": "ai_tool",
-        "tool": "kmu_tender_factory_proposal"
+        "tool": "kmu_tender_factory_proposal",
+        "prompt": "Act as a Procurement Response Generator. Produce proposal_text in Markdown, a max-200-word executive summary mapped to the top five weighted criteria, per-criterion evidence-backed responses, a one-page cost table, three risks, and owner mitigation tasks. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Draft response",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "KMU_TENDER_PROPOSAL_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "proposal_text",
+              "executive_summary",
+              "criteria_responses",
+              "cost_table",
+              "risk_note",
+              "mitigation_tasks",
+              "compliance_issues"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "proposal_text",
+                "executive_summary",
+                "criteria_responses",
+                "cost_table",
+                "risk_note",
+                "mitigation_tasks",
+                "compliance_issues"
+              ],
+              "properties": {
+                "proposal_text": {
+                  "type": "string"
+                },
+                "executive_summary": {
+                  "type": "string"
+                },
+                "criteria_responses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "cost_table": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "risk_note": {
+                  "type": "string"
+                },
+                "mitigation_tasks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "compliance_issues": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
       },
       {
         "key": "compliance_pack",
         "title": "Compliance pack",
+        "column_kind": "step",
+        "type": "fa-solid fa-box-archive",
+        "input_from": [
+          "tender_context",
+          "requirements_matrix",
+          "capability_scoring",
+          "proposal_draft"
+        ],
         "tool_category": "shortcut",
-        "tool": "kmu_tender_factory"
+        "tool": "kmu_tender_factory",
+        "prompt": "Assemble the final bundle: proposal_draft target DOCX, scoring_matrix target JSON, compliance_checklist target PDF, evidence_bundle target ZIP, evidence_manifest, reviewer_actions, and bid/no-bid synopsis. Apply acceptance criteria: mandatory fields present and scoring consistency >= 0.9. Return JSON only.",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Assemble pack",
+            "reason": "github_example_package"
+          },
+          "output_contract": {
+            "schema_version": "KMU_TENDER_COMPLIANCE_PACK_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "proposal_draft",
+              "scoring_matrix",
+              "compliance_checklist",
+              "evidence_bundle",
+              "acceptance_status",
+              "reviewer_actions",
+              "compliance_issues"
+            ],
+            "json_schema": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "proposal_draft",
+                "scoring_matrix",
+                "compliance_checklist",
+                "evidence_bundle",
+                "acceptance_status",
+                "reviewer_actions",
+                "compliance_issues"
+              ],
+              "properties": {
+                "proposal_draft": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "scoring_matrix": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "compliance_checklist": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "evidence_bundle": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "acceptance_status": {
+                  "type": "string"
+                },
+                "reviewer_actions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "compliance_issues": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "quality_gate": "Return JSON only. Use only provided evidence, separate facts from assumptions, and mark missing mandatory fields.",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
       }
     ],
     "workflows": [

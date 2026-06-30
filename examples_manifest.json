@@ -92,7 +92,7 @@
       "title": "Lieferschein → Lagerbestand (Internal Products)",
       "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
       "columns": 3,
-      "workflows": 0,
+      "workflows": 1,
       "source": "lieferschein_inventory.supra",
       "docs": {
         "en": "docs/lieferschein_inventory.en.md",

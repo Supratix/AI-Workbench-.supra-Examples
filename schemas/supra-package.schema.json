@@ -16,21 +16,49 @@
   ],
   "properties": {
     "key": {
-      "type": "string",
-      "pattern": "^[a-z0-9_]+$"
+      "$ref": "#/$defs/key"
     },
     "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "workbench_title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/column"
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workflow"
+      }
+    },
+    "main_workbench": {
+      "$ref": "#/$defs/mainWorkbench"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
       "type": "string",
       "minLength": 1
     },
-    "description": {
-      "type": "string"
-    },
-    "workbench_title": {
-      "type": "string"
-    },
-    "schemaVersion": {
-      "type": "integer"
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
     },
     "metadata": {
       "type": "object",
@@ -42,17 +70,225 @@
         "export_version",
         "import_version",
         "commerce"
-      ]
+      ],
+      "properties": {
+        "module_name": {
+          "$ref": "#/$defs/key"
+        },
+        "vendor": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "content_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "content_description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "export_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "import_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "starter_rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "text"
+            ],
+            "properties": {
+              "title": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "text": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "commerce": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
     },
-    "columns": {
-      "type": "array",
-      "minItems": 1
+    "promptExecution": {
+      "type": "object",
+      "required": [
+        "execute_prompt",
+        "selected",
+        "mode",
+        "requires_review",
+        "label"
+      ],
+      "properties": {
+        "execute_prompt": {
+          "type": "boolean"
+        },
+        "selected": {
+          "type": "boolean"
+        },
+        "mode": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "requires_review": {
+          "type": "boolean"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": true
     },
-    "workflows": {
-      "type": "array"
+    "column": {
+      "type": "object",
+      "required": [
+        "key",
+        "title",
+        "column_kind",
+        "tool_category",
+        "tool",
+        "tooling"
+      ],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "column_kind": {
+          "const": "step"
+        },
+        "tool_category": {
+          "enum": [
+            "manual",
+            "ai_tool",
+            "shortcut"
+          ]
+        },
+        "tool": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "input_from": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/key"
+          }
+        },
+        "tooling": {
+          "type": "object",
+          "required": [
+            "prompt_execution"
+          ],
+          "properties": {
+            "prompt_execution": {
+              "$ref": "#/$defs/promptExecution"
+            },
+            "output_contract": {
+              "$ref": "supra-output-contract.schema.json"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
     },
-    "main_workbench": {
-      "type": "object"
+    "workflowStep": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "step_position"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/key"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "step_position": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "workflow_pipe",
+        "steps"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/key"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "workflow_pipe": {
+          "const": true
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/workflowStep"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "mainWorkbench": {
+      "type": "object",
+      "required": [
+        "key",
+        "title",
+        "description",
+        "workbench_title",
+        "columns",
+        "workflows"
+      ],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "workbench_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/column"
+          }
+        },
+        "workflows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/workflow"
+          }
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

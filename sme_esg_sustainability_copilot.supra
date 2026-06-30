@@ -1,1 +1,281 @@
-{"key":"sme_esg_sustainability_copilot","title":"SME ESG Sustainability Copilot","description":"Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.","workbench_title":"SME ESG Sustainability Copilot Desk","schemaVersion":1,"metadata":{"module_name":"sme_esg_sustainability_copilot","vendor":"SupraTix","content_name":"SME ESG Sustainability Copilot","content_description":"Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.","export_version":"1.0.0","import_version":"1.0.0","commerce":{"business_model":"free_of_use"},"starter_rows":[{"title":"starter","source_type":"business_context","text":"{\"schema\":\"DISRUPTIVE_SME_INTAKE_V1\"}"}]},"columns":[{"key":"business_context","title":"Business context","column_kind":"step","tool_category":"manual","tool":"user_input","tooling":{"prompt_execution":{"execute_prompt":false,"selected":false,"mode":"disabled","requires_review":false,"label":"Manual intake"}}},{"key":"esg_evidence_map","title":"ESG evidence map","column_kind":"step","tool_category":"ai_tool","tool":"sme_esg_evidence","input_from":["business_context"],"tooling":{"prompt_execution":{"execute_prompt":true,"selected":true,"mode":"manual_review","requires_review":true,"label":"Map ESG evidence"},"output_contract":{"schema_version":"DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1","content_type":"application/json","expects_json":true,"required_fields":["summary"],"json_schema":{"required":["summary"]},"quality_gate":"Return JSON only","evidence_policy":"no_invented_facts"}}},{"key":"reporting_brief","title":"Reporting brief","column_kind":"step","tool_category":"shortcut","tool":"sme_esg_sustainability_copilot","input_from":["esg_evidence_map"],"tooling":{"prompt_execution":{"execute_prompt":true,"selected":true,"mode":"manual_review","requires_review":true,"label":"Generate ESG brief"},"output_contract":{"schema_version":"DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1","content_type":"application/json","expects_json":true,"required_fields":["summary"],"json_schema":{"required":["summary"]},"quality_gate":"Return JSON only","evidence_policy":"no_invented_facts"}}}],"workflows":[{"id":"sme_esg_sustainability_copilot_workflow","steps":[{"id":"business_context","step_position":0},{"id":"esg_evidence_map","step_position":1},{"id":"reporting_brief","step_position":2}]}],"main_workbench":{"columns":[{}, {}, {}]}}
+{
+  "key": "sme_esg_sustainability_copilot",
+  "title": "SME ESG Sustainability Copilot",
+  "description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+  "workbench_title": "SME ESG Sustainability Copilot Desk",
+  "schemaVersion": 1,
+  "metadata": {
+    "module_name": "sme_esg_sustainability_copilot",
+    "vendor": "SupraTix",
+    "content_name": "SME ESG Sustainability Copilot",
+    "content_description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+    "export_version": "1.0.0",
+    "import_version": "1.0.0",
+    "commerce": {
+      "business_model": "free_of_use"
+    },
+    "starter_rows": [
+      {
+        "title": "starter",
+        "source_type": "business_context",
+        "text": "{\"schema\":\"DISRUPTIVE_SME_INTAKE_V1\"}"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "business_context",
+      "title": "Business context",
+      "column_kind": "step",
+      "tool_category": "manual",
+      "tool": "user_input",
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": false,
+          "selected": false,
+          "mode": "disabled",
+          "requires_review": false,
+          "label": "Manual intake"
+        }
+      }
+    },
+    {
+      "key": "esg_evidence_map",
+      "title": "ESG evidence map",
+      "column_kind": "step",
+      "tool_category": "ai_tool",
+      "tool": "sme_esg_evidence",
+      "input_from": [
+        "business_context"
+      ],
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Map ESG evidence"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary"
+          ],
+          "json_schema": {
+            "required": [
+              "summary"
+            ],
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    },
+    {
+      "key": "reporting_brief",
+      "title": "Reporting brief",
+      "column_kind": "step",
+      "tool_category": "shortcut",
+      "tool": "sme_esg_sustainability_copilot",
+      "input_from": [
+        "esg_evidence_map"
+      ],
+      "tooling": {
+        "prompt_execution": {
+          "execute_prompt": true,
+          "selected": true,
+          "mode": "manual_review",
+          "requires_review": true,
+          "label": "Generate ESG brief"
+        },
+        "output_contract": {
+          "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+          "content_type": "application/json",
+          "expects_json": true,
+          "required_fields": [
+            "summary"
+          ],
+          "json_schema": {
+            "required": [
+              "summary"
+            ],
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            }
+          },
+          "quality_gate": "Return JSON only",
+          "evidence_policy": "no_invented_facts"
+        }
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "sme_esg_sustainability_copilot_workflow",
+      "steps": [
+        {
+          "id": "business_context",
+          "step_position": 0,
+          "title": "Business context"
+        },
+        {
+          "id": "esg_evidence_map",
+          "step_position": 1,
+          "title": "ESG evidence map"
+        },
+        {
+          "id": "reporting_brief",
+          "step_position": 2,
+          "title": "Reporting brief"
+        }
+      ],
+      "description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+      "workflow_pipe": true,
+      "title": "SME ESG Sustainability Copilot workflow"
+    }
+  ],
+  "main_workbench": {
+    "columns": [
+      {
+        "key": "business_context",
+        "title": "Business context",
+        "column_kind": "step",
+        "tool_category": "manual",
+        "tool": "user_input",
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": false,
+            "selected": false,
+            "mode": "disabled",
+            "requires_review": false,
+            "label": "Manual intake"
+          }
+        }
+      },
+      {
+        "key": "esg_evidence_map",
+        "title": "ESG evidence map",
+        "column_kind": "step",
+        "tool_category": "ai_tool",
+        "tool": "sme_esg_evidence",
+        "input_from": [
+          "business_context"
+        ],
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Map ESG evidence"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_WORKBENCH_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary"
+            ],
+            "json_schema": {
+              "required": [
+                "summary"
+              ],
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "summary": {
+                  "type": "string"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      },
+      {
+        "key": "reporting_brief",
+        "title": "Reporting brief",
+        "column_kind": "step",
+        "tool_category": "shortcut",
+        "tool": "sme_esg_sustainability_copilot",
+        "input_from": [
+          "esg_evidence_map"
+        ],
+        "tooling": {
+          "prompt_execution": {
+            "execute_prompt": true,
+            "selected": true,
+            "mode": "manual_review",
+            "requires_review": true,
+            "label": "Generate ESG brief"
+          },
+          "output_contract": {
+            "schema_version": "DISRUPTIVE_SME_SHORTCUT_OUTPUT_V1",
+            "content_type": "application/json",
+            "expects_json": true,
+            "required_fields": [
+              "summary"
+            ],
+            "json_schema": {
+              "required": [
+                "summary"
+              ],
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "summary": {
+                  "type": "string"
+                }
+              }
+            },
+            "quality_gate": "Return JSON only",
+            "evidence_policy": "no_invented_facts"
+          }
+        }
+      }
+    ],
+    "key": "sme_esg_sustainability_copilot",
+    "title": "SME ESG Sustainability Copilot",
+    "description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+    "workbench_title": "SME ESG Sustainability Copilot Desk",
+    "workflows": [
+      {
+        "id": "sme_esg_sustainability_copilot_workflow",
+        "steps": [
+          {
+            "id": "business_context",
+            "step_position": 0,
+            "title": "Business context"
+          },
+          {
+            "id": "esg_evidence_map",
+            "step_position": 1,
+            "title": "ESG evidence map"
+          },
+          {
+            "id": "reporting_brief",
+            "step_position": 2,
+            "title": "Reporting brief"
+          }
+        ],
+        "description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+        "workflow_pipe": true,
+        "title": "SME ESG Sustainability Copilot workflow"
+      }
+    ]
+  }
+}

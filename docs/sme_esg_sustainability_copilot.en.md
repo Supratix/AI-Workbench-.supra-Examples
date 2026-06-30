@@ -31,15 +31,15 @@ Consolidate sustainability evidence into an ESG readiness scorecard, gap analysi
 
 ## Workflow
 
-### 
+### SME ESG Sustainability Copilot workflow
 
+Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.
 
-
-| # | Step | ID                 | Backlog |
-| - | ---- | ------------------ | ------- |
-| 1 |      | `business_context` | no      |
-| 2 |      | `esg_evidence_map` | no      |
-| 3 |      | `reporting_brief`  | no      |
+| # | Step             | ID                 | Backlog |
+| - | ---------------- | ------------------ | ------- |
+| 1 | Business context | `business_context` | no      |
+| 2 | ESG evidence map | `esg_evidence_map` | no      |
+| 3 | Reporting brief  | `reporting_brief`  | no      |
 
 ## Columns and Tools
 

@@ -10,7 +10,7 @@ Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt.
 - **Anbieter:** SupraTix
 - **Schemaversion:** `1`
 - **Spalten:** 3
-- **Workflows:** 0
+- **Workflows:** 1
 
 ## Zweck
 
@@ -45,7 +45,15 @@ _Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._
 
 ## Workflow
 
-_Es ist kein Workflow konfiguriert._
+### Lieferschein inventory Workflow
+
+Ordnet Lieferscheinpositionen internen Produkten zu, markiert unsichere Treffer und erstellt einen prüfbaren Bestandsaktualisierungsvorschlag für Lagerteams.
+
+| # | Schritt               | ID                | Backlog |
+| - | --------------------- | ----------------- | ------- |
+| 1 | Delivery note         | `delivery_note`   | nein    |
+| 2 | Product mapping       | `product_mapping` | nein    |
+| 3 | Stock update proposal | `stock_update`    | nein    |
 
 ## Spalten und Tools
 

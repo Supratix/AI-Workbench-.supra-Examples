@@ -14,29 +14,56 @@
   ],
   "properties": {
     "schema_version": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "content_type": {
       "const": "application/json"
     },
     "expects_json": {
-      "type": "boolean"
+      "const": true
     },
     "required_fields": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
       },
       "minItems": 1
     },
     "json_schema": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "type",
+        "required",
+        "properties"
+      ],
+      "properties": {
+        "type": {
+          "const": "object"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "properties": {
+          "type": "object",
+          "minProperties": 1
+        }
+      },
+      "additionalProperties": true
     },
     "quality_gate": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "evidence_policy": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     }
   },
   "additionalProperties": true
