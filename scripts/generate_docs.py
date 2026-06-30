@@ -15,8 +15,11 @@ GERMAN_DESCRIPTIONS = {
     "data_analytics_kpi_framework_designer": "Entwirft ein praxisnahes KPI-Framework, das Ziele mit Metrikdefinitionen, Verantwortlichen, Guardrails, Review-Rhythmus und reportingfähigen Hinweisen verbindet.",
     "data_analytics_kpi_operating_review": "Erstellt einen strukturierten KPI-Operating-Review mit Status, Risiken, Korrekturmaßnahmen, Verantwortlichen und Follow-up-Triggern für wiederkehrende Business-Reviews.",
     "data_analytics_market_opportunity_sizer": "Schätzt Markt- oder Chancenpotenziale mit transparenten Annahmen, Szenarien, Sensitivitätschecks, Evidenzlücken und Validierungsprioritäten.",
+    "field_service_maintenance_report": "Wandelt Technikernotizen oder Transkripte in einen nachvollziehbaren Wartungsbericht mit Kunden-Zusammenfassung um.",
+    "kmu_tender_factory": "Analysiert Ausschreibungs-PDFs und erstellt für KMU-Angebote einen kriterienbasierten Angebotsentwurf, eine Bewertungsmatrix, eine Compliance-Checkliste und ein Evidenzpaket.",
     "lieferschein_inventory": "Ordnet Lieferscheinpositionen internen Produkten zu, markiert unsichere Treffer und erstellt einen prüfbaren Bestandsaktualisierungsvorschlag für Lagerteams.",
     "linkedin_extreme_engagement_posting": "Erstellt ein LinkedIn-Publishing-Paket für hohe Interaktion mit Hooks, Post-Varianten, Positionierungsnotizen, Risikoprüfungen und Follow-up-Impulsen.",
+    "mint_study_planning": "Erstellt strukturierte MINT/STEM-Lernpläne aus Lernzielen, Ausgangskompetenzen, Zeitplan, Einschränkungen, Meilensteinen, Ressourcen und Assessments.",
     "sme_ai_adoption_readiness_sprint": "Bewertet die KI-Einführungsreife eines KMU und übersetzt Einschränkungen, Datenqualität, Risiken und Teamkapazität in einen konkreten ersten Sprintplan.",
     "sme_cashflow_war_room": "Priorisiert Cashflow-Risiken aus Forderungen, Verbindlichkeiten und Zusagen und überführt sie in ein verantwortbares Recovery-Board mit Eskalationstriggern.",
     "sme_churn_rescue_desk": "Erkennt Abwanderungssignale aus Kundenkontext und erstellt einen praktikablen Rettungsplan mit Ursachen, Verantwortlichenaktionen und Review-Triggern.",
@@ -43,6 +46,7 @@ GERMAN_DESCRIPTIONS = {
     "sme_quote_to_cash_bottleneck": "Prüft den Quote-to-Cash-Prozess auf Übergabeengpässe, fehlende Daten, Aging-Risiken und verantwortbare Maßnahmen zum Schutz des Umsatzzeitpunkts.",
     "sme_review_reputation_responder": "Entwirft Review-Antworten und Reputationsmaßnahmen mit evidenzbewusstem Ton, Eskalationshinweisen, Servicesignalen und Follow-up-Prüfungen.",
     "sme_safety_incident_prevention": "Wandelt Sicherheitsvorfallnotizen in Präventionsmaßnahmen mit Root-Cause-Hypothesen, Verantwortlichen, Verifikationschecks und Review-Triggern um.",
+    "sme_esg_sustainability_copilot": "Konsolidiert Nachhaltigkeitsnachweise zu einer ESG-Readiness-Scorecard mit Gap-Analyse und Maßnahmenplan.",
     "sme_shift_handover_risk_radar": "Erkennt Übergaberisiken und erstellt ein schichtbereites Minderungsbriefing mit Prioritätsthemen, Owner-Checks, offenen Fragen und Eskalationssignalen.",
     "sme_sop_builder": "Wandelt Prozesskontext in eine klare SOP mit Rollen, Inputs, Schritten, Qualitätschecks, Ausnahmen und Review-Rhythmus um.",
     "sme_subscription_retention_playbook": "Erstellt ein Retention-Playbook für Abos aus Kundensignalen, Verlängerungsrisiken, Interventionsmaßnahmen, Verantwortlichen und Review-Metriken.",
@@ -52,6 +56,13 @@ GERMAN_DESCRIPTIONS = {
     "sme_vendor_negotiation_brief": "Bereitet ein Lieferantenverhandlungsbriefing mit Hebelsignalen, Zielanfragen, Rückfalloptionen, Risikohinweisen und owner-fertigen Talking Points vor.",
     "sme_warranty_root_cause_radar": "Analysiert Garantieprobleme und schlägt Root-Cause-Hypothesen, Containment-Maßnahmen, Evidenzlücken, Kundenwirkung und Präventionschecks vor.",
     "sme_webshop_conversion_rescue": "Diagnostiziert Webshop-Conversion-Probleme und erstellt einen priorisierten Rettungsplan zu Funnel-Signalen, Reibungspunkten, Experimenten und Owner-Actions.",
+    "workforce_intelligence_platform": "Bewahrt Expertenwissen, kartiert Kompetenzrisiken und orchestriert Lern-, Nachfolge- und Recruiting-Workflows mit erklärbaren KI-Belegen.",
+}
+GERMAN_STARTER_REQUESTS = {
+    "Paste the learner profile, learning goals, dates, weekly hours, and constraints for MINT Study Planning.": "Fügen Sie das Lernendenprofil, die Lernziele, Termine, Wochenstunden und Einschränkungen für MINT Study Planning ein.",
+    "Paste tender PDF text/OCR, evaluation criteria, company profile, and reference fragments.": "Fügen Sie Ausschreibungs-PDF-Text oder OCR, Bewertungskriterien, Unternehmensprofil und Referenzfragmente ein.",
+    "Paste a technician transcript, audio URI, checklist, photo references, and job metadata.": "Fügen Sie ein Technikertranskript, eine Audio-URI, eine Checkliste, Fotoverweise und Auftragsmetadaten ein.",
+    "Paste workforce, expert-knowledge, SpeakSphere, HRIS, LMS, ATS, project, and SOP context for analysis.": "Fügen Sie Workforce-, Expertenwissen-, SpeakSphere-, HRIS-, LMS-, ATS-, Projekt- und SOP-Kontext für die Analyse ein.",
 }
 
 
@@ -76,11 +87,16 @@ def yn(value: bool, lang: str) -> str:
     return "yes" if value else "no"
 
 
-def localized_starter_request(starter: dict, lang: str) -> str:
+def localized_starter_request(pkg: dict, starter: dict, lang: str) -> str:
     request = starter.get("request", "")
-    if lang == "de" and request.startswith("Paste the source context for ") and request.endswith("."):
-        name = request.removeprefix("Paste the source context for ").removesuffix(".")
-        return f"Fügen Sie den Quellkontext für {name} ein."
+    if lang == "de":
+        if not request:
+            return f"Fügen Sie den Quellkontext für {pkg['title']} ein."
+        if request in GERMAN_STARTER_REQUESTS:
+            return GERMAN_STARTER_REQUESTS[request]
+        if request.startswith("Paste the source context for ") and request.endswith("."):
+            name = request.removeprefix("Paste the source context for ").removesuffix(".")
+            return f"Fügen Sie den Quellkontext für {name} ein."
     return request
 
 
@@ -142,7 +158,7 @@ def doc(pkg: dict, lang: str) -> str:
         "",
     ]
     for starter in pkg.get("metadata", {}).get("starter_rows", []):
-        lines += [f"### {localized_title(starter.get('title', 'Starter'), lang)}", "", f"- **{overview_labels['request']}:** {localized_starter_request(starter, lang)}", f"- **{overview_labels['source_type']}:** `{starter.get('source_type', '')}`", ""]
+        lines += [f"### {localized_title(starter.get('title', 'Starter'), lang)}", "", f"- **{overview_labels['request']}:** {localized_starter_request(pkg, starter, lang)}", f"- **{overview_labels['source_type']}:** `{starter.get('source_type', '')}`", ""]
         if de:
             lines += ["_Der folgende JSON-Block bleibt ein Originalauszug aus dem Paket._", ""]
         lines += ["```json"]
@@ -243,6 +259,11 @@ def docs_readme(packages: list[dict]) -> str:
         "- [Workflow pipeline](assets/supra-workflow-pipeline.svg)",
         "- [Import/export flow](assets/supra-import-export-flow.svg)",
         "- [Governance loop](assets/supra-governance-loop.svg)",
+        "",
+        "## Standards",
+        "",
+        "- [The `.supra` v1 Standard](supra-v1-standard.md)",
+        "- [`.supra` v1 Standard Fix Playbook](supra-v1-standard-fix.md)",
         "",
         "## Regeneration",
         "",

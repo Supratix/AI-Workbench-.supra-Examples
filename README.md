@@ -8,7 +8,7 @@ It contains importable `.supra` packages, generated bilingual package documentat
 
 ## What is included
 
-- **43 `.supra` packages** at the repository root.
+- **47 `.supra` packages** at the repository root.
 - **English and German generated documentation** under [`docs/`](docs/README.md).
 - **Schema contracts** under [`schemas/`](schemas/) for package-level validation and output-contract checks.
 - **Local validation scripts** under [`scripts/`](scripts/).
@@ -57,8 +57,11 @@ python3 scripts/render_assets.py .
 | Data Analytics KPI Framework Designer           | Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.         | 4 columns / 1 workflow  | [EN](docs/data_analytics_kpi_framework_designer.en.md) · [DE](docs/data_analytics_kpi_framework_designer.de.md)         |
 | Data Analytics KPI Operating Review             | Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.  | 4 columns / 1 workflow  | [EN](docs/data_analytics_kpi_operating_review.en.md) · [DE](docs/data_analytics_kpi_operating_review.de.md)             |
 | Data Analytics Market And Opportunity Sizer     | Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.           | 4 columns / 1 workflow  | [EN](docs/data_analytics_market_opportunity_sizer.en.md) · [DE](docs/data_analytics_market_opportunity_sizer.de.md)     |
+| Field Service Maintenance Report                | Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.                                                        | 4 columns / 1 workflow  | [EN](docs/field_service_maintenance_report.en.md) · [DE](docs/field_service_maintenance_report.de.md)                   |
+| KMU Tender Factory                              | Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.                     | 5 columns / 1 workflow  | [EN](docs/kmu_tender_factory.en.md) · [DE](docs/kmu_tender_factory.de.md)                                               |
 | Lieferschein → Lagerbestand (Internal Products) | Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.                   | 3 columns / 0 workflows | [EN](docs/lieferschein_inventory.en.md) · [DE](docs/lieferschein_inventory.de.md)                                       |
 | LinkedIn Extreme Engagement Posting             | Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.           | 9 columns / 1 workflow  | [EN](docs/linkedin_extreme_engagement_posting.en.md) · [DE](docs/linkedin_extreme_engagement_posting.de.md)             |
+| MINT Study Planning                             | Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.               | 4 columns / 1 workflow  | [EN](docs/mint_study_planning.en.md) · [DE](docs/mint_study_planning.de.md)                                             |
 | SME AI Adoption Readiness Sprint                | Assess SME AI adoption readiness and turn constraints, data quality, risks, and team capacity into a concrete first-sprint action plan.                     | 4 columns / 1 workflow  | [EN](docs/sme_ai_adoption_readiness_sprint.en.md) · [DE](docs/sme_ai_adoption_readiness_sprint.de.md)                   |
 | SME Cashflow War Room                           | Prioritize cashflow risks from receivables, payables, and commitments, then convert them into an owner-ready recovery board with escalation triggers.       | 4 columns / 1 workflow  | [EN](docs/sme_cashflow_war_room.en.md) · [DE](docs/sme_cashflow_war_room.de.md)                                         |
 | SME Churn Rescue Desk                           | Identify churn signals from customer context and produce a practical rescue plan with root causes, owner actions, and review triggers.                      | 4 columns / 1 workflow  | [EN](docs/sme_churn_rescue_desk.en.md) · [DE](docs/sme_churn_rescue_desk.de.md)                                         |
@@ -69,6 +72,7 @@ python3 scripts/render_assets.py .
 | SME Deadstock Liquidator                        | Identify deadstock risks from inventory signals and turn them into a liquidation plan with pricing options, channels, owners, and review metrics.           | 4 columns / 1 workflow  | [EN](docs/sme_deadstock_liquidator.en.md) · [DE](docs/sme_deadstock_liquidator.de.md)                                   |
 | SME Downtime Triage                             | Diagnose downtime context and create a focused triage plan that separates immediate fixes, root-cause hypotheses, prevention actions, and owners.           | 4 columns / 1 workflow  | [EN](docs/sme_downtime_triage.en.md) · [DE](docs/sme_downtime_triage.de.md)                                             |
 | SME Energy Cost Anomaly Finder                  | Spot energy-cost anomalies, separate likely drivers from assumptions, and propose reviewable savings or investigation actions with ownership.               | 4 columns / 1 workflow  | [EN](docs/sme_energy_cost_anomaly_finder.en.md) · [DE](docs/sme_energy_cost_anomaly_finder.de.md)                       |
+| SME ESG Sustainability Copilot                  | Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.                                                          | 3 columns / 1 workflow  | [EN](docs/sme_esg_sustainability_copilot.en.md) · [DE](docs/sme_esg_sustainability_copilot.de.md)                       |
 | SME Field Service Route Optimizer               | Turn service jobs, technician capacity, travel constraints, and priority rules into a route-optimization action brief for field teams.                      | 4 columns / 1 workflow  | [EN](docs/sme_field_service_route_optimizer.en.md) · [DE](docs/sme_field_service_route_optimizer.de.md)                 |
 | SME Grant Funding Fit Radar                     | Assess grant-fit signals and produce a shortlist with eligibility notes, evidence gaps, deadlines, effort estimates, and application next steps.            | 4 columns / 1 workflow  | [EN](docs/sme_grant_funding_fit_radar.en.md) · [DE](docs/sme_grant_funding_fit_radar.de.md)                             |
 | SME Hiring Scorecard Kit                        | Create a role scorecard with success outcomes, interview signals, decision rubric, evidence prompts, and hiring risk notes for SME teams.                   | 4 columns / 1 workflow  | [EN](docs/sme_hiring_scorecard_kit.en.md) · [DE](docs/sme_hiring_scorecard_kit.de.md)                                   |
@@ -94,6 +98,7 @@ python3 scripts/render_assets.py .
 | SME Vendor Negotiation Brief                    | Prepare a vendor negotiation brief with leverage signals, target asks, fallback options, risk notes, and owner-ready talking points.                        | 4 columns / 1 workflow  | [EN](docs/sme_vendor_negotiation_brief.en.md) · [DE](docs/sme_vendor_negotiation_brief.de.md)                           |
 | SME Warranty Root Cause Radar                   | Analyze warranty issues to propose root-cause hypotheses, containment actions, evidence gaps, customer impact notes, and prevention checks.                 | 4 columns / 1 workflow  | [EN](docs/sme_warranty_root_cause_radar.en.md) · [DE](docs/sme_warranty_root_cause_radar.de.md)                         |
 | SME Webshop Conversion Rescue                   | Diagnose webshop conversion problems and produce a prioritized rescue plan covering funnel signals, friction points, experiments, and owner actions.        | 4 columns / 1 workflow  | [EN](docs/sme_webshop_conversion_rescue.en.md) · [DE](docs/sme_webshop_conversion_rescue.de.md)                         |
+| SupraWorx Workforce Intelligence Platform       | Preserve expert knowledge, map competency risk, and orchestrate learning, succession, and recruiting workflows with explainable AI receipts.                | 9 columns / 1 workflow  | [EN](docs/workforce_intelligence_platform.en.md) · [DE](docs/workforce_intelligence_platform.de.md)                     |
 
 ## `.supra` package conventions
 
@@ -104,6 +109,8 @@ Each package is JSON with a `.supra` extension. The key sections are:
 3. `workflows` — ordered workbench steps when the package is workflow-enabled.
 4. `main_workbench` — a portable workbench definition that mirrors the package columns and workflows.
 5. `tooling.output_contract` — expected JSON shape, required fields, quality gate, and evidence policy.
+
+For the full normative description, see [The `.supra` v1 Standard](docs/supra-v1-standard.md). For repair work, use the [standard fix playbook](docs/supra-v1-standard-fix.md).
 
 ## Import flow
 

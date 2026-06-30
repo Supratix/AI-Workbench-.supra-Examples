@@ -1,7 +1,7 @@
 {
   "schema": "SUPRA_EXAMPLES_MANIFEST_V1",
   "generated_for": "AI Workbench .supra examples repository",
-  "package_count": 42,
+  "package_count": 47,
   "packages": [
     {
       "key": "aevalley_grant_tender_url_condenser",
@@ -64,6 +64,30 @@
       }
     },
     {
+      "key": "field_service_maintenance_report",
+      "title": "Field Service Maintenance Report",
+      "description": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "field_service_maintenance_report.supra",
+      "docs": {
+        "en": "docs/field_service_maintenance_report.en.md",
+        "de": "docs/field_service_maintenance_report.de.md"
+      }
+    },
+    {
+      "key": "kmu_tender_factory",
+      "title": "KMU Tender Factory",
+      "description": "Parse tender PDFs into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+      "columns": 5,
+      "workflows": 1,
+      "source": "kmu_tender_factory.supra",
+      "docs": {
+        "en": "docs/kmu_tender_factory.en.md",
+        "de": "docs/kmu_tender_factory.de.md"
+      }
+    },
+    {
       "key": "lieferschein_inventory",
       "title": "Lieferschein → Lagerbestand (Internal Products)",
       "description": "Map delivery-note lines to internal products, flag ambiguous matches, and produce a reviewable stock update proposal for inventory teams.",
@@ -85,6 +109,18 @@
       "docs": {
         "en": "docs/linkedin_extreme_engagement_posting.en.md",
         "de": "docs/linkedin_extreme_engagement_posting.de.md"
+      }
+    },
+    {
+      "key": "mint_study_planning",
+      "title": "MINT Study Planning",
+      "description": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+      "columns": 4,
+      "workflows": 1,
+      "source": "mint_study_planning.supra",
+      "docs": {
+        "en": "docs/mint_study_planning.en.md",
+        "de": "docs/mint_study_planning.de.md"
       }
     },
     {
@@ -205,6 +241,18 @@
       "docs": {
         "en": "docs/sme_energy_cost_anomaly_finder.en.md",
         "de": "docs/sme_energy_cost_anomaly_finder.de.md"
+      }
+    },
+    {
+      "key": "sme_esg_sustainability_copilot",
+      "title": "SME ESG Sustainability Copilot",
+      "description": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+      "columns": 3,
+      "workflows": 1,
+      "source": "sme_esg_sustainability_copilot.supra",
+      "docs": {
+        "en": "docs/sme_esg_sustainability_copilot.en.md",
+        "de": "docs/sme_esg_sustainability_copilot.de.md"
       }
     },
     {
@@ -505,6 +553,18 @@
       "docs": {
         "en": "docs/sme_webshop_conversion_rescue.en.md",
         "de": "docs/sme_webshop_conversion_rescue.de.md"
+      }
+    },
+    {
+      "key": "workforce_intelligence_platform",
+      "title": "SupraWorx Workforce Intelligence Platform",
+      "description": "Preserve expert knowledge, map competency risk, and orchestrate learning, succession, and recruiting workflows with explainable AI receipts.",
+      "columns": 9,
+      "workflows": 1,
+      "source": "workforce_intelligence_platform.supra",
+      "docs": {
+        "en": "docs/workforce_intelligence_platform.en.md",
+        "de": "docs/workforce_intelligence_platform.de.md"
       }
     }
   ]
