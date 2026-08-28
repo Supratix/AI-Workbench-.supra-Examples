@@ -19,8 +19,10 @@ canonical [`.supra` v1 standard](supra-v1-standard.md).
 
 ```bash
 python3 scripts/validate_supra.py .
+python3 scripts/new_sme_package.py . --check
+python3 scripts/fix_supraworx_compat.py . --check
 python3 scripts/generate_docs.py . --check
-python3 -m py_compile scripts/validate_supra.py scripts/generate_docs.py
+python3 -m py_compile scripts/*.py
 ```
 
 If pytest is available, also run:

@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """Validate AI Workbench .supra example packages.
 
+Two layers are checked for every ``packages/**/*.supra`` file:
+
+1. The ``.supra`` v1 standard (docs/supra-v1-standard.md).
+2. SupraWorx importer compatibility: the strict allow-lists, size limits and the
+   managed-shortcut gate that ``mint/workbench`` applies on upload
+   (docs/import-evaluation.en.md). Registered shortcut IDs are read from
+   ``scripts/data/supraworx_managed_shortcuts.json``.
+
 This script intentionally uses only the Python standard library so it can run in
 local developer machines and GitHub Actions without dependency installation.
 """
@@ -47,6 +55,38 @@ REQUIRED_CONTRACT = [
 REQUIRED_WORKFLOW = ["id", "title", "description", "workflow_pipe", "steps"]
 MAIN_WORKBENCH_FIELDS = ["key", "title", "description", "workbench_title"]
 KEY_RE = re.compile(r"^[a-z0-9_]+$")
+PACKAGES_DIR = "packages"
+MANAGED_SHORTCUTS_FILE = Path("scripts/data/supraworx_managed_shortcuts.json")
+
+# --- SupraWorx importer compatibility (mirrors mint/workbench/config_security.py) ---
+SUPRAWORX_MAX_PAYLOAD_BYTES = 1024 * 1024
+SUPRAWORX_MAX_COLUMNS = 64
+SUPRAWORX_MAX_DESCRIPTION_LENGTH = 2000
+SUPRAWORX_MAX_STARTER_ROWS = 200
+SUPRAWORX_MAX_STARTER_TEXT_LENGTH = 4000
+SUPRAWORX_MAX_OUTPUT_SCHEMA_BYTES = 12 * 1024
+SUPRAWORX_MAX_EXTENSION_BYTES = 64 * 1024
+SUPRAWORX_ALLOWED_ROOT = {
+    "key", "title", "description", "workbench_title", "metadata", "columns",
+    "workflows", "main_workbench", "schemaVersion", "exportedAt", "workbenchId",
+}
+SUPRAWORX_ALLOWED_METADATA = {
+    "module_name", "modul_name", "vendor", "global_product_pk", "global_pim_product_nr",
+    "content_name", "content_title", "content_description", "export_version",
+    "import_version", "starter_rows", "source_attribution", "business_model", "commerce",
+    "tenant_binding", "source_issue", "scoring", "account_universe", "last_config_review",
+    "process", "governance", "operating_cadence",
+}
+SUPRAWORX_EXTENSION_OBJECT_KEYS = {"scoring", "account_universe", "process", "governance", "operating_cadence"}
+SUPRAWORX_ALLOWED_STARTER_ROW = {"title", "source_type", "external_urls", "request", "text"}
+SUPRAWORX_ALLOWED_SOURCE_ATTRIBUTION = {"text", "license", "license_url", "morphology", "citation", "doi", "url"}
+SUPRAWORX_ALLOWED_COMMERCE = {
+    "business_model", "product_pk", "product_slug", "product_typ", "product_global_product_nr",
+    "product_global_pim_product_nr", "membership_pk", "membership_slug", "membership_title",
+    "membership_global_product_nr", "membership_global_pim_product_nr", "currency", "usage_unit", "quota",
+}
+SUPRAWORX_TRUSTED_SHORTCUT_IDS = {"gpt", "contact.tasks.osc_people_contact_upsert"}
+
 LOCAL_PATH_MARKERS = [
     "".join(parts)
     for parts in [
@@ -160,7 +200,92 @@ def validate_prompt_execution(path: Path, col: dict[str, Any], errors: list[str]
             fail(path, f"executable column {key} prompt_execution.requires_review must be true", errors)
 
 
-def validate_package(path: Path) -> list[str]:
+LEGACY_EXCEPTIONS: dict[str, str] = {}
+WARNINGS: list[str] = []
+
+
+def load_managed_shortcuts(root: Path) -> set[str]:
+    """Return shortcut IDs registered in SupraWorx (mint/shortcuts sme_shortcuts.py)."""
+    target = root / MANAGED_SHORTCUTS_FILE
+    if not target.exists():
+        return set()
+    data = json.loads(target.read_text(encoding="utf-8"))
+    LEGACY_EXCEPTIONS.update(data.get("legacy_unregistered_shortcut_ids", {}))
+    return set(data.get("registered_shortcut_ids", [])) | SUPRAWORX_TRUSTED_SHORTCUT_IDS
+
+
+def validate_supraworx_compat(path: Path, raw: str, data: dict[str, Any], managed: set[str], errors: list[str]) -> None:
+    """Check the strict allow-lists and gates of the SupraWorx .supra importer."""
+    prefix = "supraworx"
+    if len(raw.encode("utf-8")) > SUPRAWORX_MAX_PAYLOAD_BYTES:
+        fail(path, f"{prefix}: payload exceeds 1 MiB upload limit", errors)
+    unknown_root = sorted(set(data) - SUPRAWORX_ALLOWED_ROOT)
+    if unknown_root:
+        fail(path, f"{prefix}: unknown top-level fields rejected by importer: {unknown_root}", errors)
+    if len(str(data.get("description") or "")) > SUPRAWORX_MAX_DESCRIPTION_LENGTH:
+        fail(path, f"{prefix}: description longer than {SUPRAWORX_MAX_DESCRIPTION_LENGTH} characters", errors)
+
+    metadata = data.get("metadata")
+    if isinstance(metadata, dict):
+        unknown_meta = sorted(set(metadata) - SUPRAWORX_ALLOWED_METADATA)
+        if unknown_meta:
+            fail(path, f"{prefix}: metadata fields rejected by importer: {unknown_meta}", errors)
+        for key in SUPRAWORX_EXTENSION_OBJECT_KEYS & set(metadata):
+            value = metadata.get(key)
+            if not isinstance(value, dict):
+                fail(path, f"{prefix}: metadata.{key} must be an object", errors)
+            elif len(json.dumps(value, ensure_ascii=False).encode("utf-8")) > SUPRAWORX_MAX_EXTENSION_BYTES:
+                fail(path, f"{prefix}: metadata.{key} exceeds 64 KiB", errors)
+        attribution = metadata.get("source_attribution")
+        if isinstance(attribution, dict):
+            unknown_attr = sorted(set(attribution) - SUPRAWORX_ALLOWED_SOURCE_ATTRIBUTION)
+            if unknown_attr:
+                fail(path, f"{prefix}: source_attribution fields rejected by importer: {unknown_attr}", errors)
+        commerce = metadata.get("commerce")
+        if isinstance(commerce, dict):
+            unknown_commerce = sorted(set(commerce) - SUPRAWORX_ALLOWED_COMMERCE)
+            if unknown_commerce:
+                fail(path, f"{prefix}: commerce fields rejected by importer: {unknown_commerce}", errors)
+        starter_rows = metadata.get("starter_rows")
+        if isinstance(starter_rows, list):
+            if len(starter_rows) > SUPRAWORX_MAX_STARTER_ROWS:
+                fail(path, f"{prefix}: more than {SUPRAWORX_MAX_STARTER_ROWS} starter rows", errors)
+            for starter in starter_rows:
+                if not isinstance(starter, dict):
+                    continue
+                unknown_starter = sorted(set(starter) - SUPRAWORX_ALLOWED_STARTER_ROW)
+                if unknown_starter:
+                    fail(path, f"{prefix}: starter row fields rejected by importer: {unknown_starter}", errors)
+                if len(str(starter.get("text") or "")) > SUPRAWORX_MAX_STARTER_TEXT_LENGTH:
+                    fail(path, f"{prefix}: starter row text longer than {SUPRAWORX_MAX_STARTER_TEXT_LENGTH} characters", errors)
+
+    columns = data.get("columns")
+    if isinstance(columns, list):
+        if len(columns) > SUPRAWORX_MAX_COLUMNS:
+            fail(path, f"{prefix}: more than {SUPRAWORX_MAX_COLUMNS} columns", errors)
+        for col in columns:
+            if not isinstance(col, dict):
+                continue
+            contract = col.get("tooling", {}).get("output_contract") if isinstance(col.get("tooling"), dict) else None
+            if isinstance(contract, dict) and isinstance(contract.get("json_schema"), dict):
+                schema_bytes = len(json.dumps(contract["json_schema"], ensure_ascii=False).encode("utf-8"))
+                if schema_bytes > SUPRAWORX_MAX_OUTPUT_SCHEMA_BYTES:
+                    fail(path, f"{prefix}: column {col.get('key')} json_schema exceeds 12 KiB", errors)
+            if col.get("tool_category") == "shortcut" and managed:
+                tool = str(col.get("tool") or "").strip()
+                if tool in LEGACY_EXCEPTIONS:
+                    WARNINGS.append(f"{path}: {prefix}: shortcut {tool!r} is a documented exception - {LEGACY_EXCEPTIONS[tool]}")
+                elif tool not in managed:
+                    fail(
+                        path,
+                        f"{prefix}: shortcut column {col.get('key')} references unregistered shortcut {tool!r}; "
+                        "file upload would be rejected (register it in mint/shortcuts sme_shortcuts.py or "
+                        "add it to scripts/data/supraworx_managed_shortcuts.json)",
+                        errors,
+                    )
+
+
+def validate_package(path: Path, managed: set[str] | None = None) -> list[str]:
     errors: list[str] = []
     try:
         raw = path.read_text(encoding="utf-8")
@@ -174,6 +299,7 @@ def validate_package(path: Path) -> list[str]:
 
     if not isinstance(data, dict):
         return [f"{path}: top-level document must be an object"]
+    validate_supraworx_compat(path, raw, data, managed or set(), errors)
     for key in REQUIRED_TOP_LEVEL:
         if key not in data:
             fail(path, f"missing top-level key {key}", errors)
@@ -332,13 +458,21 @@ def main() -> int:
     parser.add_argument("root", nargs="?", default=".", help="Repository/examples root")
     args = parser.parse_args()
     root = Path(args.root)
-    files = sorted(root.glob("*.supra"))
+    packages_dir = root / PACKAGES_DIR
+    files = sorted(packages_dir.rglob("*.supra")) if packages_dir.is_dir() else sorted(root.glob("*.supra"))
     if not files:
         print(f"No .supra files found in {root}", file=sys.stderr)
         return 2
+    managed = load_managed_shortcuts(root)
     errors: list[str] = []
+    seen_keys: dict[str, Path] = {}
     for path in files:
-        errors.extend(validate_package(path))
+        errors.extend(validate_package(path, managed))
+        if path.stem in seen_keys:
+            errors.append(f"{path}: duplicate package key also found at {seen_keys[path.stem]}")
+        seen_keys.setdefault(path.stem, path)
+    for warning in WARNINGS:
+        print(f"warning: {warning}", file=sys.stderr)
     if errors:
         print(".supra validation failed:", file=sys.stderr)
         for error in errors:

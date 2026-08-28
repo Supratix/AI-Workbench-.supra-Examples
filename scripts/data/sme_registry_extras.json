@@ -1,0 +1,82 @@
+[
+  {
+    "key": "sme_esg_sustainability_copilot",
+    "title": "SME ESG Sustainability Copilot",
+    "description_en": "Consolidate sustainability evidence into an ESG readiness scorecard, gap analysis and action plan.",
+    "textarea_label": "Sustainability evidence",
+    "result_title": "ESG readiness scorecard",
+    "focus": "ESG readiness, evidence gaps, regulatory expectations, and prioritized sustainability actions"
+  },
+  {
+    "key": "linkedin_extreme_engagement_posting",
+    "title": "LinkedIn Extreme Engagement Posting",
+    "description_en": "Create a high-engagement LinkedIn publishing package with hooks, post variants, positioning notes, risk checks, and engagement follow-up prompts.",
+    "textarea_label": "Topic and positioning context",
+    "result_title": "LinkedIn publishing package",
+    "focus": "post hooks, audience resonance, positioning, reputational risk checks, and engagement follow-up"
+  },
+  {
+    "key": "aevalley_grant_tender_url_condenser",
+    "title": "AE Valley Grant/Tender/Project URL Condenser",
+    "description_en": "Turn grant, tender, and project URLs into a compact evidence brief that summarizes fit, bid readiness, funding risks, and next validation steps.",
+    "textarea_label": "Grant, tender, or project context",
+    "result_title": "Evidence brief",
+    "focus": "funding fit, bid readiness, eligibility evidence, deadlines, and next validation steps"
+  },
+  {
+    "key": "kmu_tender_factory",
+    "title": "KMU Tender Factory",
+    "description_en": "Parse tender documents into a criteria-mapped proposal draft, scoring matrix, compliance checklist, and evidence bundle for SME submissions.",
+    "textarea_label": "Tender text and company profile",
+    "result_title": "Tender submission pack",
+    "focus": "award criteria mapping, proposal drafting, compliance checklist, and evidence bundle"
+  },
+  {
+    "key": "mint_study_planning",
+    "title": "MINT Study Planning",
+    "description_en": "Generate structured MINT/STEM study plans from learner goals, baseline skills, schedule, constraints, milestones, resources, and assessments.",
+    "textarea_label": "Learner profile and goals",
+    "result_title": "Study plan",
+    "focus": "learning goals, baseline skills, weekly schedule, milestones, resources, and assessments"
+  },
+  {
+    "key": "data_analytics_experiment_launch_analyzer",
+    "title": "Data Analytics Experiment And Launch Analyzer",
+    "description_en": "Turn experiment or launch notes into a decision-ready analytics review with hypothesis checks, outcome signals, risks, and follow-up instrumentation needs.",
+    "textarea_label": "Experiment or launch notes",
+    "result_title": "Analytics review",
+    "focus": "hypothesis checks, outcome signals, statistical caveats, risks, and instrumentation needs"
+  },
+  {
+    "key": "data_analytics_kpi_framework_designer",
+    "title": "Data Analytics KPI Framework Designer",
+    "description_en": "Design a practical KPI framework that connects goals to metric definitions, owners, guardrails, review cadence, and adoption-ready reporting notes.",
+    "textarea_label": "Goals and current metrics",
+    "result_title": "KPI framework",
+    "focus": "goal-to-metric mapping, metric definitions, owners, guardrails, and review cadence"
+  },
+  {
+    "key": "data_analytics_kpi_operating_review",
+    "title": "Data Analytics KPI Operating Review",
+    "description_en": "Create a structured KPI operating review that summarizes status, risks, corrective actions, owners, and follow-up triggers for recurring business reviews.",
+    "textarea_label": "KPI results and context",
+    "result_title": "Operating review",
+    "focus": "KPI status, variance drivers, corrective actions, owners, and follow-up triggers"
+  },
+  {
+    "key": "data_analytics_market_opportunity_sizer",
+    "title": "Data Analytics Market And Opportunity Sizer",
+    "description_en": "Estimate market or opportunity size with transparent assumptions, sizing scenarios, sensitivity checks, evidence gaps, and validation priorities.",
+    "textarea_label": "Market and opportunity context",
+    "result_title": "Opportunity sizing",
+    "focus": "sizing assumptions, scenarios, sensitivity checks, evidence gaps, and validation priorities"
+  },
+  {
+    "key": "field_service_maintenance_report",
+    "title": "Field Service Maintenance Report",
+    "description_en": "Turn technician voice notes or transcripts into a traceable maintenance report and customer summary.",
+    "textarea_label": "Technician notes or transcript",
+    "result_title": "Maintenance report",
+    "focus": "work performed, parts used, open issues, safety observations, and customer-facing summary"
+  }
+]

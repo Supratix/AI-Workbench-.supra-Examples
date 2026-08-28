@@ -12,7 +12,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate .supra packages
+      - name: Validate .supra packages (standard + SupraWorx importer compatibility)
         run: python scripts/validate_supra.py .
-      - name: Check generated docs are present
+      - name: Check generated SME packages match their spec
+        run: python scripts/new_sme_package.py . --check
+      - name: Check importer compatibility rewrite is a no-op
+        run: python scripts/fix_supraworx_compat.py . --check
+      - name: Check generated docs, manifest and domain indexes are current
         run: python scripts/generate_docs.py . --check
+      - name: Run tests
+        run: |
+          python -m pip install --quiet pytest
+          python -m pytest -q tests

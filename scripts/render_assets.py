@@ -146,7 +146,7 @@ def svg_social() -> str:
             svg_text(56, 78, "AI Workbench", 28, weight=700),
             svg_text(56, 158, ".supra", 66, weight=700),
             svg_text(56, 226, "Examples", 66, weight=700),
-            svg_multiline(60, 290, ["47 portable packages aligned to the v1 standard", "Bilingual docs, strict validation, review-first outputs"], 20),
+            svg_multiline(60, 290, ["147 packages, 12 SME domains, .supra v1 standard", "Bilingual docs, strict validation, review-first outputs"], 20),
             '<rect x="56" y="372" width="218" height="54" rx="27" fill="rgb(111 218 238 / 0.14)" stroke="rgb(111 218 238 / 0.65)" stroke-width="2"/>',
             svg_text(85, 406, "v1 standard", 20, weight=700, fill=INK),
             '<rect x="300" y="372" width="218" height="54" rx="27" fill="rgb(186 238 111 / 0.12)" stroke="rgb(186 238 111 / 0.58)" stroke-width="2"/>',
@@ -164,7 +164,7 @@ def svg_social() -> str:
             svg_card(980, 470, 150, 86, "Review", ["approval"], accent=AMBER),
         ]
     )
-    return svg_shell(1200, 630, "AI Workbench .supra Examples", "47 packages aligned to the .supra v1 standard", body)
+    return svg_shell(1200, 630, "AI Workbench .supra Examples", "147 packages in 12 SME domains, aligned to the .supra v1 standard", body)
 
 
 def svg_architecture() -> str:
@@ -448,7 +448,7 @@ def render_social(Image, ImageDraw, fonts):
     draw_multiline(
         draw,
         (62, 296),
-        "47 portable packages aligned to the v1 standard\nBilingual docs, strict validation, review-first outputs",
+        "147 packages, 12 SME domains, .supra v1 standard\nBilingual docs, strict validation, review-first outputs",
         fonts(22),
         fill=MUTED,
         line_gap=31,

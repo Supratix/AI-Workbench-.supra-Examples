@@ -7,63 +7,34 @@ import json
 from pathlib import Path
 
 
-MANIFEST_SCHEMA = "SUPRA_EXAMPLES_MANIFEST_V1"
+MANIFEST_SCHEMA = "SUPRA_EXAMPLES_MANIFEST_V2"
 MANIFEST_TARGET = "AI Workbench .supra examples repository"
-GERMAN_DESCRIPTIONS = {
-    "aevalley_grant_tender_url_condenser": "Verdichtet Förder-, Ausschreibungs- und Projekt-URLs zu einem kompakten Evidenz-Briefing mit Fit, Angebotsreife, Finanzierungsrisiken und nächsten Validierungsschritten.",
-    "data_analytics_experiment_launch_analyzer": "Wandelt Experiment- oder Launch-Notizen in eine entscheidungsreife Analytics-Prüfung mit Hypothesenchecks, Ergebnissignalen, Risiken und offenen Instrumentierungsbedarfen um.",
-    "data_analytics_kpi_framework_designer": "Entwirft ein praxisnahes KPI-Framework, das Ziele mit Metrikdefinitionen, Verantwortlichen, Guardrails, Review-Rhythmus und reportingfähigen Hinweisen verbindet.",
-    "data_analytics_kpi_operating_review": "Erstellt einen strukturierten KPI-Operating-Review mit Status, Risiken, Korrekturmaßnahmen, Verantwortlichen und Follow-up-Triggern für wiederkehrende Business-Reviews.",
-    "data_analytics_market_opportunity_sizer": "Schätzt Markt- oder Chancenpotenziale mit transparenten Annahmen, Szenarien, Sensitivitätschecks, Evidenzlücken und Validierungsprioritäten.",
-    "field_service_maintenance_report": "Wandelt Technikernotizen oder Transkripte in einen nachvollziehbaren Wartungsbericht mit Kunden-Zusammenfassung um.",
-    "kmu_tender_factory": "Analysiert Ausschreibungs-PDFs und erstellt für KMU-Angebote einen kriterienbasierten Angebotsentwurf, eine Bewertungsmatrix, eine Compliance-Checkliste und ein Evidenzpaket.",
-    "lieferschein_inventory": "Ordnet Lieferscheinpositionen internen Produkten zu, markiert unsichere Treffer und erstellt einen prüfbaren Bestandsaktualisierungsvorschlag für Lagerteams.",
-    "linkedin_extreme_engagement_posting": "Erstellt ein LinkedIn-Publishing-Paket für hohe Interaktion mit Hooks, Post-Varianten, Positionierungsnotizen, Risikoprüfungen und Follow-up-Impulsen.",
-    "mint_study_planning": "Erstellt strukturierte MINT/STEM-Lernpläne aus Lernzielen, Ausgangskompetenzen, Zeitplan, Einschränkungen, Meilensteinen, Ressourcen und Assessments.",
-    "sme_ai_adoption_readiness_sprint": "Bewertet die KI-Einführungsreife eines KMU und übersetzt Einschränkungen, Datenqualität, Risiken und Teamkapazität in einen konkreten ersten Sprintplan.",
-    "sme_cashflow_war_room": "Priorisiert Cashflow-Risiken aus Forderungen, Verbindlichkeiten und Zusagen und überführt sie in ein verantwortbares Recovery-Board mit Eskalationstriggern.",
-    "sme_churn_rescue_desk": "Erkennt Abwanderungssignale aus Kundenkontext und erstellt einen praktikablen Rettungsplan mit Ursachen, Verantwortlichenaktionen und Review-Triggern.",
-    "sme_compliance_evidence_pack": "Strukturiert Compliance-Fakten zu einem Evidenzpaket mit Pflichten, Nachweislücken, Verantwortlichen, Fristen und prüfbereiten Hinweisen.",
-    "sme_customer_reply": "Entwirft eine professionelle Kundenantwort, die Ton, Fakten, Evidenzlücken, Zusagen und Follow-up-Prüfungen für sensible Servicesituationen ausbalanciert.",
-    "sme_cyber_hygiene_action_board": "Überführt Cyber-Hygiene-Beobachtungen in ein priorisiertes Remediation-Board mit Risikostufe, verantwortlichen Personen, Fristen und Verifikationschecks.",
-    "sme_data_cleanup_command_center": "Erstellt einen praxisnahen Datenbereinigungsplan mit Problemkategorien, Qualitätsregeln, Verantwortlichen, Validierungschecks und Umsetzungsreihenfolge.",
-    "sme_deadstock_liquidator": "Erkennt Ladenhüterrisiken aus Bestandssignalen und übersetzt sie in einen Liquidationsplan mit Preisoptionen, Kanälen, Verantwortlichen und Review-Metriken.",
-    "sme_downtime_triage": "Diagnostiziert Ausfallkontext und erstellt einen fokussierten Triageplan, der Sofortmaßnahmen, Root-Cause-Hypothesen, Prävention und Verantwortliche trennt.",
-    "sme_energy_cost_anomaly_finder": "Erkennt Energiekostenanomalien, trennt wahrscheinliche Treiber von Annahmen und schlägt prüfbare Einspar- oder Untersuchungsmaßnahmen mit Ownership vor.",
-    "sme_field_service_route_optimizer": "Wandelt Serviceaufträge, Techniker-Kapazitäten, Reiserestriktionen und Prioritätsregeln in ein Routenoptimierungs-Briefing für Außendienstteams um.",
-    "sme_grant_funding_fit_radar": "Bewertet Förder-Fit-Signale und erstellt eine Shortlist mit Eignungshinweisen, Evidenzlücken, Fristen, Aufwandsschätzungen und nächsten Antragsschritten.",
-    "sme_hiring_scorecard_kit": "Erstellt eine Rollen-Scorecard mit Erfolgszielen, Interview-Signalen, Entscheidungsrubrik, Evidenzfragen und Hiring-Risikohinweisen für KMU-Teams.",
-    "sme_invoice_dispute_resolver": "Strukturiert Rechnungsstreit-Fakten zu einem Lösungsplan mit Anspruchszusammenfassung, Evidenzlücken, Verhandlungsoptionen, Verantwortlichen und Eskalationstriggern.",
-    "sme_late_payment_collector": "Bereitet einen menschlichen, aber klaren Mahnplan mit Kundenkontext, Nachrichtenvorlagen, Eskalationspfad und Zahlungsrisikosignalen vor.",
-    "sme_lead_qualifier": "Qualifiziert Leads anhand von Fit, Dringlichkeit, Budgetsignalen, Risikoflaggen und Next-Best-Action-Empfehlungen für praktische Vertriebsnacharbeit.",
-    "sme_local_seo_content_engine": "Erstellt lokale SEO-Content-Briefings aus Geschäftskontext, Servicegebieten, Kundennachweisen, Suchintention und seitenbezogenen Handlungshinweisen.",
-    "sme_margin_leak_detector": "Erkennt Margenverluste aus Preis-, Rabatt-, Kosten- und Liefersignalen und erstellt daraus einen praxisnahen Gewinnschutzplan.",
-    "sme_meeting_summarizer": "Fasst Meetingnotizen zu Entscheidungen, Maßnahmen, Risiken, Verantwortlichen, Fälligkeiten, Evidenzlücken und Follow-up-Impulsen zusammen.",
-    "sme_onboarding_micro_sop_factory": "Wandelt Onboarding-Kontext in kurze SOPs, rollenfertige Checklisten, Warnungen vor typischen Fehlern und Review-Impulse für neue Teammitglieder um.",
-    "sme_pricing_power_simulator": "Bewertet Preissetzungsmacht anhand von Nachfrage-, Wettbewerbs-, Kosten- und Kundensignalen und schlägt Szenarien, Guardrails und Review-Trigger vor.",
-    "sme_product_launch_kill_scale_gate": "Erstellt ein Kill/Scale-Gate für Produktlaunch-Entscheidungen mit Evidenzzusammenfassung, Konfidenzniveau, Risiken und nächsten Maßnahmen.",
-    "sme_proposal_drafter": "Entwirft ein Angebotsbriefing mit Kundenzielen, Scope, Annahmen, Liefergegenständen, Ausschlüssen, Risiken und nächster Handlungssprache.",
-    "sme_quote_to_cash_bottleneck": "Prüft den Quote-to-Cash-Prozess auf Übergabeengpässe, fehlende Daten, Aging-Risiken und verantwortbare Maßnahmen zum Schutz des Umsatzzeitpunkts.",
-    "sme_review_reputation_responder": "Entwirft Review-Antworten und Reputationsmaßnahmen mit evidenzbewusstem Ton, Eskalationshinweisen, Servicesignalen und Follow-up-Prüfungen.",
-    "sme_safety_incident_prevention": "Wandelt Sicherheitsvorfallnotizen in Präventionsmaßnahmen mit Root-Cause-Hypothesen, Verantwortlichen, Verifikationschecks und Review-Triggern um.",
-    "sme_esg_sustainability_copilot": "Konsolidiert Nachhaltigkeitsnachweise zu einer ESG-Readiness-Scorecard mit Gap-Analyse und Maßnahmenplan.",
-    "sme_shift_handover_risk_radar": "Erkennt Übergaberisiken und erstellt ein schichtbereites Minderungsbriefing mit Prioritätsthemen, Owner-Checks, offenen Fragen und Eskalationssignalen.",
-    "sme_sop_builder": "Wandelt Prozesskontext in eine klare SOP mit Rollen, Inputs, Schritten, Qualitätschecks, Ausnahmen und Review-Rhythmus um.",
-    "sme_subscription_retention_playbook": "Erstellt ein Retention-Playbook für Abos aus Kundensignalen, Verlängerungsrisiken, Interventionsmaßnahmen, Verantwortlichen und Review-Metriken.",
-    "sme_tender_no_bid_gate": "Erstellt eine Bid/No-Bid-Empfehlung für Ausschreibungen mit Fit-Bewertung, Evidenzlücken, Lieferrisiken, Governance-Hinweisen und nächsten Maßnahmen.",
-    "sme_training_skill_gap_matrix": "Ordnet Trainingsbedarfe in eine Skill-Gap-Matrix mit Rollenwirkung, priorisierten Lernmaßnahmen, Verantwortlichen und Fortschritts-Reviews ein.",
-    "sme_upsell_signal_miner": "Findet Upsell-Signale im Account-Kontext und übersetzt sie in accountspezifische Angebote, Timing-Hinweise, Risikoflaggen und nächste Maßnahmen.",
-    "sme_vendor_negotiation_brief": "Bereitet ein Lieferantenverhandlungsbriefing mit Hebelsignalen, Zielanfragen, Rückfalloptionen, Risikohinweisen und owner-fertigen Talking Points vor.",
-    "sme_warranty_root_cause_radar": "Analysiert Garantieprobleme und schlägt Root-Cause-Hypothesen, Containment-Maßnahmen, Evidenzlücken, Kundenwirkung und Präventionschecks vor.",
-    "sme_webshop_conversion_rescue": "Diagnostiziert Webshop-Conversion-Probleme und erstellt einen priorisierten Rettungsplan zu Funnel-Signalen, Reibungspunkten, Experimenten und Owner-Actions.",
-    "workforce_intelligence_platform": "Bewahrt Expertenwissen, kartiert Kompetenzrisiken und orchestriert Lern-, Nachfolge- und Recruiting-Workflows mit erklärbaren KI-Belegen.",
-}
-GERMAN_STARTER_REQUESTS = {
-    "Paste the learner profile, learning goals, dates, weekly hours, and constraints for MINT Study Planning.": "Fügen Sie das Lernendenprofil, die Lernziele, Termine, Wochenstunden und Einschränkungen für MINT Study Planning ein.",
-    "Paste tender PDF text/OCR, evaluation criteria, company profile, and reference fragments.": "Fügen Sie Ausschreibungs-PDF-Text oder OCR, Bewertungskriterien, Unternehmensprofil und Referenzfragmente ein.",
-    "Paste a technician transcript, audio URI, checklist, photo references, and job metadata.": "Fügen Sie ein Technikertranskript, eine Audio-URI, eine Checkliste, Fotoverweise und Auftragsmetadaten ein.",
-    "Paste workforce, expert-knowledge, SpeakSphere, HRIS, LMS, ATS, project, and SOP context for analysis.": "Fügen Sie Workforce-, Expertenwissen-, SpeakSphere-, HRIS-, LMS-, ATS-, Projekt- und SOP-Kontext für die Analyse ein.",
-}
+PACKAGES_DIR = "packages"
+DOCS_PACKAGES_DIR = "packages"
+DATA_DIR = Path("scripts/data")
+
+GERMAN_DESCRIPTIONS: dict[str, str] = {}
+GERMAN_STARTER_REQUESTS: dict[str, str] = {}
+DOMAINS: dict[str, dict[str, str]] = {}
+
+
+def load_data(root: Path) -> None:
+    """Load German descriptions, starter-request translations, and domain labels."""
+    de = json.loads((root / DATA_DIR / "descriptions.de.json").read_text(encoding="utf-8"))
+    GERMAN_DESCRIPTIONS.update(de.get("descriptions", {}))
+    GERMAN_STARTER_REQUESTS.update(de.get("starter_requests", {}))
+    for data_file in ("sme_use_cases.json",):
+        path = root / DATA_DIR / data_file
+        if path.exists():
+            for spec in json.loads(path.read_text(encoding="utf-8")):
+                GERMAN_DESCRIPTIONS.setdefault(spec["key"], spec["description_de"])
+    domains = json.loads((root / DATA_DIR / "domains.json").read_text(encoding="utf-8"))
+    DOMAINS.update(domains.get("domains", {}))
+
+
+def domain_label(domain: str, lang: str) -> str:
+    labels = DOMAINS.get(domain, {})
+    return labels.get(lang) or labels.get("en") or domain.replace("_", " ").title()
 
 
 def table(rows: list[list[str]]) -> str:
@@ -142,7 +113,8 @@ def doc(pkg: dict, lang: str) -> str:
     lines.append("Diese Dokumentation wird aus dem `.supra`-Paketinhalt erzeugt." if de else "This documentation is generated from the `.supra` package content.")
     lines += ["", f"## {labels['overview']}", ""]
     lines += [
-        f"- **{overview_labels['source']}:** [`../{pkg['key']}.supra`](../{pkg['key']}.supra)",
+        f"- **{overview_labels['source']}:** [`{pkg['_path']}`](../../{pkg['_path']})",
+        f"- **{'Domäne' if de else 'Domain'}:** {domain_label(pkg['_domain'], lang)} (`{pkg['_domain']}`)",
         f"- **{overview_labels['workbench']}:** {pkg.get('workbench_title', '')}",
         f"- **{overview_labels['key']}:** `{pkg['key']}`",
         f"- **{overview_labels['vendor']}:** {pkg.get('metadata', {}).get('vendor', '')}",
@@ -220,10 +192,11 @@ def manifest(packages: list[dict]) -> dict:
                 "description": pkg.get("description", ""),
                 "columns": len(pkg.get("columns", [])),
                 "workflows": len(pkg.get("workflows", [])),
-                "source": f"{pkg['key']}.supra",
+                "domain": pkg["_domain"],
+                "source": pkg["_path"],
                 "docs": {
-                    "en": f"docs/{pkg['key']}.en.md",
-                    "de": f"docs/{pkg['key']}.de.md",
+                    "en": f"docs/{DOCS_PACKAGES_DIR}/{pkg['key']}.en.md",
+                    "de": f"docs/{DOCS_PACKAGES_DIR}/{pkg['key']}.de.md",
                 },
             }
             for pkg in packages
@@ -231,26 +204,56 @@ def manifest(packages: list[dict]) -> dict:
     }
 
 
-def docs_readme(packages: list[dict]) -> str:
-    rows = [["Package", "Description", "Columns", "Workflows", "Deutsch", "English"]]
+def package_rows(packages: list[dict], *, link_prefix: str) -> str:
+    rows = [["Package", "Description / Beschreibung", "Columns", "Deutsch", "English"]]
     for pkg in packages:
         rows.append([
             pkg["title"],
-            pkg.get("description", ""),
+            f"{pkg.get('description', '')}<br>_{GERMAN_DESCRIPTIONS.get(pkg['key'], '')}_",
             str(len(pkg.get("columns", []))),
-            str(len(pkg.get("workflows", []))),
-            f"[`{pkg['key']}.de.md`]({pkg['key']}.de.md)",
-            f"[`{pkg['key']}.en.md`]({pkg['key']}.en.md)",
+            f"[DE]({link_prefix}{pkg['key']}.de.md)",
+            f"[EN]({link_prefix}{pkg['key']}.en.md)",
         ])
-    return "\n".join([
+    return table(rows)
+
+
+def grouped(packages: list[dict]) -> dict[str, list[dict]]:
+    groups: dict[str, list[dict]] = {}
+    for pkg in packages:
+        groups.setdefault(pkg["_domain"], []).append(pkg)
+    return {domain: groups[domain] for domain in sorted(groups, key=lambda d: domain_label(d, "en"))}
+
+
+def docs_readme(packages: list[dict]) -> str:
+    lines = [
         "# `.supra` Example Documentation",
         "",
-        "Generated German and English Markdown documentation for every `.supra` package in this examples repository.",
-        "Descriptions are read from the source package metadata so this catalog stays aligned with the importable examples.",
+        "Generated German and English Markdown documentation for every `.supra` package in this repository.",
+        "Descriptions are read from the source package metadata and `scripts/data/*.json`, so this catalog stays aligned with the importable examples.",
+        "",
+        "Generierte deutsche und englische Dokumentation für jedes `.supra`-Paket in diesem Repository. Die Paketdokumente liegen unter [`packages/`](packages/), gruppiert nach Domäne.",
         "",
         "![Workflow pipeline](assets/supra-workflow-pipeline.svg)",
         "",
-        table(rows),
+        f"**{len(packages)} packages / Pakete** in {len(grouped(packages))} domains / Domänen.",
+        "",
+    ]
+    for domain, pkgs in grouped(packages).items():
+        lines += [
+            f"## {domain_label(domain, 'en')} / {domain_label(domain, 'de')}",
+            "",
+            f"Folder / Ordner: [`packages/{domain}/`](../packages/{domain}/README.md) — {len(pkgs)} packages",
+            "",
+            package_rows(pkgs, link_prefix=f"{DOCS_PACKAGES_DIR}/"),
+            "",
+        ]
+    lines += [
+        "## Guides",
+        "",
+        "- [The `.supra` v1 Standard](supra-v1-standard.md)",
+        "- [`.supra` v1 Standard Fix Playbook](supra-v1-standard-fix.md)",
+        "- [SupraWorx import evaluation (EN)](import-evaluation.en.md) · [Import-Bewertung (DE)](import-evaluation.de.md)",
+        "- [Repository guide (EN)](repository-guide.en.md) · [Repository-Leitfaden (DE)](repository-guide.de.md)",
         "",
         "## Diagrams",
         "",
@@ -260,47 +263,81 @@ def docs_readme(packages: list[dict]) -> str:
         "- [Import/export flow](assets/supra-import-export-flow.svg)",
         "- [Governance loop](assets/supra-governance-loop.svg)",
         "",
-        "## Standards",
-        "",
-        "- [The `.supra` v1 Standard](supra-v1-standard.md)",
-        "- [`.supra` v1 Standard Fix Playbook](supra-v1-standard-fix.md)",
-        "",
         "## Regeneration",
         "",
         "```bash",
+        "python3 scripts/new_sme_package.py .",
         "python3 scripts/generate_docs.py .",
         "python3 scripts/render_assets.py .",
         "```",
         "",
-    ])
+    ]
+    return "\n".join(lines)
+
+
+def domain_readme(domain: str, packages: list[dict]) -> str:
+    lines = [
+        f"# {domain_label(domain, 'en')} / {domain_label(domain, 'de')}",
+        "",
+        f"`packages/{domain}/` contains {len(packages)} importable `.supra` packages. Generated documentation lives in [`docs/packages/`](../../docs/packages/).",
+        "",
+        f"`packages/{domain}/` enthält {len(packages)} importierbare `.supra`-Pakete. Die generierte Dokumentation liegt unter [`docs/packages/`](../../docs/packages/).",
+        "",
+        package_rows(packages, link_prefix=f"../../docs/{DOCS_PACKAGES_DIR}/"),
+        "",
+        "```bash",
+        "python3 scripts/validate_supra.py .   # validate all packages",
+        "```",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def load_packages(root: Path) -> list[dict]:
+    packages_dir = root / PACKAGES_DIR
+    files = sorted(packages_dir.rglob("*.supra")) if packages_dir.is_dir() else sorted(root.glob("*.supra"))
+    packages = []
+    for path in files:
+        pkg = json.loads(path.read_text(encoding="utf-8"))
+        pkg["_path"] = path.relative_to(root).as_posix()
+        pkg["_domain"] = path.parent.name if path.parent != root else "uncategorized"
+        packages.append(pkg)
+    return sorted(packages, key=lambda pkg: pkg["key"])
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
-    parser.add_argument("--check", action="store_true", help="Fail if expected docs are missing")
+    parser.add_argument("--check", action="store_true", help="Fail if expected docs are missing or outdated")
     args = parser.parse_args()
     root = Path(args.root)
+    load_data(root)
     docs = root / "docs"
-    docs.mkdir(exist_ok=True)
-    packages = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(root.glob("*.supra"))]
+    docs_packages = docs / DOCS_PACKAGES_DIR
+    docs_packages.mkdir(parents=True, exist_ok=True)
+    packages = load_packages(root)
     missing_de = [pkg["key"] for pkg in packages if pkg["key"] not in GERMAN_DESCRIPTIONS]
     if missing_de:
-        raise SystemExit(f"Missing German descriptions for: {', '.join(missing_de)}")
+        raise SystemExit(f"Missing German descriptions (scripts/data/descriptions.de.json) for: {', '.join(missing_de)}")
+
+    outputs: dict[Path, str] = {}
     for pkg in packages:
         for lang in ["en", "de"]:
-            target = docs / f"{pkg['key']}.{lang}.md"
-            if args.check and not target.exists():
-                raise SystemExit(f"Missing generated doc: {target}")
-            if not args.check:
-                target.write_text(doc(pkg, lang), encoding="utf-8")
-    if args.check and not (docs / "README.md").exists():
-        raise SystemExit("Missing docs/README.md")
-    if args.check and not (root / "examples_manifest.json").exists():
-        raise SystemExit("Missing examples_manifest.json")
-    if not args.check:
-        (docs / "README.md").write_text(docs_readme(packages), encoding="utf-8")
-        (root / "examples_manifest.json").write_text(json.dumps(manifest(packages), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            outputs[docs_packages / f"{pkg['key']}.{lang}.md"] = doc(pkg, lang)
+    outputs[docs / "README.md"] = docs_readme(packages)
+    for domain, pkgs in grouped(packages).items():
+        outputs[root / PACKAGES_DIR / domain / "README.md"] = domain_readme(domain, pkgs)
+    outputs[root / "examples_manifest.json"] = json.dumps(manifest(packages), indent=2, ensure_ascii=False) + "\n"
+
+    if args.check:
+        stale = [str(path.relative_to(root)) for path, content in outputs.items()
+                 if not path.exists() or path.read_text(encoding="utf-8") != content]
+        if stale:
+            raise SystemExit("Generated files are missing or outdated (run scripts/generate_docs.py):\n- " + "\n- ".join(stale))
+    else:
+        for path, content in outputs.items():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8")
     print(f"Documentation {'checked' if args.check else 'generated'} for {len(packages)} packages")
     return 0
 

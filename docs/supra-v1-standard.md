@@ -49,8 +49,13 @@ future stricter validation.
 A `.supra` v1 package MUST be stored as:
 
 ```text
-<key>.supra
+packages/<domain>/<key>.supra
 ```
+
+`<domain>` is one of the domain folders listed in `scripts/data/domains.json`
+(for example `finance_cash` or `people_hr`). The domain is repository
+organisation only; it is not part of the package identity and MUST NOT be
+encoded in `key`.
 
 The file content MUST be a single JSON object. The top-level `key` MUST match
 the filename stem exactly.
@@ -96,10 +101,21 @@ prompts, output contracts, generated docs, or standard documentation.
 | `import_version` | Version string expected during import. |
 | `commerce` | Commerce and usage metadata. |
 
+`metadata` MUST only use fields that the SupraWorx importer allow-list accepts
+(`module_name`, `vendor`, `global_product_pk`, `content_name`,
+`content_description`, `export_version`, `import_version`, `starter_rows`,
+`source_attribution`, `business_model`, `commerce`, `tenant_binding`,
+`source_issue`, `last_config_review` and the extension objects `scoring`,
+`account_universe`, `process`, `governance`, `operating_cadence`). The importer
+rejects a package with any other metadata field, so repository notes belong in
+`metadata.source_attribution` (`text`, `url`, `license`, …) and free-form
+extension data belongs in one of the extension objects (max 64 KiB each). See
+[`import-evaluation.en.md`](import-evaluation.en.md).
+
 `metadata.starter_rows` SHOULD provide at least one realistic starter intake for
 example packages. If `metadata.starter_rows[*].text` is present, it MUST be valid
-JSON. Starter rows SHOULD make constraints, guardrails, and intended outputs
-visible.
+JSON and MUST NOT exceed 4000 characters. Starter rows SHOULD make constraints,
+guardrails, and intended outputs visible.
 
 Starter rows MUST NOT contain private secrets, local paths, personal data that is
 not intentionally synthetic, or environment-specific identifiers.
@@ -250,12 +266,37 @@ The generated docs SHOULD include:
 - output contract summary
 - governance notes
 
+Generated package docs live in `docs/packages/<key>.en.md` and
+`docs/packages/<key>.de.md`; each domain folder also receives a generated
+`README.md` index.
+
 German documentation SHOULD translate the documentation shell and package
 purpose while preserving prompt and JSON blocks as source excerpts. If a new
 package is added, the generator MUST have the German package description needed
-to keep German docs from falling back to English prose.
+to keep German docs from falling back to English prose: hand-written packages
+add it to `scripts/data/descriptions.de.json`, generated SME packages carry
+`description_de` in `scripts/data/sme_use_cases.json`.
 
 The manifest, `examples_manifest.json`, MUST be regenerated with the docs.
+
+## SupraWorx Import Contract
+
+Beyond the structural rules above, a package that is meant to be uploaded into
+SupraWorx AI Workbench MUST satisfy the importer's limits, which
+`scripts/validate_supra.py` enforces:
+
+| Rule | Limit |
+| --- | --- |
+| Payload size | 1 MiB |
+| Columns per workbench | 64 |
+| `description` length | 2000 characters |
+| Starter rows / starter `text` | 200 rows / 4000 characters |
+| `output_contract.json_schema` | 12 KiB |
+| Extension metadata objects | 64 KiB each |
+| `shortcut` column `tool` | a managed SME shortcut, `gpt`, or an ID listed in `scripts/data/supraworx_managed_shortcuts.json` |
+
+Unknown fields at the root, in `metadata`, `source_attribution`, `commerce`, or
+starter rows are rejected by the importer.
 
 ## Lifecycle
 
@@ -293,7 +334,7 @@ is missing, and who must review the result.
 
 A package conforms to `.supra` v1 when all of the following are true:
 
-- [ ] The file is named `<key>.supra`.
+- [ ] The file is stored as `packages/<domain>/<key>.supra`.
 - [ ] The top-level JSON value is an object.
 - [ ] `key` matches the filename stem.
 - [ ] `schemaVersion` is integer `1`.
@@ -315,7 +356,9 @@ A package conforms to `.supra` v1 when all of the following are true:
 - [ ] Top-level descriptions, metadata descriptions, workflow descriptions, and
   `main_workbench` descriptions are synchronized where they represent the same
   package purpose.
-- [ ] Generated docs and manifest are current.
+- [ ] `metadata` uses only importer-allowed fields and the SupraWorx limits hold.
+- [ ] Shortcut columns reference registered shortcut IDs.
+- [ ] Generated docs, domain indexes, and manifest are current.
 - [ ] The package contains no private local paths or user-specific machine
   references.
 
@@ -325,8 +368,10 @@ Run these commands from the repository root:
 
 ```bash
 python3 scripts/validate_supra.py .
+python3 scripts/new_sme_package.py . --check
+python3 scripts/fix_supraworx_compat.py . --check
 python3 scripts/generate_docs.py . --check
-python3 -m py_compile scripts/validate_supra.py scripts/generate_docs.py
+python3 -m py_compile scripts/*.py
 ```
 
 If pytest is installed, also run:

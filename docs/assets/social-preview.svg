@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">AI Workbench .supra Examples</title>
-  <desc id="desc">47 packages aligned to the .supra v1 standard</desc>
+  <desc id="desc">147 packages in 12 SME domains, aligned to the .supra v1 standard</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="rgb(8 17 31)"/>
@@ -44,7 +44,7 @@
 <text x="56" y="78" fill="rgb(245 250 255)" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">AI Workbench</text>
 <text x="56" y="158" fill="rgb(245 250 255)" font-size="66" font-family="Arial, Helvetica, sans-serif" font-weight="700">.supra</text>
 <text x="56" y="226" fill="rgb(245 250 255)" font-size="66" font-family="Arial, Helvetica, sans-serif" font-weight="700">Examples</text>
-<text x="60" y="290" fill="rgb(184 211 225)" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="400">47 portable packages aligned to the v1 standard</text>
+<text x="60" y="290" fill="rgb(184 211 225)" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="400">147 packages, 12 SME domains, .supra v1 standard</text>
 <text x="60" y="312" fill="rgb(184 211 225)" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="400">Bilingual docs, strict validation, review-first outputs</text>
 <rect x="56" y="372" width="218" height="54" rx="27" fill="rgb(111 218 238 / 0.14)" stroke="rgb(111 218 238 / 0.65)" stroke-width="2"/>
 <text x="85" y="406" fill="rgb(245 250 255)" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700">v1 standard</text>
