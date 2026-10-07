@@ -1,0 +1,54 @@
+{
+  "summary": "Entwurf: Laut synthetischem Startertranskript wurde der Filter mit Teil F123 ersetzt und ein zehnminütiger Testlauf ohne festgestellte Lecks durchgeführt; die Korrosion an Ventil 3 wird vor Abschluss fachlich geprüft.",
+  "attachments": [
+    {
+      "type": "maintenance_report_json",
+      "status": "draft_not_approved"
+    },
+    {
+      "type": "maintenance_report_pdf",
+      "status": "not_generated"
+    }
+  ],
+  "validation_assertions": [
+    {
+      "assertion": "Auftrags-ID J-2026-045 und Asset-ID HVAC-22 wurden aus den Starterdaten übernommen.",
+      "status": "synthetic_input_only",
+      "human_confirmation_required": true
+    },
+    {
+      "assertion": "Teilnummer F123 ist im Transkript enthalten und wurde unverändert übernommen.",
+      "status": "synthetic_input_only",
+      "human_confirmation_required": true
+    },
+    {
+      "assertion": "Gesamtdauer des Einsatzes ist nicht belegt; zehn Minuten beziehen sich ausschließlich auf den Testlauf.",
+      "status": "evidence_gap",
+      "human_confirmation_required": true
+    },
+    {
+      "assertion": "Foto-URI ist ein Platzhalter und wurde nicht geöffnet oder geprüft.",
+      "status": "evidence_gap",
+      "human_confirmation_required": true
+    },
+    {
+      "assertion": "Korrosion an Ventil 3 ist nicht fachlich bewertet.",
+      "status": "approval_pending",
+      "human_confirmation_required": true
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "gap": "Originalaudio, verifizierbares Foto und bestätigte Einsatzdauer fehlen.",
+      "blocks_customer_delivery": true
+    },
+    {
+      "gap": "Technikerunterschrift sowie Bestätigung der Anlagenidentität fehlen.",
+      "blocks_customer_delivery": true
+    },
+    {
+      "gap": "Fachliche Freigabe zur Korrosion an Ventil 3 fehlt.",
+      "blocks_customer_delivery": true
+    }
+  ]
+}
