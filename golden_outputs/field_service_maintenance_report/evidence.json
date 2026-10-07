@@ -1,0 +1,78 @@
+{
+  "job_id": "J-2026-045",
+  "asset_id": "HVAC-22",
+  "source_list": [
+    {
+      "source_id": "starter-transcript",
+      "source_type": "synthetic_starter_transcript",
+      "reference": "metadata.starter_rows[0].text",
+      "synthetic": true
+    },
+    {
+      "source_id": "starter-photo-uri",
+      "source_type": "synthetic_example_uri",
+      "reference": "https://files.example/snap1.jpg",
+      "synthetic": true
+    }
+  ],
+  "transcript_text": "Arrived on site. Checked filter, replaced with part F123. Test run 10 minutes. No leaks detected. Safety: observed minor corrosion at valve 3. Photos: [\"https://files.example/snap1.jpg\"]",
+  "checklist_items": [
+    {
+      "item": "Confirm asset",
+      "status": "not_verified",
+      "evidence": "Asset-ID HVAC-22 steht in den synthetischen Starterdaten; eine unabhängige Identitätsprüfung ist nicht dokumentiert."
+    },
+    {
+      "item": "Record steps",
+      "status": "partially_supported",
+      "evidence": "Transkript nennt Filterprüfung, Austausch mit Teil F123 und einen zehnminütigen Testlauf."
+    },
+    {
+      "item": "Capture parts",
+      "status": "supported_by_transcript",
+      "evidence": "Teilnummer F123 steht im synthetischen Transkript."
+    },
+    {
+      "item": "Note issues",
+      "status": "supported_by_transcript",
+      "evidence": "Transkript nennt minor corrosion at valve 3; Schweregrad und Zustand sind nicht unabhängig geprüft."
+    },
+    {
+      "item": "Create summary",
+      "status": "pending_human_review",
+      "evidence": "Zusammenfassung ist Entwurf; Freigabe durch Techniker erforderlich."
+    }
+  ],
+  "photo_uris": [
+    {
+      "uri": "https://files.example/snap1.jpg",
+      "status": "synthetic_placeholder_not_verified",
+      "description": "Starter-URI; kein Bildinhalt wurde bereitgestellt oder geprüft."
+    }
+  ],
+  "uncertainty_terms": [
+    {
+      "term": "minor",
+      "context": "minor corrosion at valve 3",
+      "reason": "Subjektive Bewertung im Startertranskript; keine Messung oder fachliche Einstufung vorhanden."
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "gap": "Keine Audiodatei vorhanden; audio_uri ist leer.",
+      "impact": "Transkript kann nicht gegen die Originalaufnahme geprüft werden."
+    },
+    {
+      "gap": "Die angegebene Foto-URI ist ein synthetischer Platzhalter; kein Bild wurde eingesehen.",
+      "impact": "Korrosion und Anlagenidentität sind visuell nicht bestätigt."
+    },
+    {
+      "gap": "Keine Arbeitszeit außer dem zehnminütigen Testlauf angegeben.",
+      "impact": "Gesamtdauer des Einsatzes ist unbekannt."
+    },
+    {
+      "gap": "Keine dokumentierte Unterschrift oder unabhängige Asset-Bestätigung.",
+      "impact": "Bericht ist nicht zur finalen Übergabe freigegeben."
+    }
+  ]
+}
