@@ -1,0 +1,63 @@
+{
+  "job_report": {
+    "job_id": "J-2026-045",
+    "asset_id": "HVAC-22",
+    "ordered_steps": [
+      {
+        "step": 1,
+        "description": "Filter geprüft.",
+        "provenance": "Synthetisches Startertranskript",
+        "status": "reported"
+      },
+      {
+        "step": 2,
+        "description": "Filter mit Teil F123 ersetzt.",
+        "provenance": "Synthetisches Startertranskript",
+        "status": "reported"
+      },
+      {
+        "step": 3,
+        "description": "Testlauf zehn Minuten; keine Lecks festgestellt.",
+        "provenance": "Synthetisches Startertranskript",
+        "status": "reported"
+      }
+    ],
+    "parts_used": [
+      {
+        "part_number": "F123",
+        "description": "Im Transkript als Ersatzteil genannt; weitere Spezifikation fehlt.",
+        "provenance": "Synthetisches Startertranskript"
+      }
+    ],
+    "time_minutes": null,
+    "issues": [
+      {
+        "description": "Korrosion an Ventil 3 als „minor“ beschrieben.",
+        "provenance": "Synthetisches Startertranskript",
+        "severity": "unverified"
+      }
+    ],
+    "safety_flags": [
+      {
+        "flag": "Korrosion an Ventil 3 fachlich bewerten.",
+        "status": "human_review_required",
+        "reason": "Zustand und Sicherheitsrelevanz sind durch das Startertranskript nicht belegt."
+      }
+    ],
+    "completed": false,
+    "signature": null,
+    "provenance": [
+      "Alle Einzelheiten stammen aus synthetischen Starterdaten und sind nicht gegen Audio, Foto, Arbeitsauftrag oder Anlagenakte verifiziert."
+    ],
+    "assumptions": [
+      "Keine zusätzliche Arbeitszeit, Diagnose, Ursache oder Reparaturmaßnahme wird angenommen.",
+      "„Keine Lecks festgestellt“ bezieht sich nur auf den im Transkript genannten zehnminütigen Testlauf."
+    ],
+    "required_human_approvals": [
+      "Techniker bestätigt Transkript, Anlage, Arbeitsschritte, Teile und Gesamtdauer.",
+      "Verantwortliche Fachkraft bewertet die Korrosion an Ventil 3 und gibt sicherheitsrelevante Aussagen frei.",
+      "Bericht vor Kundenversand durch zuständige Person freigeben."
+    ]
+  },
+  "summary": "Entwurf: Laut synthetischem Transkript wurde der Filter durch Teil F123 ersetzt und ein zehnminütiger Testlauf ohne festgestellte Lecks durchgeführt; die Korrosion an Ventil 3 und der Gesamtabschluss müssen fachlich geprüft und freigegeben werden."
+}
