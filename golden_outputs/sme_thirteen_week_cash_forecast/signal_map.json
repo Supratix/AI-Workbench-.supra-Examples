@@ -1,0 +1,51 @@
+{
+  "summary": "Synthetische Erstanalyse des Metallverarbeitungsbetriebs anhand der im Starterpaket genannten Werte. Die Angaben sind nicht durch Belege verifiziert und stellen keine Liquiditätsprognose dar.",
+  "signals": [
+    {
+      "signal": "Angegebener Bankbestand: 84.000 EUR.",
+      "evidence": "Starterdaten",
+      "status": "unverified_fact"
+    },
+    {
+      "signal": "Offene Kundenforderungen: 210.000 EUR; davon drei überfällig.",
+      "evidence": "Starterdaten",
+      "status": "unverified_fact"
+    },
+    {
+      "signal": "Lieferantenverbindlichkeiten von 120.000 EUR sind innerhalb von vier Wochen fällig.",
+      "evidence": "Starterdaten",
+      "status": "unverified_fact"
+    },
+    {
+      "signal": "Geplante Lohnzahlung: 58.000 EUR am 28.; Umsatzsteuerzahlung: 31.000 EUR in Woche 3.",
+      "evidence": "Starterdaten; konkreter Kalendermonat fehlt",
+      "status": "unverified_fact"
+    },
+    {
+      "signal": "Eine Maschinenanzahlung von 40.000 EUR ist für Woche 6 geplant.",
+      "evidence": "Starterdaten",
+      "status": "unverified_fact"
+    }
+  ],
+  "constraints": [
+    "Die Eingaben sind unvollständig; es liegen keine Kontoauszüge, OP-Listen, Fälligkeitsdaten oder bestätigten Zahlungszusagen vor.",
+    "Es darf kein Zahlungseingang unterstellt oder eine Prognose als gemessener Liquiditätsstand ausgegeben werden."
+  ],
+  "assumptions": [
+    "Die Beträge und Zeitangaben werden ausschließlich als synthetische Starterangaben behandelt.",
+    "Woche 3 und Woche 6 werden relativ zum nicht angegebenen Startdatum verstanden; Kalenderdaten lassen sich daraus nicht ableiten."
+  ],
+  "risks": [
+    "Die nominellen Forderungen von 210.000 EUR sind kein verfügbarer Kassenbestand; Einbringlichkeit und Zahlungstermine sind unbekannt.",
+    "Die kumulierte Belastung aus Verbindlichkeiten, Lohn, Umsatzsteuer und geplanter Anzahlung könnte die verfügbare Liquidität übersteigen; mangels zeitlich aufgelöster Daten ist dies nicht quantifizierbar.",
+    "Die geplante Maschinenanzahlung kann die kurzfristige Zahlungsfähigkeit beeinträchtigen."
+  ],
+  "evidence_gaps": [
+    "Aktueller Kontoauszug und verfügbare Kreditlinien fehlen.",
+    "Debitorenliste mit Rechnungsbeträgen, Fälligkeiten, Streitfällen und bestätigten Zahlungsterminen fehlt.",
+    "Kreditorenliste mit konkreten Fälligkeiten und Zahlungsbedingungen fehlt.",
+    "Lohn-, Steuer- und sonstige Zahlungsverpflichtungen mit konkreten Kalendertagen fehlen.",
+    "Startdatum und Wochenzuordnung für die 13-Wochen-Planung fehlen.",
+    "Vertrag, Stornierungsbedingungen und betriebliche Notwendigkeit der Maschinenanzahlung sind nicht belegt."
+  ]
+}
