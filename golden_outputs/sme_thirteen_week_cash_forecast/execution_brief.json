@@ -1,0 +1,38 @@
+{
+  "summary": "Arbeitsauftrag für eine beleggestützte Liquiditätsprüfung des synthetischen Metallverarbeitungsbetriebs. Keine tatsächliche Runtime-Ausgabe und keine geprüfte Finanzprognose.",
+  "decision": "Die geplante Maschinenanzahlung von 40.000 EUR vorläufig nicht freigeben, bis eine datierte Liquiditätsplanung und die Vertragsbedingungen geprüft wurden. Finale Entscheidung durch die Geschäftsführung erforderlich.",
+  "actions": [
+    {
+      "action": "Kontoauszüge, Kreditlinien, offene Posten und Zahlungsbelege einsammeln.",
+      "owner": "Finanzverantwortliche",
+      "status": "open"
+    },
+    {
+      "action": "Alle Ein- und Auszahlungen den 13 Kalenderwochen zuordnen und unsichere Zahlungseingänge getrennt kennzeichnen.",
+      "owner": "Finanzverantwortliche",
+      "status": "open"
+    },
+    {
+      "action": "Vertrag und Folgen eines Aufschubs der Maschinenanzahlung prüfen.",
+      "owner": "Einkauf und Geschäftsführung",
+      "status": "open",
+      "human_approval_required": true
+    },
+    {
+      "action": "Plan mit den Verantwortlichen durchgehen und Anzahlung erst nach ausdrücklicher Freigabe ausführen.",
+      "owner": "Geschäftsführung",
+      "status": "open",
+      "human_approval_required": true
+    }
+  ],
+  "risks": [
+    "Es ist nicht belegt, wann die drei überfälligen Rechnungen bezahlt werden.",
+    "Die Starterangabe zu den Fristen enthält keine verlässlichen Kalenderdaten.",
+    "Betrag und zeitliche Verteilung weiterer Betriebsausgaben sind nicht vorhanden."
+  ],
+  "evidence_gaps": [
+    "Belegbasierte und datierte Ein- und Auszahlungen fehlen.",
+    "Die Starterdaten belegen weder Zahlungen noch tatsächliche Kontostände zum Laufzeitpunkt.",
+    "Vertragliche Frist und Stornierungs-/Verschiebungsbedingungen der Maschinenanzahlung fehlen."
+  ]
+}
