@@ -1,0 +1,60 @@
+{
+  "summary": "Vorläufiger Entscheidungsentwurf auf Basis ausschließlich synthetischer Starterdaten; keine geprüfte oder vollständige Liquiditätsplanung.",
+  "decision": "Die Maschinenanzahlung von 40.000 EUR bis zur Prüfung einer beleggestützten 13-Wochen-Liquiditätsplanung zurückstellen, sofern Vertrag und Betrieb dies zulassen. Diese Empfehlung ist vor einer Umsetzung durch die Geschäftsführung und die Finanzverantwortlichen freizugeben.",
+  "actions": [
+    {
+      "action": "Kontoauszug, verfügbare Kreditlinien sowie Debitoren- und Kreditorenlisten mit konkreten Fälligkeiten zusammentragen.",
+      "owner": "Finanzverantwortliche",
+      "due": "vor der nächsten Zahlungsentscheidung",
+      "approval_required": false
+    },
+    {
+      "action": "Zahlungstermine für Lohn, Umsatzsteuer und Maschinenanzahlung anhand der Originalunterlagen bestätigen und eine wöchentliche 13-Wochen-Planung erstellen.",
+      "owner": "Finanzverantwortliche",
+      "due": "vor Freigabe der Anzahlung",
+      "approval_required": false
+    },
+    {
+      "action": "Überfällige Forderungen einzeln prüfen und Zahlungseingänge erst nach Bestätigung in Szenarien berücksichtigen.",
+      "owner": "Debitorenbuchhaltung",
+      "due": "diese Woche",
+      "approval_required": false
+    },
+    {
+      "action": "Über Zurückstellung oder Zahlung der Maschinenanzahlung entscheiden und mögliche Vertragsfolgen prüfen.",
+      "owner": "Geschäftsführung",
+      "due": "nach Prüfung der Unterlagen",
+      "approval_required": true
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Niedrigster prognostizierter Wochenendbestand",
+      "value": null,
+      "unit": "EUR",
+      "status": "not_calculable_without dated cash-flow inputs"
+    },
+    {
+      "name": "Forderungseingänge bestätigt",
+      "value": null,
+      "unit": "EUR",
+      "status": "not_verified"
+    },
+    {
+      "name": "Fällige Zahlungen in den nächsten vier Wochen",
+      "value": null,
+      "unit": "EUR",
+      "status": "not_reconciled"
+    }
+  ],
+  "risks": [
+    "Falsche oder unvollständige Fälligkeiten können die Empfehlung ändern.",
+    "Aufschub der Anzahlung kann Vertrags- oder Lieferfolgen haben; die Vertragsbedingungen wurden nicht bereitgestellt.",
+    "Eine Handlung ohne Prüfung durch Finanzverantwortliche und Geschäftsführung kann zu Zahlungs- oder Investitionsentscheidungen auf unvollständiger Grundlage führen."
+  ],
+  "evidence_gaps": [
+    "Kontoauszug, Kreditlinien, offene Posten und bestätigte Zahlungstermine fehlen.",
+    "Exakte Kalenderdaten für Lohn, Umsatzsteuer, Lieferanten und Anzahlung fehlen.",
+    "Vertragliche Folgen einer Verschiebung der Anzahlung sind unbekannt."
+  ]
+}
